@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
-/* Layout: typographic hero — the brand name alone, full width, on ivory → stone body → espresso bands for textures & showroom */
+/* Layout: giant NH monogram (logo typeface) over a dimmed photo on black → stone body → espresso bands for textures & showroom */
 :root{
   --mist:#D3D5CF;       /* brume — hero poster ground */
   --stone:#E6E4DE;      /* pierre — page ground */
@@ -46,7 +46,7 @@ p{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- header ---------- */
-.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--ink);transition:background .4s var(--ease),color .4s var(--ease)}
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--paper);transition:background .4s var(--ease),color .4s var(--ease)}
 .hdr.solid{background:rgba(230,228,222,.92);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -92,30 +92,22 @@ p{margin:0}
 }
 
 
-/* ---------- hero typographique : le nom seul ---------- */
-.hero-type{position:relative;min-height:100svh;max-height:1100px;display:grid;grid-template-rows:1fr auto;background:var(--paper);padding:calc(96px + env(safe-area-inset-top,0px)) var(--gutter) clamp(24px,4vh,40px)}
-.ht-center{display:grid;justify-items:center;align-content:center;gap:clamp(22px,4.5vh,48px);text-align:center}
-.ht-mark{width:clamp(44px,4vw,64px);height:auto}
-.ht-mark text{font-family:var(--f-display);font-variation-settings:"opsz" 96;fill:var(--ink)}
-.ht-word{margin:0;width:min(100%,1320px);display:grid;justify-items:center;gap:clamp(18px,3.6vh,36px)}
-.ht-word svg{width:100%;height:auto;display:block;overflow:visible}
-.ht-word text{font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;fill:var(--ink)}
-.ht-hair{font-family:var(--f-body);font-weight:400;font-size:clamp(13px,1.3vw,19px);letter-spacing:1.1em;padding-left:1.1em;color:var(--ink)}
-.ht-tag{font-family:var(--f-display);font-style:italic;font-size:clamp(18px,1.6vw,24px);color:var(--ink-2)}
-.ht-foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:16px;font-size:13.5px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:18px}
-.ht-foot span:last-child{text-align:right}
-.ht-down{color:var(--ink);text-decoration:none;display:grid;justify-items:center;gap:8px;font-size:13.5px}
-.ht-down::after{content:"";width:1px;height:34px;background:var(--ink);transform-origin:top}
-@media (max-width:640px){.ht-foot{grid-template-columns:1fr;justify-items:center;text-align:center}.ht-foot span:last-child{text-align:center}.ht-down{order:3}}
+/* ---------- hero : monogramme NH géant sur photo assombrie ---------- */
+.hero-nh2{position:relative;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:#0E0D0C;color:var(--paper);isolation:isolate}
+.hn2-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:.3;filter:grayscale(.35) contrast(1.05)}
+.hero-nh2::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 70% at 50% 50%,rgba(14,13,12,0),rgba(14,13,12,.55));pointer-events:none}
+.hn2{position:absolute;z-index:1;inset:calc(64px + env(safe-area-inset-top,0px)) 0 0 0;width:100%;height:calc(100% - 64px - env(safe-area-inset-top,0px))}
+.hn2 .L{font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;fill:var(--paper)}
+.hn2 .W{font-family:var(--f-body);font-weight:400;letter-spacing:.6em;fill:var(--paper)}
+.hn2 line{stroke:var(--champagne);stroke-width:1.2}
+.hn2.tall{display:none}
+@media (max-width:760px){.hn2.wide{display:none}.hn2.tall{display:block}.hn2-bg{opacity:.34}}
 @media (prefers-reduced-motion:no-preference){
-  .ht-mark{animation:fade 1.2s var(--ease) both}
-  .ht-word svg{animation:wordIn 1.6s .15s var(--ease) both}
-  .ht-hair{animation:hairIn 1.8s .5s var(--ease) both}
-  .ht-tag,.ht-foot{animation:fade 1.2s 1s var(--ease) both}
-  .ht-down::after{animation:drip 2.4s 2s ease-in-out infinite}
-  @keyframes wordIn{from{opacity:0;clip-path:inset(-20% 0 100% 0);transform:translateY(18px)}to{opacity:1;clip-path:inset(-20% 0 -20% 0);transform:none}}
-  @keyframes hairIn{from{opacity:0;letter-spacing:.3em}to{opacity:1;letter-spacing:1.1em}}
-  @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  .hn2-bg{animation:fadeBg 2s var(--ease) both}
+  .hn2 .lt{animation:fade 1.6s .2s var(--ease) both}
+  .hn2 .lt+.lt{animation-delay:.35s}
+  .hn2 .cap{animation:fade 1.2s 1s var(--ease) both}
+  @keyframes fadeBg{from{opacity:0;transform:scale(1.06)}to{opacity:.3;transform:none}}
 }
 
 /* ---------- manifesto ---------- */
@@ -351,20 +343,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <main id="top">
 <!-- ============ HERO ============ -->
-<section class="hero-type" aria-label="Nalouo Hair">
-  <div class="ht-center">
-    <svg class="ht-mark" viewBox="0 0 120 112" aria-hidden="true"><text x="6" y="74" font-size="92">N</text><text x="46" y="108" font-size="92">H</text></svg>
-    <h1 class="ht-word">
-      <svg viewBox="0 -14 1000 166" role="img" aria-label="Nalouo Hair"><text x="500" y="143" font-size="196" text-anchor="middle" textLength="996" lengthAdjust="spacing">NALOUO</text></svg>
-      <span class="ht-hair" aria-hidden="true">HAIR</span>
-    </h1>
-    <p class="ht-tag">Raw beauty, luxury extensions</p>
-  </div>
-  <div class="ht-foot">
-    <span>Showroom à Jette, Bruxelles</span>
-    <a href="#maison" class="ht-down">Découvrir</a>
-    <span>Depuis plus de 30 ans</span>
-  </div>
+<section class="hero-nh2" aria-label="Nalouo Hair">
+  <img class="hn2-bg" src="img/wavy-profile.webp" alt="" aria-hidden="true" fetchpriority="high">
+  <h1 class="sr">Nalouo Hair, raw beauty, luxury extensions</h1>
+  <svg class="hn2 wide" viewBox="0 0 1600 900" aria-hidden="true">
+    <text class="L lt" x="352" y="590" font-size="720">N</text><text class="L lt" x="665" y="856" font-size="720">H</text>
+    <g class="cap"><line x1="360" x2="470" y1="636" y2="636"/><text class="W" x="360" y="676" font-size="18">NALOUO HAIR</text></g>
+  </svg>
+  <svg class="hn2 tall" viewBox="0 0 800 1300" aria-hidden="true">
+    <text class="L lt" x="54" y="640" font-size="560">N</text><text class="L lt" x="298" y="847" font-size="560">H</text>
+    <g class="cap"><line x1="340" x2="460" y1="915" y2="915"/><text class="W" x="400" y="962" font-size="26" text-anchor="middle">NALOUO HAIR</text></g>
+  </svg>
 </section>
 
 <!-- ============ MANIFESTO ============ -->
