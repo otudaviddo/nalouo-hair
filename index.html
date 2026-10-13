@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
-/* Layout: Atelier-style hero (blurred panel halves the face, wordmark split) → stone body → espresso bands for textures & showroom */
+/* Layout: mist hero, giant NH monogram behind the duo → stone body → espresso bands for textures & showroom */
 :root{
   --mist:#D3D5CF;       /* brume — hero poster ground */
   --stone:#E6E4DE;      /* pierre — page ground */
@@ -46,7 +46,7 @@ p{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- header ---------- */
-.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--paper);transition:background .4s var(--ease),color .4s var(--ease)}
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--ink);transition:background .4s var(--ease),color .4s var(--ease)}
 .hdr.solid{background:rgba(230,228,222,.92);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -92,31 +92,29 @@ p{margin:0}
 }
 
 
-/* ---------- hero Atelier (visage coupé par un panneau flouté) ---------- */
-.hero-at{position:relative;height:100svh;min-height:600px;max-height:1080px;overflow:hidden;background:#131110;color:var(--paper);isolation:isolate}
-.ha-img{position:absolute;left:0;top:0;max-width:none;width:auto;height:auto;transform-origin:0 0;filter:brightness(.94);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
-.hero-at::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(14,12,11,.6),rgba(14,12,11,.25) 18%,rgba(14,12,11,0) 34%),linear-gradient(180deg,rgba(14,12,11,.55),rgba(14,12,11,0) 22%,rgba(14,12,11,0) 70%,rgba(14,12,11,.75))}
-.ha-panel{position:absolute;z-index:2;top:0;bottom:0;right:0;left:58%;-webkit-backdrop-filter:blur(38px) saturate(1.2);backdrop-filter:blur(38px) saturate(1.2);background:linear-gradient(90deg,rgba(150,104,62,.38) 0%,rgba(96,64,38,.5) 14%,rgba(26,20,16,.86) 46%,rgba(12,10,9,.96) 100%)}
-.ha-title{position:absolute;z-index:3;inset:0;margin:0;pointer-events:none;font-weight:400}
-.ha-big{position:absolute;left:58%;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--f-display);font-variation-settings:"opsz" 96;font-size:clamp(56px,7.4vw,138px);line-height:1;letter-spacing:.02em;text-transform:uppercase}
-.ha-small{position:absolute;left:9%;top:50%;transform:translateY(-50%);font-family:var(--f-body);font-size:clamp(14px,1.25vw,20px);letter-spacing:.42em;text-transform:uppercase}
-.ha-edge{position:absolute;z-index:3;top:50%;font-family:var(--f-body);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,238,231,.7);white-space:nowrap}
-.ha-l{left:calc(var(--gutter) * .5);transform:translate(-50%,-50%) rotate(-90deg) translateY(50%);transform-origin:center}
-.ha-r{right:calc(var(--gutter) * .5);transform:translate(50%,-50%) rotate(90deg) translateY(50%);transform-origin:center}
-.ha-foot{position:absolute;z-index:3;left:0;right:0;bottom:clamp(22px,4.5vh,44px);display:grid;gap:6px;justify-items:center;text-align:center;padding-inline:var(--gutter)}
-.ha-foot strong{font-family:var(--f-body);font-weight:500;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase}
-.ha-foot span{font-family:var(--f-display);font-size:13px;letter-spacing:.12em;color:rgba(242,238,231,.75)}
-@media (max-width:760px){
-  .ha-panel{left:60%}
-  .ha-big{left:0;right:0;top:auto;bottom:132px;transform:none;font-size:clamp(52px,16vw,84px)}
-  .ha-small{left:0;right:0;top:auto;bottom:102px;transform:none;text-align:center;padding-left:.42em}
-  .ha-edge{display:none}
+/* ---------- hero duo : monogramme NH derrière les mannequins ---------- */
+.hero-duo{position:relative;height:100svh;min-height:620px;max-height:1000px;overflow:hidden;background:#D3D5CF;isolation:isolate}
+.hd-mono{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:flex-end;padding-inline:clamp(8px,2vw,40px);pointer-events:none;font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;color:#F4F1EB;line-height:.74}
+.hd-mono span{font-size:min(118svh,46vw);transform:translateY(.05em)}
+.hd-img{position:absolute;bottom:0;left:50%;translate:-50% 0;height:calc(100% - 56px);width:auto;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.hd-copy{position:absolute;left:var(--gutter);bottom:clamp(36px,8vh,80px);max-width:min(300px,21vw);display:grid;gap:16px;justify-items:start;z-index:2}
+.hd-copy h1{font-family:var(--f-display);font-size:clamp(30px,2.7vw,44px);line-height:1.04;letter-spacing:-.02em}
+.hd-copy p{color:var(--ink-2);font-size:15px;line-height:1.55}
+.hd-copy .ctas{flex-direction:column;align-items:stretch;gap:10px}
+@media (max-width:1100px){.hd-img{translate:-38% 0}}
+@media (max-width:860px){
+  .hero-duo{height:auto;max-height:none;min-height:0;padding-top:calc(72px + env(safe-area-inset-top,0px))}
+  .hd-mono{inset:calc(84px + env(safe-area-inset-top,0px)) 0 auto 0;height:auto;align-items:flex-start;justify-content:center;gap:2vw;padding-inline:0}
+  .hd-mono span{font-size:min(58vw,380px);transform:none}
+  .hd-img{position:relative;display:block;left:auto;translate:none;margin:min(26vw,170px) auto 0;height:auto;width:min(100%,560px)}
+  .hd-copy{position:static;max-width:none;padding:28px var(--gutter) 44px;background:var(--stone)}
+  .hd-copy .ctas{flex-direction:row;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion:no-preference){
-  .ha-img{animation:fade 1.6s var(--ease) both}
-  .ha-panel{animation:panelIn 1.4s .2s var(--ease) both}
-  .ha-big,.ha-small,.ha-foot{animation:fade 1.2s .9s var(--ease) both}
-  @keyframes panelIn{from{transform:translateX(100%)}to{transform:none}}
+  .hd-mono span{animation:fade 1.4s var(--ease) both}
+  .hd-mono span+span{animation-delay:.15s}
+  .hd-img{animation:fade 1.2s .25s var(--ease) both}
+  .hd-copy{animation:fade 1s .7s var(--ease) both}
 }
 
 /* ---------- manifesto ---------- */
@@ -323,6 +321,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap hdr-in">
     <a class="brand" href="#top" aria-label="Nalouo Hair, accueil">
       <span class="mark" aria-hidden="true"><i>N</i><i>H</i></span>
+      <b>NALOUO HAIR</b>
     </a>
     <nav class="nav" aria-label="Navigation principale">
       <a href="#collection">Collection</a>
@@ -352,13 +351,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <main id="top">
 <!-- ============ HERO ============ -->
-<section class="hero-at" id="heroAt" aria-label="Nalouo Hair">
-  <img class="ha-img" id="haImg" src="img/studio.webp" alt="Longues ondulations brun chocolat aux reflets caramel, photo studio" width="2400" height="3000" fetchpriority="high">
-  <div class="ha-panel" id="haPanel" aria-hidden="true"></div>
-  <h1 class="ha-title"><span class="ha-big" id="haBig">Nalouo</span><span class="ha-small" id="haSmall">Hair</span></h1>
-  <span class="ha-edge ha-l">Luxury extensions</span>
-  <span class="ha-edge ha-r">Depuis 30 ans</span>
-  <p class="ha-foot"><strong>Raw beauty, luxury extensions.</strong><span>Avenue van Beesen 23 &nbsp;|&nbsp; 1090 Jette, Bruxelles</span></p>
+<section class="hero-duo" id="heroDuo" aria-label="Nalouo Hair">
+  <div class="hd-mono" aria-hidden="true"><span>N</span><span>H</span></div>
+  <img class="hd-img" src="img/duo-hd.webp" alt="Deux mannequins aux longues ondulations noires, photo studio" width="1800" height="2111" fetchpriority="high">
+  <div class="hd-copy">
+    <h1>Raw beauty,<br>luxury extensions</h1>
+    <p>Cheveux bruts et perruques sur mesure, choisis mèche par mèche depuis plus de trente ans. Showroom sur rendez-vous à Bruxelles.</p>
+    <div class="ctas"><a class="btn dark" href="#collection">Découvrir la collection</a><a class="btn line" href="#showroom">Prendre rendez-vous</a></div>
+  </div>
 </section>
 
 <!-- ============ MANIFESTO ============ -->
@@ -644,20 +644,6 @@ const hdr=$('#hdr');var onScroll;onScroll=()=>hdr.classList.toggle('solid',scrol
 const mnav=$('#mnav');function closeMenu(){mnav.hidden=true;$('#menuBtn').setAttribute('aria-expanded','false')}
 $('#menuBtn').onclick=()=>{mnav.hidden=false;$('#menuBtn').setAttribute('aria-expanded','true');$('#menuClose').focus()};
 $('#menuClose').onclick=closeMenu;mnav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
-
-/* hero Atelier : le bord du panneau coupe le visage au milieu, sous la plaque murale */
-const haImg=$('#haImg'),haBox=$('#heroAt'),haPanel=$('#haPanel');
-const CUT=.468,TOP=.1,BOT=.84,IW=2400,IH=3000; /* CUT : milieu du visage ; TOP : un peu d'air au-dessus des cheveux */
-function placeHA(){
-  const W=haBox.clientWidth,H=haBox.clientHeight,mob=W<=760,P=W*(mob?.6:.58);
-  /* on montre la photo de TOP à BOT en hauteur ; le bord du panneau passe au milieu du visage */
-  const k=H/(((mob?BOT:.74)-TOP)*IH);
-  const dw=IW*k,dh=IH*k;
-  const ox=P-CUT*dw, oy=-TOP*dh;
-  haImg.style.width=dw+'px';haImg.style.left=ox+'px';haImg.style.top=oy+'px';
-  haPanel.style.left=P+'px';
-}
-placeHA();addEventListener('resize',placeHA);
 
 /* hours: highlight today */
 const d=new Date().getDay();const row=document.querySelector(`#hours tr[data-d="${d}"]`);if(row)row.classList.add('today');
