@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
-/* Layout: mist hero, giant NH monogram behind the duo → stone body → espresso bands for textures & showroom */
+/* Layout: quiet studio portrait with the NH monogram on the model → stone body → espresso bands for textures & showroom */
 :root{
   --mist:#D3D5CF;       /* brume — hero poster ground */
   --stone:#E6E4DE;      /* pierre — page ground */
@@ -92,29 +92,19 @@ p{margin:0}
 }
 
 
-/* ---------- hero duo : monogramme NH derrière les mannequins ---------- */
-.hero-duo{position:relative;height:100svh;min-height:620px;max-height:1000px;overflow:hidden;background:#D3D5CF;isolation:isolate}
-.hd-mono{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:flex-end;padding-inline:0;margin-inline:-1.5vw;pointer-events:none;font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;color:#F4F1EB;line-height:.74}
-.hd-mono span{font-size:min(calc((min(100svh,1000px) - 64px) * 1.2),74vw);transform:translateY(.055em)}
-.hd-img{position:absolute;bottom:0;left:50%;translate:-50% 0;height:calc(100% - 56px);width:auto;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
-.hd-copy{position:absolute;left:var(--gutter);bottom:clamp(36px,8vh,80px);max-width:min(300px,21vw);display:grid;gap:16px;justify-items:start;z-index:2}
-.hd-copy h1{font-family:var(--f-display);font-size:clamp(30px,2.7vw,44px);line-height:1.04;letter-spacing:-.02em}
-.hd-copy p{color:var(--ink-2);font-size:15px;line-height:1.55}
-.hd-copy .ctas{flex-direction:column;align-items:stretch;gap:10px}
-@media (max-width:1100px){.hd-img{translate:-38% 0}}
-@media (max-width:860px){
-  .hero-duo{height:auto;max-height:none;min-height:0;padding-top:calc(72px + env(safe-area-inset-top,0px))}
-  .hd-mono{inset:calc(84px + env(safe-area-inset-top,0px)) 0 auto 0;height:auto;align-items:flex-start;justify-content:center;gap:2vw;padding-inline:0}
-  .hd-mono span{font-size:min(58vw,380px);transform:none}
-  .hd-img{position:relative;display:block;left:auto;translate:none;margin:min(26vw,170px) auto 0;height:auto;width:min(100%,560px)}
-  .hd-copy{position:static;max-width:none;padding:28px var(--gutter) 44px;background:var(--stone)}
-  .hd-copy .ctas{flex-direction:row;flex-wrap:wrap}
+/* ---------- hero solo : photo studio + monogramme NH, très épuré ---------- */
+.hero-solo{position:relative;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:#B9B9BC}
+.hs-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.hs-logo{position:absolute;left:0;top:0;height:auto;overflow:visible}
+.hs-logo .L{font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;fill:#FBFAF7}
+.hs-logo .W{font-family:var(--f-body);font-weight:400;letter-spacing:.5em;fill:#FBFAF7}
+@media (max-width:760px){
+  .hero-solo{height:auto;min-height:0;max-height:none;padding-top:calc(64px + env(safe-area-inset-top,0px));background:linear-gradient(90deg,#BBBAC2,#C7C7C9 50%,#BBBAC2)}
+  .hs-img{position:relative;inset:auto;height:auto;display:block}
 }
 @media (prefers-reduced-motion:no-preference){
-  .hd-mono span{animation:fade 1.4s var(--ease) both}
-  .hd-mono span+span{animation-delay:.15s}
-  .hd-img{animation:fade 1.2s .25s var(--ease) both}
-  .hd-copy{animation:fade 1s .7s var(--ease) both}
+  .hs-img{animation:fade 1.4s var(--ease) both}
+  .hs-logo{animation:fade 1.4s .6s var(--ease) both}
 }
 
 /* ---------- manifesto ---------- */
@@ -351,14 +341,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <main id="top">
 <!-- ============ HERO ============ -->
-<section class="hero-duo" id="heroDuo" aria-label="Nalouo Hair">
-  <div class="hd-mono" aria-hidden="true"><span>N</span><span>H</span></div>
-  <img class="hd-img" src="img/duo-hd.webp" alt="Deux mannequins aux longues ondulations noires, photo studio" width="1800" height="2111" fetchpriority="high">
-  <div class="hd-copy">
-    <h1>Raw beauty,<br>luxury extensions</h1>
-    <p>Cheveux bruts et perruques sur mesure, choisis mèche par mèche depuis plus de trente ans. Showroom sur rendez-vous à Bruxelles.</p>
-    <div class="ctas"><a class="btn dark" href="#collection">Découvrir la collection</a><a class="btn line" href="#showroom">Prendre rendez-vous</a></div>
-  </div>
+<section class="hero-solo" id="heroSolo" aria-label="Nalouo Hair">
+  <h1 class="sr">Nalouo Hair, raw beauty, luxury extensions</h1>
+  <picture>
+    <source media="(min-width: 761px)" srcset="img/solo-wide.webp" width="3000" height="1875">
+    <img class="hs-img" id="hsImg" src="img/solo.webp" alt="Mannequin aux longues ondulations noires et brillantes, col roulé noir, photo studio" width="2400" height="2992" fetchpriority="high">
+  </picture>
+  <svg class="hs-logo" id="hsLogo" viewBox="0 0 260 262" aria-hidden="true">
+    <text class="L" x="30" y="150" font-size="168">N</text>
+    <text class="L" x="108" y="214" font-size="168">H</text>
+    <text class="W" x="133" y="256" font-size="17" text-anchor="middle">NALOUO HAIR</text>
+  </svg>
 </section>
 
 <!-- ============ MANIFESTO ============ -->
@@ -644,6 +637,19 @@ const hdr=$('#hdr');var onScroll;onScroll=()=>hdr.classList.toggle('solid',scrol
 const mnav=$('#mnav');function closeMenu(){mnav.hidden=true;$('#menuBtn').setAttribute('aria-expanded','false')}
 $('#menuBtn').onclick=()=>{mnav.hidden=false;$('#menuBtn').setAttribute('aria-expanded','true');$('#menuClose').focus()};
 $('#menuClose').onclick=closeMenu;mnav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
+
+/* hero solo : place le monogramme sur la mannequin, quel que soit le recadrage */
+const hsImg=$('#hsImg'),hsLogo=$('#hsLogo');
+const HS={wide:{w:3000,h:1875,x:.556,y:.672,size:.165},tall:{w:2400,h:2992,x:.53,y:.585,size:.36}};
+function placeHS(){
+  const r=hsImg.getBoundingClientRect(),box=hsImg.parentElement.parentElement.getBoundingClientRect();
+  const c=HS[innerWidth>760?'wide':'tall'];
+  const k=Math.max(r.width/c.w,r.height/c.h),dw=c.w*k,dh=c.h*k;
+  const ox=(r.width-dw)/2+(r.left-box.left), oy=(r.height-dh)+(r.top-box.top); /* object-position 50% 100% */
+  const w=c.size*dw;
+  hsLogo.style.width=w+'px';hsLogo.style.left=(ox+c.x*dw-w/2)+'px';hsLogo.style.top=(oy+c.y*dh)+'px';
+}
+hsImg.complete?placeHS():hsImg.addEventListener('load',placeHS);addEventListener('resize',placeHS);placeHS();
 
 /* hours: highlight today */
 const d=new Date().getDay();const row=document.querySelector(`#hours tr[data-d="${d}"]`);if(row)row.classList.add('today');
