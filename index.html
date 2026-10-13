@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E6E4DE'/%3E%3Ctext x='8' y='40' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EN%3C/text%3E%3Ctext x='27' y='56' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EH%3C/text%3E%3C/svg%3E">
+<title>Nalouo Hair</title>
+<meta name="description" content="Nalouo Hair — Raw beauty, luxury extensions. Extensions en cheveux bruts, perruques sur mesure et showroom à Bruxelles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: quiet photo hero carrying only the NH monogram → stone body → espresso bands for textures & showroom */
+:root{
+  --mist:#D3D5CF;       /* brume — hero poster ground */
+  --stone:#E6E4DE;      /* pierre — page ground */
+  --paper:#F2EEE7;      /* ivoire — letterforms, cards */
+  --ink:#1C1915;        /* encre — text */
+  --ink-2:#4A443D;      /* secondary text */
+  --ink-3:#7A7268;      /* muted */
+  --espresso:#15110E;   /* dark bands */
+  --espresso-2:#231D18;
+  --champagne:#B49A6E;  /* single accent: blond 613 / satin */
+  --line:rgba(28,25,21,.14);
+  --line-d:rgba(242,238,231,.16);
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Jost","Futura","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --f-fashion:"Italiana","Didot","Bodoni 72",Georgia,serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gutter:clamp(16px,4vw,56px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--f-body);font-weight:400;font-size:17px;line-height:1.6;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.05;letter-spacing:-.02em}
+p{margin:0}
+:focus-visible{outline:2px solid var(--champagne);outline-offset:3px}
+.wrap{padding-inline:var(--gutter);max-width:1440px;margin-inline:auto}
+.mono{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;line-height:1.15;text-transform:uppercase}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- header ---------- */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--ink);background:var(--stone);transition:background .4s var(--ease),color .4s var(--ease)}
+.hdr.solid{background:rgba(230,228,222,.92);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark{font-family:var(--f-display);font-size:30px;line-height:1;letter-spacing:-.12em;position:relative;width:40px;text-align:center}
+.mark i{font-style:normal}
+.mark i+i{position:relative;left:-.02em;top:.18em}
+.brand b{font-family:var(--f-display);font-weight:400;font-size:15px;letter-spacing:.24em}
+.nav{display:flex;gap:30px}
+.nav a{text-decoration:none;font-size:14px;letter-spacing:.02em;position:relative;padding-block:6px}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after{transform:scaleX(1)}
+.hdr-act{display:flex;gap:6px;align-items:center}
+.icon-btn{background:none;border:0;min-width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:999px;font-size:14px}
+.icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.3}
+.hdr a.hdr-rdv{min-height:42px;padding:0 20px;font-size:14px;color:inherit}
+.hdr a.hdr-rdv:hover{background:rgba(127,120,110,.2);color:inherit}
+@media (max-width:520px){.hdr .hdr-rdv{display:none}}
+.count{font-family:var(--f-mono);font-size:11px;min-width:20px;height:20px;border-radius:99px;background:var(--champagne);color:var(--espresso);display:inline-flex;align-items:center;justify-content:center}
+.count[data-n="0"]{display:none}
+.menu-btn{display:none}
+@media (max-width:900px){.nav{display:none}.menu-btn{display:inline-flex}.brand b{display:none}}
+
+/* mobile menu */
+.mnav{position:fixed;inset:0;z-index:60;background:var(--espresso);color:var(--paper);padding:calc(env(safe-area-inset-top,0px) + 88px) var(--gutter) 40px;display:flex;flex-direction:column;gap:6px}
+.mnav a{font-family:var(--f-display);font-size:clamp(34px,9vw,48px);text-decoration:none;line-height:1.25}
+.mnav .close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:var(--gutter)}
+
+/* ---------- hero ---------- */
+.ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;border-radius:999px;font-size:14.5px;letter-spacing:.02em;text-decoration:none;border:1px solid currentColor;background:none;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.btn.fill{background:var(--paper);color:var(--espresso);border-color:var(--paper)}
+.btn.fill:hover{background:var(--champagne);border-color:var(--champagne)}
+.btn.ghost:hover{background:var(--paper);color:var(--espresso)}
+.btn.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.dark:hover{background:var(--espresso-2)}
+.btn.line{color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:var(--paper)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy{animation:fade 1.1s 1.4s var(--ease) both}
+  @keyframes drift{from{transform:scale(1.12)}to{transform:scale(1)}}
+  @keyframes fadeIn{from{opacity:0;filter:blur(6px)}to{opacity:1;filter:none}}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+}
+
+
+/* ---------- hero NH (épuré) ---------- */
+.hero-nh{position:relative;margin-top:calc(72px + env(safe-area-inset-top,0px));height:calc(100svh - 72px - env(safe-area-inset-top,0px));min-height:520px;max-height:1040px;overflow:hidden;background:#d9d2c8}
+.hn-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 62%}
+.hn-mark{position:absolute;left:38%;top:62%;width:clamp(84px,9vw,170px);height:auto;transform:translate(-50%,-50%);overflow:visible}
+.hn-mark text{font-family:var(--f-display);font-weight:400;font-variation-settings:"opsz" 96;fill:#F4F0E8}
+@media (prefers-reduced-motion:no-preference){
+  .hn-mark{animation:fade 1.6s .4s var(--ease) both}
+}
+
+/* ---------- manifesto ---------- */
+.manifesto{padding-block:clamp(80px,12vw,160px) clamp(64px,9vw,120px)}
+.manifesto-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(32px,6vw,96px);align-items:end}
+.manifesto h2{font-size:clamp(36px,5.2vw,76px);line-height:1.02}
+.manifesto h2 em{font-style:italic}
+.manifesto .body{display:grid;gap:18px;color:var(--ink-2);max-width:44ch}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(56px,8vw,104px);border-top:1px solid var(--line)}
+.fact{padding:22px 20px 0 0;display:grid;gap:4px}
+.fact+.fact{padding-left:20px;border-left:1px solid var(--line)}
+.fact strong{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,4vw,56px);line-height:1;font-variant-numeric:lining-nums}
+.fact span{color:var(--ink-3);font-size:14.5px}
+@media (max-width:820px){.manifesto-grid{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.fact+.fact{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:20px}}
+
+/* ---------- collection ---------- */
+.coll{padding-block:clamp(40px,6vw,80px) clamp(80px,10vw,140px)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.sec-head h2{font-size:clamp(40px,5.6vw,84px)}
+.sec-head p{color:var(--ink-2);max-width:40ch}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.chip{border:1px solid var(--line);background:none;border-radius:999px;min-height:42px;padding:0 18px;font-size:14px;color:var(--ink-2);transition:all .25s var(--ease)}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.8vw,28px) clamp(14px,1.8vw,24px)}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{background:none;border:0;padding:0;text-align:left;display:grid;gap:14px;align-content:start}
+.vis{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;border-radius:2px;background:var(--espresso)}
+.vis img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.card:hover .vis img{transform:scale(1.04)}
+.swatch{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-style:italic;font-size:clamp(90px,11vw,170px);color:rgba(242,238,231,.88);line-height:1}
+.vis .tag{position:absolute;left:12px;top:12px;color:var(--paper);background:rgba(21,17,14,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);padding:5px 9px;border-radius:2px}
+.meta{display:grid;gap:2px}
+.meta h3{font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.01em}
+.meta .sub{color:var(--ink-3);font-size:14px}
+.meta .price{font-size:15px;font-variant-numeric:tabular-nums;margin-top:4px}
+
+/* ---------- textures band (OSA tilted cards) ---------- */
+.band{background:var(--espresso);color:var(--paper);overflow:hidden;padding-block:clamp(80px,10vw,140px)}
+.band-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:clamp(48px,7vw,96px)}
+.band-head h2{font-size:clamp(40px,5.6vw,84px)}
+.band-head p{color:rgba(242,238,231,.72);max-width:46ch;justify-self:end}
+@media (max-width:820px){.band-head{grid-template-columns:1fr}.band-head p{justify-self:start}}
+.tilt{display:flex;gap:clamp(20px,3vw,44px);transform:rotate(-7deg);width:max-content;margin-left:-4vw;padding-block:40px}
+.tcard{width:clamp(220px,24vw,340px);flex:none;background:var(--espresso-2);box-shadow:0 30px 60px rgba(0,0,0,.45);position:relative}
+.tcard:nth-child(even){transform:translateY(48px)}
+.tcard img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.tcard .cap{position:absolute;inset:auto 14px 14px 14px;display:flex;justify-content:space-between;gap:10px;color:var(--paper);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.tcard .over{position:absolute;left:14px;top:14px;color:var(--paper);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.tcard .word{position:absolute;right:14px;top:38%;font-family:var(--f-display);font-style:italic;font-size:clamp(44px,5vw,72px);line-height:.9;color:var(--paper);text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.scroller{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-block:30px 70px}
+.scroller::-webkit-scrollbar{display:none}
+
+/* ---------- wigs ---------- */
+.wigs{padding-block:clamp(80px,10vw,150px)}
+.wigs-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,100px);align-items:center}
+.wigs-img{position:relative}
+.wigs-img img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%}
+.wigs-img .badge{position:absolute;right:-18px;bottom:28px;background:var(--paper);padding:16px 18px;display:grid;gap:2px;box-shadow:0 20px 40px rgba(28,25,21,.12)}
+.wigs-img .badge strong{font-family:var(--f-display);font-weight:400;font-size:30px;line-height:1}
+.wigs h2{font-size:clamp(40px,5vw,76px);margin-bottom:22px}
+.wigs .lead{color:var(--ink-2);max-width:48ch;margin-bottom:36px}
+.spec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+.spec div{padding:18px 18px 18px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.spec div:nth-child(odd){border-right:1px solid var(--line)}
+.spec div:nth-child(even){padding-left:18px}
+.spec dt{font-family:var(--f-display);font-size:22px;line-height:1.2}
+.spec dd{margin:0;color:var(--ink-3);font-size:14.5px}
+.wigs .note{margin-top:22px;color:var(--ink-3);font-size:14px;max-width:56ch}
+.wigs .ctas{justify-content:flex-start;margin-top:30px}
+@media (max-width:860px){.wigs-grid{grid-template-columns:1fr}.wigs-img .badge{right:12px}.spec{grid-template-columns:1fr}.spec div:nth-child(odd){border-right:0}.spec div:nth-child(even){padding-left:0}}
+
+/* ---------- services ---------- */
+.services{padding-block:clamp(40px,6vw,80px) clamp(80px,10vw,140px)}
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.svc article{padding:28px 28px 8px 0;display:grid;gap:12px;align-content:start}
+.svc article+article{padding-left:28px;border-left:1px solid var(--line)}
+.svc h3{font-size:clamp(26px,2.4vw,34px)}
+.svc p{color:var(--ink-2);font-size:16px}
+.svc .price{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:860px){.svc{grid-template-columns:1fr}.svc article+article{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* ---------- showroom ---------- */
+.room{background:var(--espresso);color:var(--paper)}
+.room-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:640px}
+.room-img{position:relative;min-height:420px}
+.room-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.room-copy{padding:clamp(48px,7vw,104px) var(--gutter);display:grid;gap:28px;align-content:center}
+.room h2{font-size:clamp(40px,5vw,76px)}
+.room .addr{font-family:var(--f-display);font-size:clamp(22px,2vw,28px);line-height:1.3}
+.hours{width:100%;max-width:420px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:10px 0;border-bottom:1px solid var(--line-d);font-size:15.5px}
+.hours td:last-child{text-align:right;color:rgba(242,238,231,.78)}
+.hours tr.today td{color:var(--champagne)}
+.wa{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.wa .num{font-family:var(--f-mono);font-size:15px;letter-spacing:.04em;user-select:all}
+.room .btn.ghost{color:var(--paper)}
+@media (max-width:860px){.room-grid{grid-template-columns:1fr}}
+
+/* ---------- loyalty ---------- */
+.loyal{padding-block:clamp(90px,11vw,160px)}
+.loyal-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:center}
+.loyal h2{font-size:clamp(40px,5vw,76px);margin-bottom:20px}
+.loyal p{color:var(--ink-2);max-width:42ch}
+.pcard{background:var(--ink);color:var(--paper);aspect-ratio:1.586;max-width:100%;border-radius:14px;padding:clamp(20px,3vw,34px);display:grid;grid-template-rows:auto 1fr auto;box-shadow:0 40px 80px rgba(28,25,21,.25);position:relative;overflow:hidden}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard .top b{font-family:var(--f-display);font-weight:400;letter-spacing:.24em;font-size:13px}
+.dots{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(6px,1.2vw,14px);align-self:center}
+.dot{aspect-ratio:1;border-radius:50%;border:1px solid rgba(242,238,231,.35);display:grid;place-items:center;font-family:var(--f-mono);font-size:clamp(9px,1vw,11px);color:rgba(242,238,231,.6)}
+.dot.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.dot.perk{border-color:var(--champagne);color:var(--champagne)}
+.pcard .foot{display:flex;justify-content:space-between;gap:12px;color:rgba(242,238,231,.7)}
+.perks{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+.perks div{display:grid}
+.perks strong{font-family:var(--f-display);font-weight:400;font-size:44px;line-height:1}
+.perks span{color:var(--ink-3);font-size:14px}
+@media (max-width:860px){.loyal-grid{grid-template-columns:1fr}}
+
+/* ---------- story ---------- */
+.story{padding-block:clamp(40px,6vw,80px) clamp(90px,11vw,160px)}
+.story-in{max-width:980px;margin-inline:auto;text-align:center;display:grid;gap:28px;justify-items:center}
+.story blockquote{margin:0;font-family:var(--f-display);font-size:clamp(28px,3.6vw,52px);line-height:1.18;letter-spacing:-.015em}
+.story .who{color:var(--ink-3);font-size:15px}
+.vals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:36px;text-align:left;width:100%}
+.vals div{border-top:1px solid var(--line);padding-top:16px;display:grid;gap:6px}
+.vals h3{font-size:22px}
+.vals p{color:var(--ink-2);font-size:15.5px}
+@media (max-width:760px){.vals{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.foot{background:var(--espresso);color:var(--paper);padding-block:clamp(64px,8vw,110px) 36px}
+.news{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;padding-bottom:64px;border-bottom:1px solid var(--line-d)}
+.news h2{font-size:clamp(34px,4vw,56px)}
+.news p{color:rgba(242,238,231,.7);margin-top:12px;max-width:44ch}
+.nform{display:grid;gap:8px}
+.nform label{font-size:14px;color:rgba(242,238,231,.7)}
+.nrow{display:flex;gap:10px;flex-wrap:wrap}
+.nrow input{flex:1 1 220px;min-width:0;min-height:52px;background:transparent;border:0;border-bottom:1px solid rgba(242,238,231,.4);color:var(--paper);font:inherit;padding:0 2px}
+.nrow input::placeholder{color:rgba(242,238,231,.4)}
+.nrow input:focus{outline:none;border-bottom-color:var(--champagne)}
+.nmsg{font-size:14px;color:var(--champagne);min-height:1.4em}
+@media (max-width:820px){.news{grid-template-columns:1fr}}
+.cols{display:grid;grid-template-columns:2fr repeat(3,minmax(0,1fr));gap:32px;padding-block:56px}
+.cols h4{margin:0 0 14px;font-weight:400;font-size:13px;color:rgba(242,238,231,.55)}
+.cols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.cols a{text-decoration:none;font-size:15px;color:rgba(242,238,231,.88)}
+.cols a:hover{color:var(--champagne)}
+.bigname{font-family:var(--f-display);font-size:clamp(56px,13vw,210px);line-height:.85;letter-spacing:-.04em;white-space:nowrap;overflow:hidden;color:rgba(242,238,231,.95)}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:rgba(242,238,231,.5);font-size:13px;padding-top:28px}
+@media (max-width:820px){.cols{grid-template-columns:1fr 1fr}}
+
+/* ---------- drawers ---------- */
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(21,17,14,.5);opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:80;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--paper);color:var(--ink);transform:translateX(100%);transition:transform .55s var(--ease);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line)}
+.db{flex:1;overflow-y:auto;padding:24px;display:grid;gap:24px;align-content:start}
+.df{padding:20px 24px;border-top:1px solid var(--line);display:grid;gap:12px}
+.pd-vis{aspect-ratio:16/10;max-width:100%;background:var(--espresso);position:relative;overflow:hidden}
+.pd-vis img{width:100%;height:100%;object-fit:cover}
+.pd h3{font-size:34px;line-height:1.05}
+.pd .desc{color:var(--ink-2);font-size:15.5px;margin-top:10px}
+.opt{display:grid;gap:10px}
+.opt legend,.opt .lab{font-size:14px;color:var(--ink-3);padding:0;display:flex;justify-content:space-between;width:100%}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{position:relative}
+.pill input{position:absolute;opacity:0;pointer-events:none}
+.pill span{display:inline-flex;align-items:center;justify-content:center;min-width:52px;min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-variant-numeric:tabular-nums;cursor:pointer;transition:all .2s var(--ease)}
+.pill input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pill input:focus-visible+span{outline:2px solid var(--champagne);outline-offset:2px}
+.pill input:disabled+span{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.ruler{position:relative;height:30px;margin-top:4px}
+.ruler i{position:absolute;bottom:0;width:1px;background:var(--ink-3)}
+.ruler b{position:absolute;bottom:0;height:3px;left:0;background:var(--champagne);transition:width .4s var(--ease)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px}
+.qty button{width:42px;height:42px;background:none;border:0;font-size:18px}
+.qty output{min-width:28px;text-align:center;font-variant-numeric:tabular-nums}
+.total{display:flex;justify-content:space-between;align-items:baseline;font-variant-numeric:tabular-nums}
+.total strong{font-family:var(--f-display);font-weight:400;font-size:32px}
+.fine{font-size:13px;color:var(--ink-3)}
+.line-item{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:14px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.line-item .th{width:72px;height:90px;background:var(--espresso);overflow:hidden;position:relative}
+.line-item .th img{width:100%;height:100%;object-fit:cover}
+.line-item .th .swatch{font-size:44px}
+.line-item h4{margin:0;font-family:var(--f-display);font-weight:400;font-size:19px;line-height:1.2}
+.line-item .o{color:var(--ink-3);font-size:13.5px}
+.line-item .r{display:grid;justify-items:end;gap:4px;font-variant-numeric:tabular-nums}
+.linkbtn{background:none;border:0;padding:4px 0;font-size:13px;color:var(--ink-3);text-decoration:underline}
+.empty{display:grid;gap:14px;justify-items:start;padding-block:24px}
+.empty p{color:var(--ink-2)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:90;background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:all .4s var(--ease)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+
+
+</head>
+<body>
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top" aria-label="Nalouo Hair, accueil">
+      <span class="mark" aria-hidden="true"><i>N</i><i>H</i></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#collection">Collection</a>
+      <a href="#perruques">Perruques</a>
+      <a href="#services">Services</a>
+      <a href="#showroom">Showroom</a>
+      <a href="#fidelite">Fidélité</a>
+    </nav>
+    <div class="hdr-act">
+      <a class="btn line hdr-rdv" href="#showroom"><span>Prendre rendez-vous</span></a>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" hidden>
+  <button class="icon-btn close" id="menuClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <a href="#collection">Collection</a>
+  <a href="#perruques">Perruques</a>
+  <a href="#services">Services</a>
+  <a href="#showroom">Showroom</a>
+  <a href="#fidelite">Fidélité</a>
+  <a href="#maison">La maison</a>
+</div>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero-nh" id="heroNH" aria-label="Nalouo Hair">
+  <img class="hn-img" id="hnImg" src="img/brown-wavy.webp" alt="Mannequin aux longues ondulations brun chocolat, t-shirt noir, assise dans un fauteuil" width="1400" height="1867" fetchpriority="high">
+  <h1 class="sr">Nalouo Hair, raw beauty, luxury extensions</h1>
+  <svg class="hn-mark" id="hnMark" viewBox="0 0 240 215" aria-hidden="true">
+    <text x="12" y="140" font-size="160">N</text>
+    <text x="92" y="204" font-size="160">H</text>
+  </svg>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto wrap" id="maison" aria-labelledby="mTitle">
+  <div class="manifesto-grid">
+    <h2 id="mTitle">Des cheveux bruts, choisis mèche par mèche depuis <em>plus de trente ans.</em></h2>
+    <div class="body">
+      <p>Chez Nalouo Hair, nos extensions en cheveux bruts incarnent le luxe et l'authenticité. Elles sont sélectionnées auprès de sources éthiques, dans le respect des communautés locales.</p>
+      <p>Non traitées, elles gardent leur couleur et leur texture naturelles : vous pouvez les coiffer, les boucler ou les colorer jusqu'au blond 613.</p>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="fact"><strong>30+ ans</strong><span>d'expertise capillaire, transmise de mère en fille</span></div>
+    <div class="fact"><strong>100 g</strong><span>par bundle, la juste quantité pour un rendu naturel</span></div>
+    <div class="fact"><strong>12″ – 34″</strong><span>de longueur, de l'épaule au bas du dos</span></div>
+  </div>
+</section>
+
+<!-- ============ COLLECTION ============ -->
+<section class="coll wrap" id="collection" aria-labelledby="cTitle">
+  <div class="sec-head">
+    <h2 id="cTitle">La collection</h2>
+    <p>Choisissez une texture et une longueur pour voir le prix indicatif. Tout se règle sur place, au showroom.</p>
+  </div>
+  <div class="chips" role="group" aria-label="Filtrer la collection" id="chips">
+    <button class="chip" aria-pressed="true" data-f="all">Tout</button>
+    <button class="chip" aria-pressed="false" data-f="bundles">Extensions raw hair</button>
+    <button class="chip" aria-pressed="false" data-f="lace">Closures & frontales</button>
+    <button class="chip" aria-pressed="false" data-f="clips">Clips & ponytails</button>
+    <button class="chip" aria-pressed="false" data-f="wigs">Perruques</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- ============ TEXTURES BAND ============ -->
+<section class="band" aria-labelledby="tTitle">
+  <div class="wrap band-head">
+    <h2 id="tTitle">Quatre textures, une seule exigence.</h2>
+    <p>Vietnamiennes lisses pour la fluidité, indiennes ondulées et bouclées pour le volume, burmese pour imiter la texture afro. Toutes restent douces, brillantes et sans nœuds.</p>
+  </div>
+  <div class="scroller" tabindex="0" aria-label="Textures, faites défiler horizontalement">
+    <div class="tilt">
+      <figure class="tcard" style="margin:0"><img src="img/bob-front.webp" alt="Carré lisse noir en cheveux vietnamiens" loading="lazy" style="object-position:50% 30%"><span class="over mono">Vietnam · lisse</span><span class="word">Lisse</span><figcaption class="cap mono"><span>Couleur naturelle</span><span>100 g</span></figcaption></figure>
+      <figure class="tcard" style="margin:0"><img src="img/wavy-front.webp" alt="Longues ondulations noires" loading="lazy" style="object-position:50% 35%"><span class="over mono">Inde · ondulée</span><span class="word">Ondulée</span><figcaption class="cap mono"><span>Temples indiens</span><span>100 g</span></figcaption></figure>
+      <figure class="tcard" style="margin:0"><img src="img/brown-wavy.webp" alt="Longues ondulations brun chocolat" loading="lazy" style="object-position:50% 35%"><span class="over mono">Couleurs</span><span class="word">Brun</span><figcaption class="cap mono"><span>Brun, auburn…</span><span>100 g</span></figcaption></figure>
+      <figure class="tcard" style="margin:0"><img src="img/hero-curly.webp" alt="Longues extensions indiennes bouclées" loading="lazy" style="object-position:52% 40%"><span class="over mono">Inde · bouclée</span><span class="word">Bouclée</span><figcaption class="cap mono"><span>Temples indiens</span><span>100 g</span></figcaption></figure>
+      <figure class="tcard" style="margin:0"><img src="img/tex-bundles.webp" alt="Bundles bouclés étiquetés au showroom" loading="lazy"><span class="over mono">Burmese · kinky</span><span class="word">Kinky</span><figcaption class="cap mono"><span>Texture afro</span><span>100 g</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WIGS ============ -->
+<section class="wigs wrap" id="perruques" aria-labelledby="wTitle">
+  <div class="wigs-grid">
+    <div class="wigs-img">
+      <img src="img/bob-selfie.webp" alt="Perruque carré lisse jet black, closure à raie centrale" loading="lazy">
+      <div class="badge"><strong>15–25</strong><span class="fine">jours ouvrés de confection</span></div>
+    </div>
+    <div>
+      <h2 id="wTitle">Perruques sur mesure</h2>
+      <p class="lead">Chaque perruque est montée avec 2 bundles (3 à partir de 18″) et une closure ou une frontale en HD film lace, qui se fond dans tous les tons de peau. Livrée dans sa couleur naturelle, ou en jet black sans supplément.</p>
+      <dl class="spec">
+        <div><dt>Closure 5×5 · 6×6 · 2×6</dt><dd>Couverture parfaite, raie naturelle</dd></div>
+        <div><dt>Frontale 13×4</dt><dd>D'une oreille à l'autre, pour tous les coiffages</dd></div>
+        <div><dt>Bonnet S · M · L</dt><dd>Un maintien confortable toute la journée</dd></div>
+        <div><dt>De 350 € à 840 €</dt><dd>Selon texture, lace et longueur</dd></div>
+      </dl>
+      <p class="note">Les perruques sont réalisées sur mesure : une erreur de taille de bonnet ne permet ni échange ni remboursement. En cas de doute, venez l'essayer au showroom.</p>
+      <div class="ctas"><button class="btn dark" data-open="wig-viet">Configurer ma perruque</button><a class="btn line" href="#showroom">Essayer au showroom</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services wrap" id="services" aria-labelledby="sTitle">
+  <div class="sec-head"><h2 id="sTitle">Nos services</h2><p>Nos expertes vous aident à choisir la texture adaptée à vos cheveux et vous expliquent comment entretenir vos mèches pour qu'elles durent.</p></div>
+  <div class="svc">
+    <article><span class="price">Offerte</span><h3>Consultation capillaire</h3><p>Un rendez-vous personnalisé pour trouver la texture, la longueur et le volume qui vous ressemblent.</p></article>
+    <article><span class="price">Sur rendez-vous</span><h3>Consultation mariée</h3><p>Un accompagnement dédié pour le jour J : longueur, volume et tenue, préparés bien à l'avance.</p></article>
+    <article><span class="price">Bruxelles · Jette</span><h3>Visite du showroom</h3><p>Touchez les mèches, comparez les textures et essayez les perruques avant de commander.</p></article>
+  </div>
+</section>
+
+<!-- ============ SHOWROOM ============ -->
+<section class="room" id="showroom" aria-labelledby="rTitle">
+  <div class="room-grid">
+    <div class="room-img"><img src="img/showroom.webp" alt="Le showroom Nalouo Hair à Jette : canapé, table basse avec bundles et miroir"></div>
+    <div class="room-copy">
+      <h2 id="rTitle">Le showroom</h2>
+      <p class="addr">Avenue van Beesen 23<br>1090 Jette, Bruxelles</p>
+      <table class="hours" aria-label="Horaires d'ouverture">
+        <tbody id="hours">
+          <tr data-d="1"><td>Lundi</td><td>09:30 – 17:30</td></tr>
+          <tr data-d="2"><td>Mardi</td><td>09:30 – 17:30</td></tr>
+          <tr data-d="3"><td>Mercredi</td><td>13:00 – 18:00</td></tr>
+          <tr data-d="4"><td>Jeudi</td><td>16:00 – 19:00</td></tr>
+          <tr data-d="5"><td>Vendredi</td><td>16:00 – 19:00</td></tr>
+        </tbody>
+      </table>
+      <div class="wa">
+        <span class="fine" style="color:rgba(242,238,231,.6)">WhatsApp</span>
+        <span class="num">+32 493 37 76 82</span>
+        <button class="linkbtn" style="color:rgba(242,238,231,.75)" id="copyWa">Copier</button>
+      </div>
+      <div class="ctas" style="justify-content:flex-start">
+        <a class="btn fill" href="https://wa.me/32493377682?text=Bonjour%20Nalouo%20Hair%2C%20je%20souhaite%20prendre%20rendez-vous%20au%20showroom." target="_blank" rel="noopener">Réserver sur WhatsApp</a>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Avenue+van+Beesen+23+1090+Jette" target="_blank" rel="noopener">Itinéraire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOYALTY ============ -->
+<section class="loyal wrap" id="fidelite" aria-labelledby="lTitle">
+  <div class="loyal-grid">
+    <div>
+      <h2 id="lTitle">La carte de fidélité</h2>
+      <p>Chaque achat est tamponné sur votre carte. Au quatrième, vous économisez 15 %. Dès le huitième, jusqu'à 25 %.</p>
+      <div class="perks"><div><strong>−15 %</strong><span>sur votre 4e achat</span></div><div><strong>−25 %</strong><span>dès votre 8e achat</span></div></div>
+    </div>
+    <div class="pcard" aria-label="Exemple de carte de fidélité avec trois achats tamponnés">
+      <div class="top"><b>NALOUO HAIR</b><span class="mono" style="color:var(--champagne)">Loyalty card</span></div>
+      <div class="dots">
+        <span class="dot on">1</span><span class="dot on">2</span><span class="dot on">3</span><span class="dot perk">15%</span>
+        <span class="dot">5</span><span class="dot">6</span><span class="dot">7</span><span class="dot perk">25%</span>
+      </div>
+      <div class="foot"><span class="mono">Raw beauty</span><span class="mono">Luxury extensions</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story wrap" aria-labelledby="stTitle">
+  <div class="story-in">
+    <h2 id="stTitle" class="sr">Notre histoire</h2>
+    <blockquote>« Les cheveux sont bien plus qu'un accessoire : ils sont une expression de confiance et de style. »</blockquote>
+    <p class="who">Nalouo Hair, fondée par un duo mère-fille</p>
+    <div class="vals">
+      <div><h3>Approvisionnement éthique</h3><p>Nos cheveux indiens viennent directement des temples, en collaboration avec les communautés locales.</p></div>
+      <div><h3>Contrôle qualité</h3><p>Chaque mèche est vérifiée à la main pour rester douce, brillante et sans nœuds.</p></div>
+      <div><h3>Sacs en satin</h3><p>Vos extensions voyagent dans un sac en satin réutilisable, à garder pour les ranger.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="news">
+      <div><h2>Venez toucher la différence.</h2><p>Les mèches se choisissent en main. Prenez rendez-vous au showroom de Jette, le règlement se fait sur place.</p></div>
+      <div class="ctas" style="justify-content:flex-start"><a class="btn fill" href="https://wa.me/32493377682?text=Bonjour%20Nalouo%20Hair%2C%20je%20souhaite%20prendre%20rendez-vous%20au%20showroom." target="_blank" rel="noopener">Réserver sur WhatsApp</a><a class="btn ghost" style="color:var(--paper)" href="https://www.instagram.com/nalouo.hair/" target="_blank" rel="noopener">Voir Instagram</a></div>
+    </div>
+    <div class="cols">
+      <div><h4>Nalouo Hair</h4><p style="color:rgba(242,238,231,.7);max-width:34ch;font-size:15px">Extensions en cheveux bruts et perruques sur mesure. Showroom sur rendez-vous à Jette, Bruxelles.</p></div>
+      <div><h4>Boutique</h4><ul><li><a href="#collection">Extensions raw hair</a></li><li><a href="#collection">Closures & frontales</a></li><li><a href="#collection">Clips & ponytails</a></li><li><a href="#perruques">Perruques</a></li></ul></div>
+      <div><h4>Showroom</h4><ul><li><a href="#showroom">Horaires</a></li><li><a href="https://www.google.com/maps/search/?api=1&query=Avenue+van+Beesen+23+1090+Jette" target="_blank" rel="noopener">Itinéraire</a></li><li><a href="#services">Consultations</a></li><li><a href="#fidelite">Carte de fidélité</a></li></ul></div>
+      <div><h4>Suivez-nous</h4><ul><li><a href="https://www.instagram.com/nalouo.hair/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@nalouo.hair" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://wa.me/32493377682" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+    </div>
+    <div class="bigname" aria-hidden="true">Nalouo Hair</div>
+    <div class="legal"><span>© 2026 Nalouo Hair. Tous droits réservés.</span><span>Avenue van Beesen 23, 1090 Jette</span></div>
+  </div>
+</footer>
+
+<!-- ============ DRAWERS ============ -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="pdrawer" aria-label="Détail du produit" aria-hidden="true">
+  <div class="dh"><span class="mono" id="pdCat"></span><button class="icon-btn" data-close aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="db pd" id="pdBody"></div>
+  <div class="df" id="pdFoot"></div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+const L12=[12,14,16,18,20,22,24,26,28,30,32,34], L12_28=[12,14,16,18,20,22,24,26,28], L18=[18,20,22,24,26,28];
+const tbl=(lens,prices)=>Object.fromEntries(lens.map((l,i)=>[l,prices[i]]));
+const clipStyles={"Lisse":tbl(L18,[155,165,175,185,190,200]),"Ondulée":tbl(L18,[165,175,185,195,205,215]),"Bouclée":tbl(L18,[175,185,195,205,215,225]),"Kinky":tbl(L18,[180,190,200,210,220,230])};
+const P=[
+ {id:"viet-lisse",cat:"bundles",catL:"Extensions raw hair",name:"Vietnamiennes lisses",sub:"Couleur naturelle · 100 g",img:"img/bob-front.webp",pos:"50% 30%",
+  desc:"Mèches vietnamiennes brutes, non traitées. Elles se coiffent, se bouclent et se colorent jusqu'au blond 613 sans perdre leur qualité.",
+  prices:{_:tbl(L12,[105,110,120,130,140,150,160,165,175,195,205,215])}},
+ {id:"ind-ondulee",cat:"bundles",catL:"Extensions raw hair",name:"Indiennes ondulées",sub:"Temples indiens · 100 g",img:"img/wavy-profile.webp",pos:"50% 30%",
+  desc:"Sélectionnées directement dans les temples indiens, naturellement épaisses et pleines. Colorables jusqu'au blond 613.",
+  prices:{_:tbl(L12,[115,120,125,135,145,155,165,175,185,250,210,215])}},
+ {id:"ind-bouclee",cat:"bundles",catL:"Extensions raw hair",name:"Indiennes bouclées",sub:"Temples indiens · 100 g",img:"img/tex-curly.webp",
+  desc:"Boucles brutes, épaisses et pleines, qui restent douces et sans nœuds. Pour un volume luxueux et durable.",
+  prices:{_:tbl(L12,[125,130,135,145,155,165,175,185,195,215,220,225])}},
+ {id:"burmese",cat:"bundles",catL:"Extensions raw hair",name:"Burmese bouclées",sub:"Kinky curly · 100 g",img:"img/tex-bundles.webp",
+  desc:"Imitent parfaitement la texture afro pour un rendu naturel et authentique. Se coiffent, se bouclent ou se colorent simplement.",
+  prices:{_:tbl(L12,[125,130,135,145,155,165,175,185,195,215,220,225])}},
+ {id:"kinky-lisse",cat:"bundles",catL:"Extensions raw hair",name:"Kinky lisses",sub:"Texture afro lissée · 100 g",glyph:"K",tone:"#2b1d14",
+  desc:"Imitent parfaitement la texture afro lissée. Chaque bundle contient 100 g, pour un look volumineux et réaliste.",
+  prices:{_:tbl(L12,[null,null,140,150,160,170,180,190,200,220,225,230])}},
+ {id:"viet-blond",cat:"bundles",catL:"Extensions raw hair",name:"Vietnamiennes blondes",sub:"Lisses · blond · 100 g",img:"img/blonde.webp",pos:"38% 30%",
+  desc:"Traitées pour préserver leur texture lisse et soyeuse, avec une brillance et une fluidité remarquables.",
+  prices:{_:tbl(L12,[155,160,170,180,190,200,210,215,225,245,255,265])}},
+ {id:"viet-jet",cat:"bundles",catL:"Extensions raw hair",name:"Vietnamiennes jet black",sub:"Lisses · noir intense · 100 g",img:"img/bob-kiss.webp",pos:"50% 30%",
+  desc:"Un noir profond et brillant, sur une base vietnamienne robuste qui dure, même après plusieurs poses.",
+  prices:{_:tbl(L12,[130,135,145,155,165,175,185,190,200,220,230,240])}},
+ {id:"viet-couleurs",cat:"bundles",catL:"Extensions raw hair",name:"Vietnamiennes, autres couleurs",sub:"Brun, auburn… · 100 g",img:"img/brown-wavy.webp",pos:"50% 30%",
+  desc:"Nos lisses vietnamiennes dans une gamme de couleurs de base : brun, auburn et d'autres teintes riches.",
+  prices:{_:tbl(L12,[140,145,155,165,175,185,195,200,210,230,240,250])}},
+ {id:"lace",cat:"lace",catL:"Closures & frontales",name:"Closures & frontales HD",sub:"HD film lace",glyph:"L",tone:"#3a2a22",optLabel:"Format",
+  desc:"Dentelle HD ultra-fine et respirante, invisible sur tous les tons de peau, pour une ligne de cheveux impeccable.",
+  prices:{"Closure 5×5":tbl(L12_28,[115,120,130,140,150,160,170,185,195]),"Closure 2×6":tbl(L12_28,[105,110,120,130,135,140,145,150,155]),"Closure 6×6":tbl(L12_28,[125,130,140,150,160,170,695,190,200]),"Frontale 13×4":tbl(L12_28,[140,150,160,170,180,190,200,210,220])}},
+ {id:"clips",cat:"clips",catL:"Clips & tape-ins",name:"Extensions à clips",sub:"100 g · 7 bandes invisibles",img:"img/blonde.webp",pos:"60% 60%",optLabel:"Texture",
+  desc:"Clips invisibles en cheveux bruts, légers sur la tête. Pour plus de volume, nous conseillons 200 g (14 bandes).",
+  prices:clipStyles},
+ {id:"ponytail",cat:"clips",catL:"Ponytails",name:"Ponytails",sub:"Cheveux naturels · 100 g",img:"img/duo.webp",pos:"78% 35%",optLabel:"Texture",
+  desc:"Une queue de cheval de luxe en cheveux naturels, 100 g, qui se fond avec vos cheveux.",
+  prices:clipStyles},
+ {id:"wig-viet",cat:"wigs",catL:"Perruques",name:"Perruque vietnamienne lisse",sub:"Sur mesure · 15–25 jours",img:"img/bob-selfie.webp",pos:"50% 30%",range:[350,780],quote:true,
+  desc:"Montée avec 2 bundles (3 dès 18″) et une closure ou une frontale. Couleur naturelle, ou jet black sans supplément."},
+ {id:"wig-ondulee",cat:"wigs",catL:"Perruques",name:"Perruque indienne ondulée",sub:"Sur mesure · 15–25 jours",img:"img/wavy-front.webp",pos:"50% 30%",range:[370,810],quote:true,
+  desc:"Montée avec 2 bundles (3 dès 18″) et une closure ou une frontale. Couleur naturelle, ou jet black sans supplément."},
+ {id:"wig-bouclee",cat:"wigs",catL:"Perruques",name:"Perruque indienne bouclée",sub:"Sur mesure · 15–25 jours",img:"img/hero-curly.webp",pos:"52% 30%",range:[390,840],quote:true,
+  desc:"Montée avec 2 bundles (3 dès 18″) et une closure ou une frontale. Couleur naturelle, ou jet black sans supplément."}
+];
+const byId=Object.fromEntries(P.map(p=>[p.id,p]));
+const eur=n=>new Intl.NumberFormat('fr-BE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const minPrice=p=>p.range?p.range[0]:Math.min(...Object.values(p.prices).flatMap(t=>Object.values(t)).filter(Boolean));
+const visual=(p,cls='')=>p.img?`<img src="${p.img}" alt="" loading="lazy" style="object-position:${p.pos||'50% 50%'}">`:`<div class="swatch ${cls}" style="background:radial-gradient(120% 90% at 30% 20%,${p.tone}cc,#100c0a)">${p.glyph}</div>`;
+const $=s=>document.querySelector(s);
+
+/* grid */
+const grid=$('#grid');
+function render(f){
+  grid.innerHTML=P.filter(p=>f==='all'||p.cat===f).map(p=>`
+   <button class="card" data-open="${p.id}" aria-label="${p.name}, à partir de ${eur(minPrice(p))}">
+     <div class="vis">${visual(p)}<span class="tag mono">${p.catL}</span></div>
+     <div class="meta"><h3>${p.name}</h3><span class="sub">${p.sub}</span><span class="price">${p.range?`${eur(p.range[0])} – ${eur(p.range[1])}`:`À partir de ${eur(minPrice(p))}`}</span></div>
+   </button>`).join('');
+}
+render('all');
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render(b.dataset.f)});
+
+/* drawers */
+const scrim=$('#scrim');let openD=null,lastFocus=null;
+function openDrawer(d){lastFocus=document.activeElement;if(openD&&openD!==d)openD.classList.remove('on');openD=d;d.classList.add('on');d.setAttribute('aria-hidden','false');scrim.classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>d.querySelector('[data-close]').focus(),50)}
+function closeDrawer(){if(!openD)return;openD.classList.remove('on');openD.setAttribute('aria-hidden','true');openD=null;scrim.classList.remove('on');document.body.style.overflow='';lastFocus&&lastFocus.focus&&lastFocus.focus()}
+scrim.onclick=closeDrawer;document.querySelectorAll('[data-close]').forEach(b=>b.onclick=closeDrawer);
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeDrawer();closeMenu()}});
+
+/* product configurator */
+let cur=null;
+document.addEventListener('click',e=>{const t=e.target.closest('[data-open]');if(t){cur={p:byId[t.dataset.open],opt:null,len:null,cap:'M',lace:'Frontale 13×4',qty:1};openProduct()}});
+function openProduct(){
+  const p=cur.p;$('#pdCat').textContent=p.catL;
+  let html=`<div class="pd-vis">${visual(p)}</div><div><h3>${p.name}</h3><p class="desc">${p.desc}</p></div>`;
+  if(p.quote){
+    const laces=['Closure 5×5','Closure 6×6','Closure 2×6','Frontale 13×4'];
+    html+=fs('Lace','lace',laces,cur.lace)+fs('Longueur','len',L12_28.map(l=>l+'″'),cur.len||'22″')+fs('Taille de bonnet','cap',['S','M','L'],cur.cap);
+    cur.len=cur.len||'22″';
+  }else{
+    const opts=Object.keys(p.prices);
+    if(opts[0]!=='_'){cur.opt=cur.opt||opts[0];html+=fs(p.optLabel,'opt',opts,cur.opt)}else cur.opt='_';
+    const t=p.prices[cur.opt];const lens=Object.keys(t).map(Number);
+    if(!cur.len||!t[cur.len])cur.len=lens.find(l=>t[l])||lens[0];
+    html+=`<fieldset class="opt"><legend class="lab"><span>Longueur</span><span id="lenOut">${cur.len}″ · ${Math.round(cur.len*2.54)} cm</span></legend><div class="pills">${lens.map(l=>`<label class="pill"><input type="radio" name="len" value="${l}" ${l==cur.len?'checked':''} ${t[l]?'':'disabled'}><span>${l}″</span></label>`).join('')}</div>
+      <div class="ruler" aria-hidden="true"><b style="width:${(lens.indexOf(cur.len)+1)/lens.length*100}%"></b>${lens.map((l,i)=>`<i style="left:${(i+1)/lens.length*100}%;height:${8+i*1.6}px"></i>`).join('')}</div></fieldset>`;
+  }
+  $('#pdBody').innerHTML=html;
+  $('#pdBody').onchange=e=>{const n=e.target.name,v=e.target.value;if(n==='len')cur.len=p.quote?v:Number(v);else cur[n]=v;const y=$('#pdBody').scrollTop;openProduct();$('#pdBody').scrollTop=y};
+  foot();if(!$('#pdrawer').classList.contains('on'))openDrawer($('#pdrawer'));
+}
+function fs(label,name,vals,sel){return `<fieldset class="opt"><legend class="lab"><span>${label}</span></legend><div class="pills">${vals.map(v=>`<label class="pill"><input type="radio" name="${name}" value="${v}" ${v==sel?'checked':''}><span>${v}</span></label>`).join('')}</div></fieldset>`}
+function foot(){
+  const p=cur.p;
+  if(p.quote){
+    const msg=`Bonjour Nalouo Hair, je souhaite un devis pour une ${p.name.toLowerCase()} : ${cur.lace}, ${cur.len}, bonnet ${cur.cap}.`;
+    $('#pdFoot').innerHTML=`<div class="total"><span class="fine">Prix selon configuration</span><strong>${eur(p.range[0])} – ${eur(p.range[1])}</strong></div><a class="btn dark" href="https://wa.me/32493377682?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Demander mon devis sur WhatsApp</a><p class="fine">Confection en 15 à 25 jours ouvrés. Acompte et règlement au showroom.</p>`;
+    return;
+  }
+  const price=p.prices[cur.opt][cur.len];
+  const msg=`Bonjour Nalouo Hair, avez-vous en stock : ${p.name}${cur.opt!=='_'?' ('+cur.opt+')':''}, ${cur.len}" ? Je souhaiterais passer au showroom.`;
+  $('#pdFoot').innerHTML=`<div class="total"><span class="fine">Prix indicatif par ${p.cat==='bundles'?'bundle de 100 g':'pièce'}</span><strong>${eur(price)}</strong></div><a class="btn dark" href="https://wa.me/32493377682?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Demander la disponibilité</a><p class="fine">${p.cat==='bundles'?'Pour une pose complète, comptez en général 3 bundles. ':''}Règlement sur place, au showroom.</p>`;
+}
+
+/* header + menu */
+const hdr=$('#hdr');var onScroll;onScroll=()=>hdr.classList.toggle('solid',scrollY>innerHeight*.6);addEventListener('scroll',onScroll,{passive:true});onScroll();
+const mnav=$('#mnav');function closeMenu(){mnav.hidden=true;$('#menuBtn').setAttribute('aria-expanded','false')}
+$('#menuBtn').onclick=()=>{mnav.hidden=false;$('#menuBtn').setAttribute('aria-expanded','true');$('#menuClose').focus()};
+$('#menuClose').onclick=closeMenu;mnav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
+
+/* hero NH : cadre la photo pour que le monogramme tombe sur le t-shirt */
+const hnImg=$('#hnImg'),hnMark=$('#hnMark'),hnBox=$('#heroNH');
+const SPOT={x:.345,y:.63},MARK_W=.105; /* zone noire du t-shirt, en fraction de l'image */
+function placeNH(){
+  const W=hnBox.clientWidth,H=hnBox.clientHeight,w=1400,h=1867;
+  const k=Math.max(W/w,H/h),dw=w*k,dh=h*k;
+  const wantX=W*.5, wantY=H*(W>H?.66:.6);
+  const ox=Math.min(0,Math.max(W-dw,wantX-SPOT.x*dw));
+  const oy=Math.min(0,Math.max(H-dh,wantY-SPOT.y*dh));
+  hnImg.style.objectPosition=ox+'px '+oy+'px';
+  hnMark.style.left=(SPOT.x*dw+ox)+'px';hnMark.style.top=(SPOT.y*dh+oy)+'px';
+  hnMark.style.width=Math.max(72,Math.min(190,MARK_W*dw))+'px';
+}
+placeNH();addEventListener('resize',placeNH);
+
+/* hours: highlight today */
+const d=new Date().getDay();const row=document.querySelector(`#hours tr[data-d="${d}"]`);if(row)row.classList.add('today');
+
+/* copy whatsapp */
+$('#copyWa').onclick=async e=>{try{await navigator.clipboard.writeText('+32493377682');toast('Numéro copié')}catch(err){const r=document.createRange();r.selectNodeContents(document.querySelector('.wa .num'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Numéro sélectionné')}};
+
+/* toast */
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)}
+})();
+</script>
+
+</body>
+</html>
