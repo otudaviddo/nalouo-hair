@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
-/* Layout: quiet photo hero carrying only the NH monogram → stone body → espresso bands for textures & showroom */
+/* Layout: Atelier-style hero (blurred panel halves the face, wordmark split) → stone body → espresso bands for textures & showroom */
 :root{
   --mist:#D3D5CF;       /* brume — hero poster ground */
   --stone:#E6E4DE;      /* pierre — page ground */
@@ -46,7 +46,7 @@ p{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- header ---------- */
-.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--ink);background:var(--stone);transition:background .4s var(--ease),color .4s var(--ease)}
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--paper);transition:background .4s var(--ease),color .4s var(--ease)}
 .hdr.solid{background:rgba(230,228,222,.92);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -92,13 +92,31 @@ p{margin:0}
 }
 
 
-/* ---------- hero NH (épuré) ---------- */
-.hero-nh{position:relative;margin-top:calc(72px + env(safe-area-inset-top,0px));height:calc(100svh - 72px - env(safe-area-inset-top,0px));min-height:520px;max-height:1040px;overflow:hidden;background:#d9d2c8}
-.hn-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 62%}
-.hn-mark{position:absolute;left:38%;top:62%;width:clamp(84px,9vw,170px);height:auto;transform:translate(-50%,-50%);overflow:visible}
-.hn-mark text{font-family:var(--f-display);font-weight:400;font-variation-settings:"opsz" 96;fill:#F4F0E8}
+/* ---------- hero Atelier (visage coupé par un panneau flouté) ---------- */
+.hero-at{position:relative;height:100svh;min-height:600px;max-height:1080px;overflow:hidden;background:#0e0c0b;color:var(--paper);isolation:isolate}
+.ha-img{position:absolute;left:0;top:0;max-width:none;width:auto;height:auto;transform-origin:0 0;filter:brightness(.82) contrast(1.06) saturate(.9)}
+.hero-at::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(14,12,11,.82),rgba(14,12,11,.45) 18%,rgba(14,12,11,0) 34%),linear-gradient(180deg,rgba(14,12,11,.55),rgba(14,12,11,0) 22%,rgba(14,12,11,0) 70%,rgba(14,12,11,.75))}
+.ha-panel{position:absolute;z-index:2;top:0;bottom:0;right:0;left:58%;-webkit-backdrop-filter:blur(38px) saturate(1.2);backdrop-filter:blur(38px) saturate(1.2);background:linear-gradient(90deg,rgba(150,104,62,.38) 0%,rgba(96,64,38,.5) 14%,rgba(26,20,16,.86) 46%,rgba(12,10,9,.96) 100%)}
+.ha-title{position:absolute;z-index:3;inset:0;margin:0;pointer-events:none;font-weight:400}
+.ha-big{position:absolute;left:58%;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--f-display);font-variation-settings:"opsz" 96;font-size:clamp(56px,7.4vw,138px);line-height:1;letter-spacing:.02em;text-transform:uppercase}
+.ha-small{position:absolute;left:9%;top:50%;transform:translateY(-50%);font-family:var(--f-body);font-size:clamp(14px,1.25vw,20px);letter-spacing:.42em;text-transform:uppercase}
+.ha-edge{position:absolute;z-index:3;top:50%;font-family:var(--f-body);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,238,231,.7);white-space:nowrap}
+.ha-l{left:calc(var(--gutter) * .5);transform:translate(-50%,-50%) rotate(-90deg) translateY(50%);transform-origin:center}
+.ha-r{right:calc(var(--gutter) * .5);transform:translate(50%,-50%) rotate(90deg) translateY(50%);transform-origin:center}
+.ha-foot{position:absolute;z-index:3;left:0;right:0;bottom:clamp(22px,4.5vh,44px);display:grid;gap:6px;justify-items:center;text-align:center;padding-inline:var(--gutter)}
+.ha-foot strong{font-family:var(--f-body);font-weight:500;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase}
+.ha-foot span{font-family:var(--f-display);font-size:13px;letter-spacing:.12em;color:rgba(242,238,231,.75)}
+@media (max-width:760px){
+  .ha-panel{left:60%}
+  .ha-big{left:0;right:0;top:auto;bottom:132px;transform:none;font-size:clamp(52px,16vw,84px)}
+  .ha-small{left:0;right:0;top:auto;bottom:102px;transform:none;text-align:center;padding-left:.42em}
+  .ha-edge{display:none}
+}
 @media (prefers-reduced-motion:no-preference){
-  .hn-mark{animation:fade 1.6s .4s var(--ease) both}
+  .ha-img{animation:fade 1.6s var(--ease) both}
+  .ha-panel{animation:panelIn 1.4s .2s var(--ease) both}
+  .ha-big,.ha-small,.ha-foot{animation:fade 1.2s .9s var(--ease) both}
+  @keyframes panelIn{from{transform:translateX(100%)}to{transform:none}}
 }
 
 /* ---------- manifesto ---------- */
@@ -334,13 +352,13 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <main id="top">
 <!-- ============ HERO ============ -->
-<section class="hero-nh" id="heroNH" aria-label="Nalouo Hair">
-  <img class="hn-img" id="hnImg" src="img/brown-wavy.webp" alt="Mannequin aux longues ondulations brun chocolat, t-shirt noir, assise dans un fauteuil" width="1400" height="1867" fetchpriority="high">
-  <h1 class="sr">Nalouo Hair, raw beauty, luxury extensions</h1>
-  <svg class="hn-mark" id="hnMark" viewBox="0 0 240 215" aria-hidden="true">
-    <text x="12" y="140" font-size="160">N</text>
-    <text x="92" y="204" font-size="160">H</text>
-  </svg>
+<section class="hero-at" id="heroAt" aria-label="Nalouo Hair">
+  <img class="ha-img" id="haImg" src="img/half.webp" alt="Longues ondulations noires et brillantes, mèche sur le côté" width="1440" height="1795" fetchpriority="high">
+  <div class="ha-panel" id="haPanel" aria-hidden="true"></div>
+  <h1 class="ha-title"><span class="ha-big" id="haBig">Nalouo</span><span class="ha-small" id="haSmall">Hair</span></h1>
+  <span class="ha-edge ha-l">Luxury extensions</span>
+  <span class="ha-edge ha-r">Depuis 30 ans</span>
+  <p class="ha-foot"><strong>Raw beauty, luxury extensions.</strong><span>Avenue van Beesen 23 &nbsp;|&nbsp; 1090 Jette, Bruxelles</span></p>
 </section>
 
 <!-- ============ MANIFESTO ============ -->
@@ -627,20 +645,19 @@ const mnav=$('#mnav');function closeMenu(){mnav.hidden=true;$('#menuBtn').setAtt
 $('#menuBtn').onclick=()=>{mnav.hidden=false;$('#menuBtn').setAttribute('aria-expanded','true');$('#menuClose').focus()};
 $('#menuClose').onclick=closeMenu;mnav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
 
-/* hero NH : cadre la photo pour que le monogramme tombe sur le t-shirt */
-const hnImg=$('#hnImg'),hnMark=$('#hnMark'),hnBox=$('#heroNH');
-const SPOT={x:.345,y:.63},MARK_W=.105; /* zone noire du t-shirt, en fraction de l'image */
-function placeNH(){
-  const W=hnBox.clientWidth,H=hnBox.clientHeight,w=1400,h=1867;
-  const k=Math.max(W/w,H/h),dw=w*k,dh=h*k;
-  const wantX=W*.5, wantY=H*(W>H?.66:.6);
-  const ox=Math.min(0,Math.max(W-dw,wantX-SPOT.x*dw));
-  const oy=Math.min(0,Math.max(H-dh,wantY-SPOT.y*dh));
-  hnImg.style.objectPosition=ox+'px '+oy+'px';
-  hnMark.style.left=(SPOT.x*dw+ox)+'px';hnMark.style.top=(SPOT.y*dh+oy)+'px';
-  hnMark.style.width=Math.max(72,Math.min(190,MARK_W*dw))+'px';
+/* hero Atelier : le bord du panneau coupe le visage au milieu, sous la plaque murale */
+const haImg=$('#haImg'),haBox=$('#heroAt'),haPanel=$('#haPanel');
+const CUT=.61,TOP=.255,IW=1440,IH=1795; /* CUT : milieu du visage ; TOP : juste sous la plaque */
+function placeHA(){
+  const W=haBox.clientWidth,H=haBox.clientHeight,mob=W<=760,P=W*(mob?.6:.58);
+  let k=Math.max(P/(CUT*IW),H/(IH*(1-TOP)));
+  const dw=IW*k,dh=IH*k;
+  let ox=P-CUT*dw; ox=Math.min(0,Math.max(W-dw,ox));
+  let oy=-TOP*dh; oy=Math.max(H-dh,oy);
+  haImg.style.width=dw+'px';haImg.style.left=ox+'px';haImg.style.top=oy+'px';
+  haPanel.style.left=(ox+CUT*dw)+'px';
 }
-placeNH();addEventListener('resize',placeNH);
+placeHA();addEventListener('resize',placeHA);
 
 /* hours: highlight today */
 const d=new Date().getDay();const row=document.querySelector(`#hours tr[data-d="${d}"]`);if(row)row.classList.add('today');
