@@ -94,20 +94,20 @@ p{margin:0}
 
 /* ---------- hero : monogramme NH géant sur photo assombrie ---------- */
 .hero-nh2{position:relative;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:#0E0D0C;color:var(--paper);isolation:isolate}
-.hn2-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:.3;filter:grayscale(.35) contrast(1.05)}
+.hn2-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:.14;filter:grayscale(.5) contrast(1.05)}
 .hero-nh2::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 70% at 50% 50%,rgba(14,13,12,0),rgba(14,13,12,.55));pointer-events:none}
 .hn2{position:absolute;z-index:1;inset:calc(64px + env(safe-area-inset-top,0px)) 0 0 0;width:100%;height:calc(100% - 64px - env(safe-area-inset-top,0px))}
 .hn2 .L{font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;fill:var(--paper)}
 .hn2 .W{font-family:var(--f-body);font-weight:400;letter-spacing:.6em;fill:var(--paper)}
 .hn2 line{stroke:var(--champagne);stroke-width:1.2}
 .hn2.tall{display:none}
-@media (max-width:760px){.hn2.wide{display:none}.hn2.tall{display:block}.hn2-bg{opacity:.34}}
+@media (max-width:760px){.hn2.wide{display:none}.hn2.tall{display:block}.hn2-bg{opacity:.16}}
 @media (prefers-reduced-motion:no-preference){
   .hn2-bg{animation:fadeBg 2s var(--ease) both}
   .hn2 .lt{animation:fade 1.6s .2s var(--ease) both}
   .hn2 .lt+.lt{animation-delay:.35s}
   .hn2 .cap{animation:fade 1.2s 1s var(--ease) both}
-  @keyframes fadeBg{from{opacity:0;transform:scale(1.06)}to{opacity:.3;transform:none}}
+  @keyframes fadeBg{from{opacity:0;transform:scale(1.06)}to{opacity:.14;transform:none}}
 }
 
 /* ---------- manifesto ---------- */
