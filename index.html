@@ -93,8 +93,8 @@ p{margin:0}
 
 
 /* ---------- hero Atelier (visage coupé par un panneau flouté) ---------- */
-.hero-at{position:relative;height:100svh;min-height:600px;max-height:1080px;overflow:hidden;background:#0e0c0b;color:var(--paper);isolation:isolate}
-.ha-img{position:absolute;left:0;top:0;max-width:none;width:auto;height:auto;transform-origin:0 0;filter:brightness(.82) contrast(1.06) saturate(.9)}
+.hero-at{position:relative;height:100svh;min-height:600px;max-height:1080px;overflow:hidden;background:#131110;color:var(--paper);isolation:isolate}
+.ha-img{position:absolute;left:0;top:0;max-width:none;width:auto;height:auto;transform-origin:0 0;filter:brightness(.94);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
 .hero-at::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(14,12,11,.6),rgba(14,12,11,.25) 18%,rgba(14,12,11,0) 34%),linear-gradient(180deg,rgba(14,12,11,.55),rgba(14,12,11,0) 22%,rgba(14,12,11,0) 70%,rgba(14,12,11,.75))}
 .ha-panel{position:absolute;z-index:2;top:0;bottom:0;right:0;left:58%;-webkit-backdrop-filter:blur(38px) saturate(1.2);backdrop-filter:blur(38px) saturate(1.2);background:linear-gradient(90deg,rgba(150,104,62,.38) 0%,rgba(96,64,38,.5) 14%,rgba(26,20,16,.86) 46%,rgba(12,10,9,.96) 100%)}
 .ha-title{position:absolute;z-index:3;inset:0;margin:0;pointer-events:none;font-weight:400}
@@ -353,7 +353,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <main id="top">
 <!-- ============ HERO ============ -->
 <section class="hero-at" id="heroAt" aria-label="Nalouo Hair">
-  <img class="ha-img" id="haImg" src="img/half.webp" alt="Longues ondulations noires et brillantes, mèche sur le côté" width="1440" height="1795" fetchpriority="high">
+  <img class="ha-img" id="haImg" src="img/studio.webp" alt="Longues ondulations brun chocolat aux reflets caramel, photo studio" width="2400" height="3000" fetchpriority="high">
   <div class="ha-panel" id="haPanel" aria-hidden="true"></div>
   <h1 class="ha-title"><span class="ha-big" id="haBig">Nalouo</span><span class="ha-small" id="haSmall">Hair</span></h1>
   <span class="ha-edge ha-l">Luxury extensions</span>
@@ -647,15 +647,15 @@ $('#menuClose').onclick=closeMenu;mnav.addEventListener('click',e=>{if(e.target.
 
 /* hero Atelier : le bord du panneau coupe le visage au milieu, sous la plaque murale */
 const haImg=$('#haImg'),haBox=$('#heroAt'),haPanel=$('#haPanel');
-const CUT=.61,TOP=.1,IW=1440,IH=1795; /* CUT : milieu du visage ; TOP : un peu d'air au-dessus des cheveux */
+const CUT=.468,TOP=.1,BOT=.84,IW=2400,IH=3000; /* CUT : milieu du visage ; TOP : un peu d'air au-dessus des cheveux */
 function placeHA(){
   const W=haBox.clientWidth,H=haBox.clientHeight,mob=W<=760,P=W*(mob?.6:.58);
-  let k=Math.max(P/(CUT*IW),H/(IH*(1-TOP)));
+  /* on montre la photo de TOP à BOT en hauteur ; le bord du panneau passe au milieu du visage */
+  const k=H/(((mob?BOT:.74)-TOP)*IH);
   const dw=IW*k,dh=IH*k;
-  let ox=P-CUT*dw; ox=Math.min(0,Math.max(W-dw,ox));
-  let oy=-TOP*dh; oy=Math.max(H-dh,oy);
+  const ox=P-CUT*dw, oy=-TOP*dh;
   haImg.style.width=dw+'px';haImg.style.left=ox+'px';haImg.style.top=oy+'px';
-  haPanel.style.left=(ox+CUT*dw)+'px';
+  haPanel.style.left=P+'px';
 }
 placeHA();addEventListener('resize',placeHA);
 
