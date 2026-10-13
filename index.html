@@ -95,7 +95,7 @@ p{margin:0}
 /* ---------- hero Atelier (visage coupé par un panneau flouté) ---------- */
 .hero-at{position:relative;height:100svh;min-height:600px;max-height:1080px;overflow:hidden;background:#0e0c0b;color:var(--paper);isolation:isolate}
 .ha-img{position:absolute;left:0;top:0;max-width:none;width:auto;height:auto;transform-origin:0 0;filter:brightness(.82) contrast(1.06) saturate(.9)}
-.hero-at::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(14,12,11,.82),rgba(14,12,11,.45) 18%,rgba(14,12,11,0) 34%),linear-gradient(180deg,rgba(14,12,11,.55),rgba(14,12,11,0) 22%,rgba(14,12,11,0) 70%,rgba(14,12,11,.75))}
+.hero-at::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(14,12,11,.6),rgba(14,12,11,.25) 18%,rgba(14,12,11,0) 34%),linear-gradient(180deg,rgba(14,12,11,.55),rgba(14,12,11,0) 22%,rgba(14,12,11,0) 70%,rgba(14,12,11,.75))}
 .ha-panel{position:absolute;z-index:2;top:0;bottom:0;right:0;left:58%;-webkit-backdrop-filter:blur(38px) saturate(1.2);backdrop-filter:blur(38px) saturate(1.2);background:linear-gradient(90deg,rgba(150,104,62,.38) 0%,rgba(96,64,38,.5) 14%,rgba(26,20,16,.86) 46%,rgba(12,10,9,.96) 100%)}
 .ha-title{position:absolute;z-index:3;inset:0;margin:0;pointer-events:none;font-weight:400}
 .ha-big{position:absolute;left:58%;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--f-display);font-variation-settings:"opsz" 96;font-size:clamp(56px,7.4vw,138px);line-height:1;letter-spacing:.02em;text-transform:uppercase}
@@ -647,7 +647,7 @@ $('#menuClose').onclick=closeMenu;mnav.addEventListener('click',e=>{if(e.target.
 
 /* hero Atelier : le bord du panneau coupe le visage au milieu, sous la plaque murale */
 const haImg=$('#haImg'),haBox=$('#heroAt'),haPanel=$('#haPanel');
-const CUT=.61,TOP=.255,IW=1440,IH=1795; /* CUT : milieu du visage ; TOP : juste sous la plaque */
+const CUT=.61,TOP=.1,IW=1440,IH=1795; /* CUT : milieu du visage ; TOP : un peu d'air au-dessus des cheveux */
 function placeHA(){
   const W=haBox.clientWidth,H=haBox.clientHeight,mob=W<=760,P=W*(mob?.6:.58);
   let k=Math.max(P/(CUT*IW),H/(IH*(1-TOP)));
