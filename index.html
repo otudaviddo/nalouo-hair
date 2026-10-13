@@ -94,8 +94,8 @@ p{margin:0}
 
 /* ---------- hero duo : monogramme NH derrière les mannequins ---------- */
 .hero-duo{position:relative;height:100svh;min-height:620px;max-height:1000px;overflow:hidden;background:#D3D5CF;isolation:isolate}
-.hd-mono{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:flex-end;padding-inline:clamp(8px,2vw,40px);pointer-events:none;font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;color:#F4F1EB;line-height:.74}
-.hd-mono span{font-size:min(118svh,46vw);transform:translateY(.05em)}
+.hd-mono{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:flex-end;padding-inline:0;margin-inline:-1.5vw;pointer-events:none;font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;color:#F4F1EB;line-height:.74}
+.hd-mono span{font-size:min(calc((min(100svh,1000px) - 64px) * 1.2),74vw);transform:translateY(.055em)}
 .hd-img{position:absolute;bottom:0;left:50%;translate:-50% 0;height:calc(100% - 56px);width:auto;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
 .hd-copy{position:absolute;left:var(--gutter);bottom:clamp(36px,8vh,80px);max-width:min(300px,21vw);display:grid;gap:16px;justify-items:start;z-index:2}
 .hd-copy h1{font-family:var(--f-display);font-size:clamp(30px,2.7vw,44px);line-height:1.04;letter-spacing:-.02em}
