@@ -88,7 +88,7 @@ p{margin:0}
 .maison::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,11,10,.32),rgba(12,11,10,0) 22%,rgba(12,11,10,0) 55%,rgba(12,11,10,.5))}
 .mh-word{position:absolute;z-index:2;left:var(--gutter);right:var(--gutter);bottom:clamp(16px,2.6vw,40px)}
 .mh-word svg{width:100%;height:auto;display:block;overflow:visible}
-.mh-word text{font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;fill:currentColor}
+.mh-word text{font-family:var(--f-display);font-variation-settings:"opsz" 11;font-weight:400;fill:currentColor}
 .mh-t{display:none!important}
 .mh-meta{position:absolute;z-index:2;left:var(--gutter);right:var(--gutter);bottom:calc(clamp(16px,2.6vw,40px) + 13.6vw);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(242,238,231,.78)}
 .mh-dots{display:flex;gap:12px}

@@ -13,7 +13,7 @@
 .phead .crumbs a{text-decoration:none;color:var(--ink-2)}
 .phead .crumbs a:hover{color:var(--ink)}
 .phead-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(24px,5vw,80px);align-items:end;margin-top:clamp(18px,3vw,36px)}
-.phead h1{font-size:clamp(64px,13vw,220px);line-height:.86;letter-spacing:-.035em;font-variation-settings:"opsz" 96}
+.phead h1{font-size:clamp(64px,13vw,220px);line-height:.86;letter-spacing:-.035em;font-variation-settings:"opsz" 11}
 .phead h1 em{font-style:italic}
 .phead p.lede{color:var(--ink-2);font-size:16px;line-height:1.6;padding-bottom:.6em;border-bottom:1px solid var(--line)}
 @media (max-width:820px){.phead-row{grid-template-columns:1fr}}
@@ -25,7 +25,7 @@
 .photohead .ph-in{position:absolute;z-index:2;left:var(--gutter);right:var(--gutter);bottom:clamp(24px,4vw,56px);display:grid;gap:14px}
 .photohead .crumbs{font-size:13.5px;color:rgba(242,238,231,.7)}
 .photohead .crumbs a{color:inherit;text-decoration:none}
-.photohead h1{font-size:clamp(64px,13vw,220px);line-height:.86;letter-spacing:-.035em;font-variation-settings:"opsz" 96}
+.photohead h1{font-size:clamp(64px,13vw,220px);line-height:.86;letter-spacing:-.035em;font-variation-settings:"opsz" 11}
 .photohead h1 em{font-style:italic}
 .photohead .sub{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:rgba(242,238,231,.78);border-top:1px solid rgba(242,238,231,.3);padding-top:14px}
 
@@ -185,3 +185,6 @@ a.card{text-decoration:none;color:inherit}
   .maison .mh-word{width:72vw;top:72%}
   .maison .mh-meta{bottom:20px}
 }
+
+/* même dessin de lettres partout : pas de variante optique automatique (traits trop fins en grand) */
+*,*::before,*::after{font-optical-sizing:none}
