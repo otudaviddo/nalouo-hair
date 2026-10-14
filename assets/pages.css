@@ -176,3 +176,12 @@ a.card{text-decoration:none;color:inherit}
 
 /* la carte de fidélité ne doit pas hériter du style du pied de page */
 .pcard .foot{background:none;padding:0;color:rgba(242,238,231,.7)}
+
+/* hero accueil : NALOUO / HAIR empilés, au milieu à droite (esprit Zara) */
+.maison .mh-word{left:auto;right:var(--gutter);bottom:auto;top:71%;translate:0 -50%;width:min(44vw,820px)}
+.maison .mh-word text{filter:drop-shadow(0 2px 18px rgba(12,11,10,.18))}
+.maison .mh-meta{bottom:clamp(20px,3vw,40px)}
+@media (max-width:760px){
+  .maison .mh-word{width:72vw;top:72%}
+  .maison .mh-meta{bottom:20px}
+}
