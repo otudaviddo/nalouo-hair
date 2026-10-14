@@ -177,13 +177,14 @@ a.card{text-decoration:none;color:inherit}
 /* la carte de fidélité ne doit pas hériter du style du pied de page */
 .pcard .foot{background:none;padding:0;color:rgba(242,238,231,.7)}
 
-/* hero accueil : NALOUO / HAIR empilés, au milieu à droite (esprit Zara) */
-.maison .mh-word{left:auto;right:var(--gutter);bottom:auto;top:71%;translate:0 -50%;width:min(44vw,820px)}
+/* hero accueil : NALOUO HAIR sur une ligne, pleine largeur, en bas */
+.maison .mh-word{left:var(--gutter);right:var(--gutter);top:auto;bottom:clamp(18px,2.4vw,40px);width:auto}
 .maison .mh-word text{filter:drop-shadow(0 2px 18px rgba(12,11,10,.18))}
-.maison .mh-meta{bottom:clamp(20px,3vw,40px)}
+.maison .mh-meta{bottom:calc(clamp(18px,2.4vw,40px) + 9.6vw + clamp(14px,1.6vw,26px))}
 @media (max-width:760px){
-  .maison .mh-word{width:72vw;top:72%}
-  .maison .mh-meta{bottom:20px}
+  .maison .mh-word{bottom:22px}
+  .maison .mh-meta{bottom:calc(22px + 9vw + 14px)}
+  .maison .mh-ph{object-position:50% 20%}
 }
 
 /* même dessin de lettres partout : pas de variante optique automatique (traits trop fins en grand) */
