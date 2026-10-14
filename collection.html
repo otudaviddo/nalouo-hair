@@ -14,25 +14,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E6E4DE'/%3E%3Ctext x='8' y='40' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EN%3C/text%3E%3Ctext x='27' y='56' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,11,400;0,11,500;1,11,400;1,11,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="assets/base.css?v=db31848b">
-<link rel="stylesheet" href="assets/pages.css?v=db31848b">
+<link rel="stylesheet" href="assets/base.css?v=e604e574">
+<link rel="stylesheet" href="assets/pages.css?v=e604e574">
 
 </head>
 <body data-page="collection">
 <header class="hdr on-light" id="hdr">
   <div class="wrap hdr-in">
+    <button class="menu-open" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav"><span class="burger" aria-hidden="true"></span><span>Menu</span></button>
     <a class="brand" href="index.html" aria-label="Nalouo Hair, accueil"><span class="mark" aria-hidden="true"><i>N</i><i>H</i></span></a>
-    <nav class="nav" aria-label="Navigation principale"><a href="collection.html" aria-current="page">Collection</a><a href="perruques.html">Perruques</a><a href="maison.html">La Maison</a><a href="showroom.html">Showroom</a></nav>
-    <div class="hdr-act">
-      <a class="btn line hdr-rdv" href="showroom.html#visite"><span>Prendre rendez-vous</span></a>
-      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg></button>
-    </div>
+    <a class="btn line hdr-rdv" href="showroom.html#visite"><span>Prendre rendez-vous</span></a>
   </div>
 </header>
-<div class="mnav" id="mnav" hidden>
-  <button class="icon-btn close" id="menuClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <a href="index.html">Accueil</a><a href="collection.html" aria-current="page">Collection</a><a href="perruques.html">Perruques</a><a href="maison.html">La Maison</a><a href="showroom.html">Showroom</a>
-  <a href="showroom.html#visite">Prendre rendez-vous</a>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mnav-top wrap"><button class="menu-close" id="menuClose" type="button"><span class="x" aria-hidden="true"></span><span>Fermer</span></button><a class="brand" href="index.html" aria-label="Nalouo Hair, accueil"><span class="mark" aria-hidden="true"><i>N</i><i>H</i></span></a><span></span></div>
+  <div class="mnav-body wrap">
+    <nav aria-label="Navigation principale"><ul class="mnav-list"><li><a href="index.html" data-img="img/duo2-640.webp"><span class="mi-t">Accueil</span></a></li><li><a href="collection.html" data-img="img/wavy-front-640.webp" aria-current="page"><span class="mi-t">Collection</span></a></li><li><a href="perruques.html" data-img="img/bob-front-640.webp"><span class="mi-t">Perruques sur mesure</span></a></li><li><a href="maison.html" data-img="img/caramel-640.webp"><span class="mi-t">La Maison</span></a></li><li><a href="showroom.html" data-img="img/showroom-640.webp"><span class="mi-t">Showroom</span></a></li></ul></nav>
+    <figure class="mnav-fig" aria-hidden="true"><img id="mnavImg" src="img/duo2-640.webp" alt=""></figure>
+  </div>
+  <div class="mnav-foot wrap"><span>Avenue van Beesen 23, 1090 Jette</span><a href="https://wa.me/32493377682" target="_blank" rel="noopener">WhatsApp +32 493 37 76 82</a><a href="https://www.instagram.com/nalouo.hair/" target="_blank" rel="noopener">Instagram</a></div>
 </div>
 <main id="top">
 
@@ -54,35 +54,35 @@
     </div>
     <span class="count" id="count" aria-live="polite"></span>
   </div>
-  <div class="grid" id="grid"><a class="card" href="vietnamiennes-lisses.html" data-cat="bundles">
-   <div class="vis"><img src="img/bob-front.webp" srcset="img/bob-front-640.webp 640w, img/bob-front-1024.webp 1024w, img/bob-front.webp 1400w" width="1400" height="1741" sizes="(max-width:760px) 50vw, 25vw" alt="Vietnamiennes lisses" loading="lazy" style="object-position:50% 30%"><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Vietnamiennes lisses</h3><span class="sub">Couleur naturelle · 100 g</span><span class="price">À partir de 105&nbsp;€</span></div></a><a class="card" href="indiennes-ondulees.html" data-cat="bundles">
-   <div class="vis"><img src="img/wavy-profile.webp" srcset="img/wavy-profile-640.webp 640w, img/wavy-profile-1024.webp 1024w, img/wavy-profile.webp 1400w" width="1400" height="1750" sizes="(max-width:760px) 50vw, 25vw" alt="Indiennes ondulées" loading="lazy" style="object-position:50% 30%"><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Indiennes ondulées</h3><span class="sub">Temples indiens · 100 g</span><span class="price">À partir de 115&nbsp;€</span></div></a><a class="card" href="indiennes-bouclees.html" data-cat="bundles">
-   <div class="vis"><img src="img/hero-curly.webp" srcset="img/hero-curly-640.webp 640w, img/hero-curly-1024.webp 1024w, img/hero-curly.webp 1100w" width="1100" height="572" sizes="(max-width:760px) 50vw, 25vw" alt="Indiennes bouclées" loading="lazy" style="object-position:52% 40%"><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Indiennes bouclées</h3><span class="sub">Temples indiens · 100 g</span><span class="price">À partir de 125&nbsp;€</span></div></a><a class="card" href="burmese-bouclees.html" data-cat="bundles">
-   <div class="vis"><img src="img/tex-bundles.webp" srcset="img/tex-bundles.webp 348w" width="348" height="287" sizes="(max-width:760px) 50vw, 25vw" alt="Burmese bouclées" loading="lazy" style="object-position:50% 50%"><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Burmese bouclées</h3><span class="sub">Kinky curly · 100 g</span><span class="price">À partir de 125&nbsp;€</span></div></a><a class="card" href="kinky-lisses.html" data-cat="bundles">
-   <div class="vis"><div class="swatch" style="background:radial-gradient(120% 90% at 30% 20%,#2b1d14cc,#100c0a)">K</div><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Kinky lisses</h3><span class="sub">Texture afro lissée · 100 g</span><span class="price">À partir de 140&nbsp;€</span></div></a><a class="card" href="vietnamiennes-blondes.html" data-cat="bundles">
-   <div class="vis"><img src="img/blonde.webp" srcset="img/blonde-640.webp 640w, img/blonde.webp 1000w" width="1000" height="973" sizes="(max-width:760px) 50vw, 25vw" alt="Vietnamiennes blondes" loading="lazy" style="object-position:38% 30%"><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Vietnamiennes blondes</h3><span class="sub">Lisses · blond · 100 g</span><span class="price">À partir de 155&nbsp;€</span></div></a><a class="card" href="vietnamiennes-jet-black.html" data-cat="bundles">
-   <div class="vis"><img src="img/bob-kiss.webp" srcset="img/bob-kiss-640.webp 640w, img/bob-kiss-1024.webp 1024w, img/bob-kiss.webp 1400w" width="1400" height="1741" sizes="(max-width:760px) 50vw, 25vw" alt="Vietnamiennes jet black" loading="lazy" style="object-position:50% 30%"><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Vietnamiennes jet black</h3><span class="sub">Lisses · noir intense · 100 g</span><span class="price">À partir de 130&nbsp;€</span></div></a><a class="card" href="vietnamiennes-couleurs.html" data-cat="bundles">
-   <div class="vis"><img src="img/brown-wavy.webp" srcset="img/brown-wavy-640.webp 640w, img/brown-wavy-1024.webp 1024w, img/brown-wavy.webp 1400w" width="1400" height="1867" sizes="(max-width:760px) 50vw, 25vw" alt="Vietnamiennes, autres couleurs" loading="lazy" style="object-position:50% 30%"><span class="tag mono">Extensions raw hair</span></div>
-   <div class="meta"><h3>Vietnamiennes, autres couleurs</h3><span class="sub">Brun, auburn… · 100 g</span><span class="price">À partir de 140&nbsp;€</span></div></a><a class="card" href="closures-frontales-hd.html" data-cat="lace">
-   <div class="vis"><div class="swatch" style="background:radial-gradient(120% 90% at 30% 20%,#3a2a22cc,#100c0a)">L</div><span class="tag mono">Closures &amp; frontales</span></div>
-   <div class="meta"><h3>Closures &amp; frontales HD</h3><span class="sub">HD film lace</span><span class="price">À partir de 105&nbsp;€</span></div></a><a class="card" href="extensions-a-clips.html" data-cat="clips">
-   <div class="vis"><img src="img/blonde.webp" srcset="img/blonde-640.webp 640w, img/blonde.webp 1000w" width="1000" height="973" sizes="(max-width:760px) 50vw, 25vw" alt="Extensions à clips" loading="lazy" style="object-position:60% 60%"><span class="tag mono">Clips &amp; tape-ins</span></div>
-   <div class="meta"><h3>Extensions à clips</h3><span class="sub">100 g · 7 bandes invisibles</span><span class="price">À partir de 155&nbsp;€</span></div></a><a class="card" href="ponytails.html" data-cat="clips">
-   <div class="vis"><img src="img/duo2.webp" srcset="img/duo2-640.webp 640w, img/duo2-1024.webp 1024w, img/duo2-1600.webp 1600w, img/duo2.webp 2880w" width="2880" height="1621" sizes="(max-width:760px) 50vw, 25vw" alt="Ponytails" loading="lazy" style="object-position:74% 40%"><span class="tag mono">Ponytails</span></div>
-   <div class="meta"><h3>Ponytails</h3><span class="sub">Cheveux naturels · 100 g</span><span class="price">À partir de 155&nbsp;€</span></div></a><a class="card" href="perruque-vietnamienne-lisse.html" data-cat="wigs">
-   <div class="vis"><img src="img/bob-selfie.webp" srcset="img/bob-selfie-640.webp 640w, img/bob-selfie-1024.webp 1024w, img/bob-selfie.webp 1400w" width="1400" height="1749" sizes="(max-width:760px) 50vw, 25vw" alt="Perruque vietnamienne lisse" loading="lazy" style="object-position:50% 30%"><span class="tag mono">Perruques</span></div>
-   <div class="meta"><h3>Perruque vietnamienne lisse</h3><span class="sub">Sur mesure · 15–25 jours</span><span class="price">350&nbsp;€ – 780&nbsp;€</span></div></a><a class="card" href="perruque-indienne-ondulee.html" data-cat="wigs">
-   <div class="vis"><img src="img/wavy-front.webp" srcset="img/wavy-front-640.webp 640w, img/wavy-front-1024.webp 1024w, img/wavy-front.webp 1400w" width="1400" height="1750" sizes="(max-width:760px) 50vw, 25vw" alt="Perruque indienne ondulée" loading="lazy" style="object-position:50% 30%"><span class="tag mono">Perruques</span></div>
-   <div class="meta"><h3>Perruque indienne ondulée</h3><span class="sub">Sur mesure · 15–25 jours</span><span class="price">370&nbsp;€ – 810&nbsp;€</span></div></a><a class="card" href="perruque-indienne-bouclee.html" data-cat="wigs">
-   <div class="vis"><img src="img/hero-curly.webp" srcset="img/hero-curly-640.webp 640w, img/hero-curly-1024.webp 1024w, img/hero-curly.webp 1100w" width="1100" height="572" sizes="(max-width:760px) 50vw, 25vw" alt="Perruque indienne bouclée" loading="lazy" style="object-position:52% 30%"><span class="tag mono">Perruques</span></div>
-   <div class="meta"><h3>Perruque indienne bouclée</h3><span class="sub">Sur mesure · 15–25 jours</span><span class="price">390&nbsp;€ – 840&nbsp;€</span></div></a></div>
+  <div class="grid ed" id="grid"><a class="card" href="vietnamiennes-lisses.html" data-cat="bundles" data-pos="0">
+   <div class="vis"><img src="img/bob-front.webp" srcset="img/bob-front-640.webp 640w, img/bob-front-1024.webp 1024w, img/bob-front.webp 1400w" width="1400" height="1741" sizes="(max-width:760px) 100vw, 50vw" alt="Vietnamiennes lisses" loading="lazy" style="object-position:50% 30%"></div>
+   <div class="meta"><h3>Vietnamiennes lisses</h3><p class="sub">Extensions raw hair · Couleur naturelle · 100 g</p><p class="price">À partir de 105&nbsp;€</p></div></a><a class="card" href="indiennes-ondulees.html" data-cat="bundles" data-pos="1">
+   <div class="vis"><img src="img/wavy-profile.webp" srcset="img/wavy-profile-640.webp 640w, img/wavy-profile-1024.webp 1024w, img/wavy-profile.webp 1400w" width="1400" height="1750" sizes="(max-width:760px) 100vw, 50vw" alt="Indiennes ondulées" loading="lazy" style="object-position:50% 30%"></div>
+   <div class="meta"><h3>Indiennes ondulées</h3><p class="sub">Extensions raw hair · Temples indiens · 100 g</p><p class="price">À partir de 115&nbsp;€</p></div></a><a class="card" href="indiennes-bouclees.html" data-cat="bundles" data-pos="2">
+   <div class="vis"><img src="img/hero-curly.webp" srcset="img/hero-curly-640.webp 640w, img/hero-curly-1024.webp 1024w, img/hero-curly.webp 1100w" width="1100" height="572" sizes="(max-width:760px) 100vw, 50vw" alt="Indiennes bouclées" loading="lazy" style="object-position:52% 40%"></div>
+   <div class="meta"><h3>Indiennes bouclées</h3><p class="sub">Extensions raw hair · Temples indiens · 100 g</p><p class="price">À partir de 125&nbsp;€</p></div></a><a class="card" href="burmese-bouclees.html" data-cat="bundles" data-pos="3">
+   <div class="vis"><img src="img/tex-bundles.webp" srcset="img/tex-bundles.webp 348w" width="348" height="287" sizes="(max-width:760px) 100vw, 50vw" alt="Burmese bouclées" loading="lazy" style="object-position:50% 50%"></div>
+   <div class="meta"><h3>Burmese bouclées</h3><p class="sub">Extensions raw hair · Kinky curly · 100 g</p><p class="price">À partir de 125&nbsp;€</p></div></a><a class="card" href="kinky-lisses.html" data-cat="bundles" data-pos="4">
+   <div class="vis"><div class="swatch" style="background:radial-gradient(120% 90% at 30% 20%,#2b1d14cc,#100c0a)">K</div></div>
+   <div class="meta"><h3>Kinky lisses</h3><p class="sub">Extensions raw hair · Texture afro lissée · 100 g</p><p class="price">À partir de 140&nbsp;€</p></div></a><a class="card" href="vietnamiennes-blondes.html" data-cat="bundles" data-pos="5">
+   <div class="vis"><img src="img/blonde.webp" srcset="img/blonde-640.webp 640w, img/blonde.webp 1000w" width="1000" height="973" sizes="(max-width:760px) 100vw, 50vw" alt="Vietnamiennes blondes" loading="lazy" style="object-position:38% 30%"></div>
+   <div class="meta"><h3>Vietnamiennes blondes</h3><p class="sub">Extensions raw hair · Lisses · blond · 100 g</p><p class="price">À partir de 155&nbsp;€</p></div></a><a class="card" href="vietnamiennes-jet-black.html" data-cat="bundles" data-pos="0">
+   <div class="vis"><img src="img/bob-kiss.webp" srcset="img/bob-kiss-640.webp 640w, img/bob-kiss-1024.webp 1024w, img/bob-kiss.webp 1400w" width="1400" height="1741" sizes="(max-width:760px) 100vw, 50vw" alt="Vietnamiennes jet black" loading="lazy" style="object-position:50% 30%"></div>
+   <div class="meta"><h3>Vietnamiennes jet black</h3><p class="sub">Extensions raw hair · Lisses · noir intense · 100 g</p><p class="price">À partir de 130&nbsp;€</p></div></a><a class="card" href="vietnamiennes-couleurs.html" data-cat="bundles" data-pos="1">
+   <div class="vis"><img src="img/brown-wavy.webp" srcset="img/brown-wavy-640.webp 640w, img/brown-wavy-1024.webp 1024w, img/brown-wavy.webp 1400w" width="1400" height="1867" sizes="(max-width:760px) 100vw, 50vw" alt="Vietnamiennes, autres couleurs" loading="lazy" style="object-position:50% 30%"></div>
+   <div class="meta"><h3>Vietnamiennes, autres couleurs</h3><p class="sub">Extensions raw hair · Brun, auburn… · 100 g</p><p class="price">À partir de 140&nbsp;€</p></div></a><a class="card" href="closures-frontales-hd.html" data-cat="lace" data-pos="2">
+   <div class="vis"><div class="swatch" style="background:radial-gradient(120% 90% at 30% 20%,#3a2a22cc,#100c0a)">L</div></div>
+   <div class="meta"><h3>Closures &amp; frontales HD</h3><p class="sub">Closures &amp; frontales · HD film lace</p><p class="price">À partir de 105&nbsp;€</p></div></a><a class="card" href="extensions-a-clips.html" data-cat="clips" data-pos="3">
+   <div class="vis"><img src="img/blonde.webp" srcset="img/blonde-640.webp 640w, img/blonde.webp 1000w" width="1000" height="973" sizes="(max-width:760px) 100vw, 50vw" alt="Extensions à clips" loading="lazy" style="object-position:60% 60%"></div>
+   <div class="meta"><h3>Extensions à clips</h3><p class="sub">Clips &amp; tape-ins · 100 g · 7 bandes invisibles</p><p class="price">À partir de 155&nbsp;€</p></div></a><a class="card" href="ponytails.html" data-cat="clips" data-pos="4">
+   <div class="vis"><img src="img/duo2.webp" srcset="img/duo2-640.webp 640w, img/duo2-1024.webp 1024w, img/duo2-1600.webp 1600w, img/duo2.webp 2880w" width="2880" height="1621" sizes="(max-width:760px) 100vw, 50vw" alt="Ponytails" loading="lazy" style="object-position:74% 40%"></div>
+   <div class="meta"><h3>Ponytails</h3><p class="sub">Ponytails · Cheveux naturels · 100 g</p><p class="price">À partir de 155&nbsp;€</p></div></a><a class="card" href="perruque-vietnamienne-lisse.html" data-cat="wigs" data-pos="5">
+   <div class="vis"><img src="img/bob-selfie.webp" srcset="img/bob-selfie-640.webp 640w, img/bob-selfie-1024.webp 1024w, img/bob-selfie.webp 1400w" width="1400" height="1749" sizes="(max-width:760px) 100vw, 50vw" alt="Perruque vietnamienne lisse" loading="lazy" style="object-position:50% 30%"></div>
+   <div class="meta"><h3>Perruque vietnamienne lisse</h3><p class="sub">Perruques · Sur mesure · 15–25 jours</p><p class="price">350&nbsp;€ – 780&nbsp;€</p></div></a><a class="card" href="perruque-indienne-ondulee.html" data-cat="wigs" data-pos="0">
+   <div class="vis"><img src="img/wavy-front.webp" srcset="img/wavy-front-640.webp 640w, img/wavy-front-1024.webp 1024w, img/wavy-front.webp 1400w" width="1400" height="1750" sizes="(max-width:760px) 100vw, 50vw" alt="Perruque indienne ondulée" loading="lazy" style="object-position:50% 30%"></div>
+   <div class="meta"><h3>Perruque indienne ondulée</h3><p class="sub">Perruques · Sur mesure · 15–25 jours</p><p class="price">370&nbsp;€ – 810&nbsp;€</p></div></a><a class="card" href="perruque-indienne-bouclee.html" data-cat="wigs" data-pos="1">
+   <div class="vis"><img src="img/hero-curly.webp" srcset="img/hero-curly-640.webp 640w, img/hero-curly-1024.webp 1024w, img/hero-curly.webp 1100w" width="1100" height="572" sizes="(max-width:760px) 100vw, 50vw" alt="Perruque indienne bouclée" loading="lazy" style="object-position:52% 30%"></div>
+   <div class="meta"><h3>Perruque indienne bouclée</h3><p class="sub">Perruques · Sur mesure · 15–25 jours</p><p class="price">390&nbsp;€ – 840&nbsp;€</p></div></a></div>
 </section>
 <section class="split" aria-labelledby="hT">
   <div class="s-img"><img src="img/showroom.webp" alt="Le showroom Nalouo Hair" loading="lazy" srcset="img/showroom-640.webp 640w, img/showroom-1024.webp 1024w, img/showroom.webp 1200w" sizes="(max-width:860px) 100vw, 50vw" width="1200" height="1553"></div>
@@ -106,8 +106,8 @@
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/catalog.js?v=db31848b"></script>
-<script src="assets/manifest.js?v=db31848b"></script>
-<script src="assets/site.js?v=db31848b"></script>
+<script src="assets/catalog.js?v=e604e574"></script>
+<script src="assets/manifest.js?v=e604e574"></script>
+<script src="assets/site.js?v=e604e574"></script>
 </body>
 </html>

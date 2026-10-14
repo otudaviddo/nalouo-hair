@@ -14,16 +14,21 @@ const IM=window.NH_IMG||{};
 const srcset=src=>{const b=src.replace(/^img\/|\.webp$/g,''),m=IM[b];if(!m)return '';return `srcset="${m.v.map(w=>`img/${b}-${w}.webp ${w}w`).concat(`${src} ${m.w}w`).join(', ')}" width="${m.w}" height="${m.h}"`};
 const visual=(p,extra='',sizes='(max-width:760px) 50vw, 25vw')=>p.img?`<img src="${p.img}" ${srcset(p.img)} sizes="${sizes}" alt="${p.name}" loading="lazy" style="object-position:${p.pos||'50% 50%'}" ${extra}>`:`<div class="swatch" style="background:radial-gradient(120% 90% at 30% 20%,${p.tone}cc,#100c0a)">${p.glyph}</div>`;
 const card=p=>`<a class="card" href="${p.slug}.html" data-cat="${p.cat}">
-   <div class="vis">${visual(p)}<span class="tag mono">${p.catL}</span></div>
-   <div class="meta"><h3>${p.name}</h3><span class="sub">${p.sub}</span><span class="price">${priceLine(p)}</span></div></a>`;
+   <div class="vis">${visual(p,'','(max-width:760px) 100vw, 50vw')}</div>
+   <div class="meta"><h3>${p.name}</h3><p class="sub">${p.catL} · ${p.sub}</p><p class="price">${priceLine(p)}</p></div></a>`;
 const pills=(label,name,vals,sel,fmt=v=>v,dis=()=>false)=>`<fieldset class="opt"><legend class="lab"><span>${label}</span></legend><div class="pills">${vals.map(v=>`<label class="pill"><input type="radio" name="${name}" value="${v}" ${v==sel?'checked':''} ${dis(v)?'disabled':''}><span>${fmt(v)}</span></label>`).join('')}</div></fieldset>`;
 
 /* ---------- en-tête, menu ---------- */
 const hdr=$('#hdr');
 if(hdr){const onScroll=()=>hdr.classList.toggle('solid',scrollY>Math.min(innerHeight*.5,420));addEventListener('scroll',onScroll,{passive:true});onScroll();}
 const mnav=$('#mnav'),mb=$('#menuBtn');
-const closeMenu=()=>{if(mnav){mnav.hidden=true;mb&&mb.setAttribute('aria-expanded','false')}};
-if(mnav&&mb){mb.onclick=()=>{mnav.hidden=false;mb.setAttribute('aria-expanded','true');$('#menuClose').focus()};$('#menuClose').onclick=closeMenu;}
+const closeMenu=()=>{if(mnav&&!mnav.hidden){mnav.hidden=true;document.documentElement.classList.remove('menu-on');mb&&mb.setAttribute('aria-expanded','false')}};
+if(mnav&&mb){
+  mb.onclick=()=>{mnav.hidden=false;document.documentElement.classList.add('menu-on');mb.setAttribute('aria-expanded','true');$('#menuClose').focus()};
+  $('#menuClose').onclick=()=>{closeMenu();mb.focus()};
+  const fig=$('#mnavImg');
+  $$('.mnav-list a').forEach(a=>{const show=()=>{if(fig&&a.dataset.img&&!fig.src.endsWith(a.dataset.img)){fig.classList.remove('sw');void fig.offsetWidth;fig.src=a.dataset.img;fig.classList.add('sw')}};a.addEventListener('mouseenter',show);a.addEventListener('focus',show)});
+}
 addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 
 /* ---------- apparitions au défilement (une fois, rien de caché sans JS) ---------- */
@@ -32,6 +37,13 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserve
   els.forEach(e=>e.classList.add('rv'));
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px'});
   els.forEach(e=>io.observe(e));
+}
+
+/* ---------- accueil : le mot de la texture suit la photo visible ---------- */
+const txw=$$('.tx-words span');
+if(txw.length&&'IntersectionObserver' in window){
+  const io2=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const i=en.target.dataset.i;txw.forEach(w=>w.classList.toggle('on',w.dataset.i===i))}}),{rootMargin:'-45% 0px -45% 0px'});
+  $$('.tx-pic').forEach(p=>io2.observe(p));
 }
 
 /* ---------- horaires : jour en cours ---------- */
@@ -50,7 +62,7 @@ const page=document.body.dataset.page;
 if(page==='collection'){
   const grid=$('#grid'),count=$('#count');
   if(!grid.children.length)grid.innerHTML=P.map(card).join('');
-  const render=f=>{let n=0;[...grid.children].forEach(c=>{const on=f==='all'||c.dataset.cat===f;c.hidden=!on;if(on)n++});count.textContent=`${n} produit${n>1?'s':''}`};
+  const render=f=>{let n=0;[...grid.children].forEach(c=>{const on=f==='all'||c.dataset.cat===f;c.hidden=!on;if(on){c.dataset.pos=n%6;n++}});count.textContent=`${n} produit${n>1?'s':''}`};
   const set=f=>{$$('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.f===f));render(f)};
   $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){set(b.dataset.f);history.replaceState(null,'',b.dataset.f==='all'?location.pathname:'#'+b.dataset.f)}});
   const h=location.hash.slice(1);set(['bundles','lace','clips','wigs'].includes(h)?h:'all');

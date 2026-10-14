@@ -14,25 +14,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E6E4DE'/%3E%3Ctext x='8' y='40' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EN%3C/text%3E%3Ctext x='27' y='56' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,11,400;0,11,500;1,11,400;1,11,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="assets/base.css?v=db31848b">
-<link rel="stylesheet" href="assets/pages.css?v=db31848b">
+<link rel="stylesheet" href="assets/base.css?v=e604e574">
+<link rel="stylesheet" href="assets/pages.css?v=e604e574">
 
 </head>
 <body data-page="legal">
 <header class="hdr on-light" id="hdr">
   <div class="wrap hdr-in">
+    <button class="menu-open" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav"><span class="burger" aria-hidden="true"></span><span>Menu</span></button>
     <a class="brand" href="index.html" aria-label="Nalouo Hair, accueil"><span class="mark" aria-hidden="true"><i>N</i><i>H</i></span></a>
-    <nav class="nav" aria-label="Navigation principale"><a href="collection.html">Collection</a><a href="perruques.html">Perruques</a><a href="maison.html">La Maison</a><a href="showroom.html">Showroom</a></nav>
-    <div class="hdr-act">
-      <a class="btn line hdr-rdv" href="showroom.html#visite"><span>Prendre rendez-vous</span></a>
-      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg></button>
-    </div>
+    <a class="btn line hdr-rdv" href="showroom.html#visite"><span>Prendre rendez-vous</span></a>
   </div>
 </header>
-<div class="mnav" id="mnav" hidden>
-  <button class="icon-btn close" id="menuClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <a href="index.html">Accueil</a><a href="collection.html">Collection</a><a href="perruques.html">Perruques</a><a href="maison.html">La Maison</a><a href="showroom.html">Showroom</a>
-  <a href="showroom.html#visite">Prendre rendez-vous</a>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mnav-top wrap"><button class="menu-close" id="menuClose" type="button"><span class="x" aria-hidden="true"></span><span>Fermer</span></button><a class="brand" href="index.html" aria-label="Nalouo Hair, accueil"><span class="mark" aria-hidden="true"><i>N</i><i>H</i></span></a><span></span></div>
+  <div class="mnav-body wrap">
+    <nav aria-label="Navigation principale"><ul class="mnav-list"><li><a href="index.html" data-img="img/duo2-640.webp"><span class="mi-t">Accueil</span></a></li><li><a href="collection.html" data-img="img/wavy-front-640.webp"><span class="mi-t">Collection</span></a></li><li><a href="perruques.html" data-img="img/bob-front-640.webp"><span class="mi-t">Perruques sur mesure</span></a></li><li><a href="maison.html" data-img="img/caramel-640.webp"><span class="mi-t">La Maison</span></a></li><li><a href="showroom.html" data-img="img/showroom-640.webp"><span class="mi-t">Showroom</span></a></li></ul></nav>
+    <figure class="mnav-fig" aria-hidden="true"><img id="mnavImg" src="img/duo2-640.webp" alt=""></figure>
+  </div>
+  <div class="mnav-foot wrap"><span>Avenue van Beesen 23, 1090 Jette</span><a href="https://wa.me/32493377682" target="_blank" rel="noopener">WhatsApp +32 493 37 76 82</a><a href="https://www.instagram.com/nalouo.hair/" target="_blank" rel="noopener">Instagram</a></div>
 </div>
 <main id="top">
 
@@ -72,8 +72,8 @@
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/catalog.js?v=db31848b"></script>
-<script src="assets/manifest.js?v=db31848b"></script>
-<script src="assets/site.js?v=db31848b"></script>
+<script src="assets/catalog.js?v=e604e574"></script>
+<script src="assets/manifest.js?v=e604e574"></script>
+<script src="assets/site.js?v=e604e574"></script>
 </body>
 </html>

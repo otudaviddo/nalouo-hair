@@ -14,25 +14,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E6E4DE'/%3E%3Ctext x='8' y='40' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EN%3C/text%3E%3Ctext x='27' y='56' font-family='Georgia,serif' font-size='34' fill='%231C1915'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,11,400;0,11,500;1,11,400;1,11,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="assets/base.css?v=db31848b">
-<link rel="stylesheet" href="assets/pages.css?v=db31848b">
+<link rel="stylesheet" href="assets/base.css?v=e604e574">
+<link rel="stylesheet" href="assets/pages.css?v=e604e574">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HairSalon", "name": "Nalouo Hair", "description": "Extensions en cheveux bruts et perruques sur mesure. Showroom sur rendez-vous.", "url": "https://nalouohair.com/", "image": "https://nalouohair.com/img/duo2-1600.webp", "telephone": "+32493377682", "address": {"@type": "PostalAddress", "streetAddress": "Avenue van Beesen 23", "postalCode": "1090", "addressLocality": "Jette", "addressRegion": "Bruxelles", "addressCountry": "BE"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "09:30", "closes": "17:30"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:30", "closes": "17:30"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "13:00", "closes": "18:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "16:00", "closes": "19:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "16:00", "closes": "19:00"}], "sameAs": ["https://www.instagram.com/nalouo.hair/", "https://www.tiktok.com/@nalouo.hair"]}</script>
 </head>
 <body data-page="home">
 <header class="hdr" id="hdr">
   <div class="wrap hdr-in">
+    <button class="menu-open" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav"><span class="burger" aria-hidden="true"></span><span>Menu</span></button>
     <a class="brand" href="index.html" aria-label="Nalouo Hair, accueil"><span class="mark" aria-hidden="true"><i>N</i><i>H</i></span></a>
-    <nav class="nav" aria-label="Navigation principale"><a href="collection.html">Collection</a><a href="perruques.html">Perruques</a><a href="maison.html">La Maison</a><a href="showroom.html">Showroom</a></nav>
-    <div class="hdr-act">
-      <a class="btn line hdr-rdv" href="showroom.html#visite"><span>Prendre rendez-vous</span></a>
-      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg></button>
-    </div>
+    <a class="btn line hdr-rdv" href="showroom.html#visite"><span>Prendre rendez-vous</span></a>
   </div>
 </header>
-<div class="mnav" id="mnav" hidden>
-  <button class="icon-btn close" id="menuClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <a href="index.html">Accueil</a><a href="collection.html">Collection</a><a href="perruques.html">Perruques</a><a href="maison.html">La Maison</a><a href="showroom.html">Showroom</a>
-  <a href="showroom.html#visite">Prendre rendez-vous</a>
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mnav-top wrap"><button class="menu-close" id="menuClose" type="button"><span class="x" aria-hidden="true"></span><span>Fermer</span></button><a class="brand" href="index.html" aria-label="Nalouo Hair, accueil"><span class="mark" aria-hidden="true"><i>N</i><i>H</i></span></a><span></span></div>
+  <div class="mnav-body wrap">
+    <nav aria-label="Navigation principale"><ul class="mnav-list"><li><a href="index.html" data-img="img/duo2-640.webp"><span class="mi-t">Accueil</span></a></li><li><a href="collection.html" data-img="img/wavy-front-640.webp"><span class="mi-t">Collection</span></a></li><li><a href="perruques.html" data-img="img/bob-front-640.webp"><span class="mi-t">Perruques sur mesure</span></a></li><li><a href="maison.html" data-img="img/caramel-640.webp"><span class="mi-t">La Maison</span></a></li><li><a href="showroom.html" data-img="img/showroom-640.webp"><span class="mi-t">Showroom</span></a></li></ul></nav>
+    <figure class="mnav-fig" aria-hidden="true"><img id="mnavImg" src="img/duo2-640.webp" alt=""></figure>
+  </div>
+  <div class="mnav-foot wrap"><span>Avenue van Beesen 23, 1090 Jette</span><a href="https://wa.me/32493377682" target="_blank" rel="noopener">WhatsApp +32 493 37 76 82</a><a href="https://www.instagram.com/nalouo.hair/" target="_blank" rel="noopener">Instagram</a></div>
 </div>
 <main id="top">
 
@@ -45,47 +45,50 @@
   </div>
 </section>
 
-<section class="manifesto wrap" aria-labelledby="mTitle">
-  <div class="manifesto-grid" data-reveal>
-    <h2 id="mTitle">Des cheveux bruts, choisis mèche par mèche depuis <em>plus de trente ans.</em></h2>
-    <div class="body">
-      <p>Chez Nalouo Hair, nos extensions en cheveux bruts incarnent le luxe et l'authenticité. Elles sont sélectionnées auprès de sources éthiques, dans le respect des communautés locales.</p>
-      <p><a href="maison.html" style="color:var(--ink)">Découvrir la maison</a></p>
+<section class="state wrap" aria-labelledby="mTitle">
+  <p class="state-k">Depuis plus de trente ans</p>
+  <h2 id="mTitle" class="state-h">Des cheveux bruts, choisis <em>mèche par mèche,</em> dans le respect de celles qui les ont portés.</h2>
+  <div class="state-row" data-reveal><p>Indiens des temples, vietnamiens, birmans. Non traités, ils gardent leur couleur et leur texture d'origine, et se colorent jusqu'au blond 613.</p><a class="lnk" href="maison.html">Découvrir la maison</a></div>
+</section>
+
+<section class="tx" aria-labelledby="txT">
+  <h2 id="txT" class="sr">Les textures</h2>
+  <div class="tx-grid wrap">
+    <div class="tx-stick" aria-hidden="true">
+      <p class="tx-k">Les textures</p>
+      <div class="tx-words"><span data-i="0" class="on">Lisse</span><span data-i="1">Ondulée</span><span data-i="2">Bouclée</span><span data-i="3">Kinky</span></div>
+      <p class="tx-note">Brutes, non traitées, 100 g par bundle. Douces, brillantes et sans nœuds.</p>
+    </div>
+    <div class="tx-pics">
+      <a class="tx-pic" data-reveal href="vietnamiennes-lisses.html" data-i="0"><img src="img/bob-front.webp" alt="Carré lisse noir, cheveux vietnamiens" style="object-position:50% 30%" srcset="img/bob-front-640.webp 640w, img/bob-front-1024.webp 1024w, img/bob-front.webp 1400w" sizes="(max-width:860px) 100vw, 50vw" width="1400" height="1741" loading="lazy" decoding="async"><span class="tx-cap"><b>Lisse</b><span>Vietnam · 100 g · Voir la fiche</span></span></a>
+      <a class="tx-pic" data-reveal href="indiennes-ondulees.html" data-i="1"><img src="img/wavy-front.webp" alt="Longues ondulations noires, cheveux indiens" style="object-position:50% 35%" srcset="img/wavy-front-640.webp 640w, img/wavy-front-1024.webp 1024w, img/wavy-front.webp 1400w" sizes="(max-width:860px) 100vw, 50vw" width="1400" height="1750" loading="lazy" decoding="async"><span class="tx-cap"><b>Ondulée</b><span>Inde · 100 g · Voir la fiche</span></span></a>
+      <a class="tx-pic" data-reveal href="indiennes-bouclees.html" data-i="2"><img src="img/hero-curly.webp" alt="Longues boucles indiennes" style="object-position:52% 40%" srcset="img/hero-curly-640.webp 640w, img/hero-curly-1024.webp 1024w, img/hero-curly.webp 1100w" sizes="(max-width:860px) 100vw, 50vw" width="1100" height="572" loading="lazy" decoding="async"><span class="tx-cap"><b>Bouclée</b><span>Inde · 100 g · Voir la fiche</span></span></a>
+      <a class="tx-pic" data-reveal href="burmese-bouclees.html" data-i="3"><img src="img/tex-bundles.webp" alt="Bundles kinky bouclés" style="object-position:50% 50%" srcset="img/tex-bundles.webp 348w" sizes="(max-width:860px) 100vw, 50vw" width="348" height="287" loading="lazy" decoding="async"><span class="tx-cap"><b>Kinky</b><span>Birmanie · 100 g · Voir la fiche</span></span></a>
     </div>
   </div>
 </section>
 
-<section class="textures wrap" aria-labelledby="txT">
-  <div class="sec-head" data-reveal><h2 id="txT">Les textures</h2><p>Quatre textures, toutes brutes et non traitées. Elles restent douces, brillantes et sans nœuds.</p></div>
-  <div class="tiles">
-    <a class="tile" data-reveal data-sz="q" href="vietnamiennes-lisses.html"><img data-sz="q" src="img/bob-front.webp" alt="Carré lisse noir" loading="lazy" style="object-position:50% 30%" srcset="img/bob-front-640.webp 640w, img/bob-front-1024.webp 1024w, img/bob-front.webp 1400w" sizes="(max-width:860px) 50vw, 25vw" width="1400" height="1741"><span class="t-name"><b>Lisse</b><span>Vietnam</span></span></a>
-    <a class="tile" data-reveal data-sz="q" href="indiennes-ondulees.html"><img data-sz="q" src="img/wavy-front.webp" alt="Longues ondulations noires" loading="lazy" style="object-position:50% 35%" srcset="img/wavy-front-640.webp 640w, img/wavy-front-1024.webp 1024w, img/wavy-front.webp 1400w" sizes="(max-width:860px) 50vw, 25vw" width="1400" height="1750"><span class="t-name"><b>Ondulée</b><span>Inde</span></span></a>
-    <a class="tile" data-reveal data-sz="q" href="indiennes-bouclees.html"><img data-sz="q" src="img/hero-curly.webp" alt="Longues boucles" loading="lazy" style="object-position:52% 40%" srcset="img/hero-curly-640.webp 640w, img/hero-curly-1024.webp 1024w, img/hero-curly.webp 1100w" sizes="(max-width:860px) 50vw, 25vw" width="1100" height="572"><span class="t-name"><b>Bouclée</b><span>Inde</span></span></a>
-    <a class="tile" data-reveal data-sz="q" href="burmese-bouclees.html"><img data-sz="q" src="img/tex-bundles.webp" alt="Bundles kinky bouclés" loading="lazy" srcset="img/tex-bundles.webp 348w" sizes="(max-width:860px) 50vw, 25vw" width="348" height="287"><span class="t-name"><b>Kinky</b><span>Birmanie</span></span></a>
-  </div>
-  <div class="ctas" style="justify-content:flex-start;margin-top:32px"><a class="btn line" href="collection.html">Voir toute la collection</a></div>
-</section>
-
-<section class="split" aria-labelledby="wT">
-  <div class="s-img"><img src="img/bob-selfie.webp" alt="Perruque carré lisse jet black" loading="lazy" style="object-position:50% 25%" srcset="img/bob-selfie-640.webp 640w, img/bob-selfie-1024.webp 1024w, img/bob-selfie.webp 1400w" sizes="(max-width:860px) 100vw, 50vw" width="1400" height="1749"></div>
-  <div class="s-copy" data-reveal>
+<section class="feature" aria-labelledby="wT">
+  <figure class="ft-img"><img src="img/wavy-profile.webp" alt="Perruque ondulée longue, vue de profil" style="object-position:50% 30%" srcset="img/wavy-profile-640.webp 640w, img/wavy-profile-1024.webp 1024w, img/wavy-profile.webp 1400w" sizes="(max-width:860px) 100vw, 50vw" width="1400" height="1750" loading="lazy" decoding="async"></figure>
+  <div class="ft-card" data-reveal>
+    <p class="ft-k">Atelier</p>
     <h2 id="wT">Perruques <em>sur mesure</em></h2>
-    <p>Votre texture, votre lace, votre longueur, votre taille de bonnet. Chaque perruque est montée à la main en 15 à 25 jours ouvrés.</p>
-    <div class="ctas"><a class="btn fill" href="perruques.html">Composer ma perruque</a></div>
+    <p>Votre texture, votre lace, votre longueur, votre bonnet. Chaque perruque est montée à la main en 15 à 25 jours ouvrés, de 350 € à 840 €.</p>
+    <a class="btn fill" href="perruques.html">Composer ma perruque</a>
   </div>
 </section>
 
-<section class="quote-band wrap" data-reveal aria-label="Notre philosophie">
-  <blockquote>« Les cheveux sont bien plus qu'un accessoire : ils sont une expression de <em>confiance</em> et de style. »</blockquote>
-  <p class="who">Nalouo Hair, fondée par un duo mère-fille · <a href="maison.html">Notre histoire</a></p>
+<section class="qb" aria-label="Notre philosophie">
+  <blockquote class="wrap">« Les cheveux sont bien plus qu'un accessoire : ils sont une expression de <em>confiance</em> et de style. »</blockquote>
+  <p class="wrap qb-who">Nalouo Hair, fondée par un duo mère-fille</p>
 </section>
 
-<section class="split rev" aria-labelledby="sT">
-  <div class="s-img"><img src="img/showroom.webp" alt="Le showroom Nalouo Hair à Jette" loading="lazy" style="object-position:50% 35%" srcset="img/showroom-640.webp 640w, img/showroom-1024.webp 1024w, img/showroom.webp 1200w" sizes="(max-width:860px) 100vw, 50vw" width="1200" height="1553"></div>
-  <div class="s-copy" data-reveal>
+<section class="visitband" aria-labelledby="sT">
+  <img src="img/showroom.webp" alt="Le showroom Nalouo Hair à Jette" style="object-position:50% 72%" srcset="img/showroom-640.webp 640w, img/showroom-1024.webp 1024w, img/showroom.webp 1200w" sizes="(max-width:860px) 100vw, 50vw" width="1200" height="1553" loading="lazy" decoding="async">
+  <div class="vb-card" data-reveal>
     <h2 id="sT">Le <em>showroom</em></h2>
-    <p>Avenue van Beesen 23, 1090 Jette. Touchez les mèches, comparez les textures, essayez les perruques, et réglez sur place.</p>
-    <div class="ctas"><a class="btn fill" href="showroom.html">Horaires et rendez-vous</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Avenue+van+Beesen+23+1090+Jette" target="_blank" rel="noopener">Itinéraire</a></div>
+    <p>Avenue van Beesen 23, 1090 Jette. Touchez les mèches, comparez les textures, essayez les perruques, réglez sur place.</p>
+    <div class="ctas"><a class="btn dark" href="showroom.html">Horaires et rendez-vous</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Avenue+van+Beesen+23+1090+Jette" target="_blank" rel="noopener">Itinéraire</a></div>
   </div>
 </section>
 </main>
@@ -106,8 +109,8 @@
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/catalog.js?v=db31848b"></script>
-<script src="assets/manifest.js?v=db31848b"></script>
-<script src="assets/site.js?v=db31848b"></script>
+<script src="assets/catalog.js?v=e604e574"></script>
+<script src="assets/manifest.js?v=e604e574"></script>
+<script src="assets/site.js?v=e604e574"></script>
 </body>
 </html>
