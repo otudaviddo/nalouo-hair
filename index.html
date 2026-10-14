@@ -46,7 +46,7 @@ p{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- header ---------- */
-.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--paper);transition:background .4s var(--ease),color .4s var(--ease)}
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);color:var(--ink);transition:background .4s var(--ease),color .4s var(--ease)}
 .hdr.solid{background:rgba(230,228,222,.92);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -92,23 +92,40 @@ p{margin:0}
 }
 
 
-/* ---------- hero : monogramme NH géant sur photo assombrie ---------- */
-.hero-nh2{position:relative;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:#0E0D0C;color:var(--paper);isolation:isolate}
-.hn2-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:.14;filter:grayscale(.5) contrast(1.05)}
-.hero-nh2::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 70% at 50% 50%,rgba(14,13,12,0),rgba(14,13,12,.55));pointer-events:none}
-.hn2{position:absolute;z-index:1;inset:calc(64px + env(safe-area-inset-top,0px)) 0 0 0;width:100%;height:calc(100% - 64px - env(safe-area-inset-top,0px))}
-.hn2 .L{font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;fill:var(--paper)}
-.hn2 .W{font-family:var(--f-body);font-weight:400;letter-spacing:.6em;fill:var(--paper)}
-.hn2 line{stroke:var(--champagne);stroke-width:1.2}
-.hn2.tall{display:none}
-@media (max-width:760px){.hn2.wide{display:none}.hn2.tall{display:block}.hn2-bg{opacity:.16}}
+/* ---------- intro : NH incrusté sur fond noir ---------- */
+.intro{position:fixed;inset:0;z-index:100;background:#0B0A09;color:#F2EEE7;display:grid;place-items:center;padding:24px;transition:transform 1.1s cubic-bezier(.76,0,.24,1),opacity .6s ease .5s}
+.intro::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 50% 46%,rgba(180,154,110,.10),rgba(11,10,9,0) 70%)}
+.intro.out{transform:translateY(-100%)}
+.intro.gone{display:none}
+.intro-enter{position:relative;background:none;border:0;padding:24px;cursor:pointer;display:grid;justify-items:center;gap:22px;color:inherit;border-radius:8px}
+.intro-enter:focus-visible{outline:1px solid var(--champagne);outline-offset:10px}
+.intro-mark{width:clamp(180px,24vw,330px);height:auto;overflow:visible;transition:transform .9s var(--ease)}
+.intro-mark text{font-family:var(--f-display);font-variation-settings:"opsz" 96;font-weight:400;fill:#F2EEE7}
+.intro-enter:hover .intro-mark{transform:scale(1.03)}
+.intro-name{font-family:var(--f-body);font-weight:400;font-size:clamp(12px,1.1vw,15px);letter-spacing:.62em;padding-left:.62em}
+.intro-rule{width:56px;height:1px;background:var(--champagne);transform-origin:center;transition:width .6s var(--ease)}
+.intro-enter:hover .intro-rule{width:110px}
+.intro-tag{font-family:var(--f-display);font-style:italic;font-size:clamp(15px,1.3vw,18px);color:rgba(242,238,231,.6)}
+.intro-hint{position:absolute;left:0;right:0;bottom:calc(28px + env(safe-area-inset-bottom,0px));text-align:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,238,231,.38)}
+.intro.out .intro-mark{transform:scale(.92)}
+body.locked{overflow:hidden}
 @media (prefers-reduced-motion:no-preference){
-  .hn2-bg{animation:fadeBg 2s var(--ease) both}
-  .hn2 .lt{animation:fade 1.6s .2s var(--ease) both}
-  .hn2 .lt+.lt{animation-delay:.35s}
-  .hn2 .cap{animation:fade 1.2s 1s var(--ease) both}
-  @keyframes fadeBg{from{opacity:0;transform:scale(1.06)}to{opacity:.14;transform:none}}
+  .iN{animation:inN 1.6s .2s var(--ease) both}
+  .iH{animation:inH 1.6s .45s var(--ease) both}
+  .intro-name{animation:inS 1.4s 1s var(--ease) both}
+  .intro-rule{animation:inR 1.2s 1.2s var(--ease) both}
+  .intro-tag,.intro-hint{animation:inS 1.4s 1.4s var(--ease) both}
+  @keyframes inN{from{opacity:0;transform:translate(-14px,-10px)}to{opacity:1;transform:none}}
+  @keyframes inH{from{opacity:0;transform:translate(14px,10px)}to{opacity:1;transform:none}}
+  @keyframes inS{from{opacity:0;letter-spacing:.2em}to{opacity:1}}
+  @keyframes inR{from{transform:scaleX(0)}to{transform:none}}
 }
+@media (prefers-reduced-motion:reduce){.intro{transition:opacity .3s}.intro.out{transform:none;opacity:0}}
+
+/* ---------- ouverture du site : grande photo ---------- */
+.opener{position:relative;height:100svh;min-height:560px;max-height:1100px;overflow:hidden;background:#C2C2C5}
+.opener img{width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+@media (max-width:760px){.opener{height:auto;min-height:0;max-height:none;padding-top:calc(64px + env(safe-area-inset-top,0px));background:linear-gradient(90deg,#BBBAC2,#C7C7C9 50%,#BBBAC2)}.opener img{height:auto;display:block}}
 
 /* ---------- manifesto ---------- */
 .manifesto{padding-block:clamp(80px,12vw,160px) clamp(64px,9vw,120px)}
@@ -306,6 +323,19 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 
+<!-- ============ INTRO : NH sur fond noir, clic pour entrer ============ -->
+<div class="intro" id="intro">
+  <button type="button" class="intro-enter" id="introEnter" aria-label="Entrer sur le site Nalouo Hair">
+    <svg class="intro-mark" viewBox="0 0 330 300" aria-hidden="true">
+      <text class="iN" x="12" y="182" font-size="210">N</text>
+      <text class="iH" x="140" y="262" font-size="210">H</text>
+    </svg>
+    <span class="intro-name">NALOUO HAIR</span>
+    <span class="intro-rule" aria-hidden="true"></span>
+    <span class="intro-tag">Raw beauty, luxury extensions</span>
+  </button>
+  <span class="intro-hint" aria-hidden="true">Cliquez sur le logo pour entrer</span>
+</div>
 
 </head>
 <body>
@@ -343,17 +373,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <main id="top">
 <!-- ============ HERO ============ -->
-<section class="hero-nh2" aria-label="Nalouo Hair">
-  <img class="hn2-bg" src="img/wavy-profile.webp" alt="" aria-hidden="true" fetchpriority="high">
+<section class="opener" aria-label="Nalouo Hair">
   <h1 class="sr">Nalouo Hair, raw beauty, luxury extensions</h1>
-  <svg class="hn2 wide" viewBox="0 0 1600 900" aria-hidden="true">
-    <text class="L lt" x="352" y="590" font-size="720">N</text><text class="L lt" x="665" y="856" font-size="720">H</text>
-    <g class="cap"><line x1="360" x2="470" y1="636" y2="636"/><text class="W" x="360" y="676" font-size="18">NALOUO HAIR</text></g>
-  </svg>
-  <svg class="hn2 tall" viewBox="0 0 800 1300" aria-hidden="true">
-    <text class="L lt" x="54" y="640" font-size="560">N</text><text class="L lt" x="298" y="847" font-size="560">H</text>
-    <g class="cap"><line x1="340" x2="460" y1="915" y2="915"/><text class="W" x="400" y="962" font-size="26" text-anchor="middle">NALOUO HAIR</text></g>
-  </svg>
+  <picture>
+    <source media="(min-width: 761px)" srcset="img/solo-wide.webp">
+    <img src="img/solo.webp" alt="Mannequin aux longues ondulations noires et brillantes, col roulé noir, photo studio" width="2400" height="2992">
+  </picture>
 </section>
 
 <!-- ============ MANIFESTO ============ -->
@@ -639,6 +664,13 @@ const hdr=$('#hdr');var onScroll;onScroll=()=>hdr.classList.toggle('solid',scrol
 const mnav=$('#mnav');function closeMenu(){mnav.hidden=true;$('#menuBtn').setAttribute('aria-expanded','false')}
 $('#menuBtn').onclick=()=>{mnav.hidden=false;$('#menuBtn').setAttribute('aria-expanded','true');$('#menuClose').focus()};
 $('#menuClose').onclick=closeMenu;mnav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
+
+/* intro : clic sur le NH pour entrer */
+const intro=$('#intro');
+function enterSite(){if(intro.classList.contains('out'))return;intro.classList.add('out');document.body.classList.remove('locked');setTimeout(()=>intro.classList.add('gone'),1150)}
+if(location.hash&&location.hash!=='#top'){intro.classList.add('gone')}else{document.body.classList.add('locked')}
+$('#introEnter').addEventListener('click',enterSite);
+intro.addEventListener('keydown',e=>{if(e.key==='Escape')enterSite()});
 
 /* hours: highlight today */
 const d=new Date().getDay();const row=document.querySelector(`#hours tr[data-d="${d}"]`);if(row)row.classList.add('today');
