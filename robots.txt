@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nalouohair.com/sitemap.xml

@@ -188,3 +188,48 @@ a.card{text-decoration:none;color:inherit}
 
 /* même dessin de lettres partout : pas de variante optique automatique (traits trop fins en grand) */
 *,*::before,*::after{font-optical-sizing:none}
+
+/* ===== Passe finale : audit + direction artistique ===== */
+/* pied de page : intitulés de colonnes (plus de saut de niveau de titre), liens confortables au doigt */
+.cols .fh{margin:0 0 10px;font-size:13px;color:rgba(242,238,231,.62)}
+.cols ul{gap:0}
+.cols li a{display:inline-flex;align-items:center;min-height:36px}
+.legal{color:rgba(242,238,231,.62)}
+a,button,label,summary{cursor:pointer}
+
+/* accueil : le nom se dévoile ligne par ligne, une seule séquence orchestrée */
+@media (prefers-reduced-motion:no-preference){
+  .maison .mh-word{animation:none}
+  .maison .mh-word text{animation:lineUp 1.3s cubic-bezier(.16,1,.3,1) both;transform-box:fill-box}
+  .maison .mh-word text+text{animation-delay:.14s}
+  .maison .mh-ph.is-on{animation:settle 2.6s cubic-bezier(.16,1,.3,1) both}
+  .maison .mh-meta{animation:fade 1s .7s cubic-bezier(.16,1,.3,1) both}
+  @keyframes lineUp{from{opacity:0;transform:translateY(38%);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(-10% 0 -20% 0)}}
+}
+
+/* apparitions au défilement : 24px, une fois, décalées dans les grilles */
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  .tiles .rv:nth-child(2),.grid .rv:nth-child(4n+2){transition-delay:.07s}
+  .tiles .rv:nth-child(3),.grid .rv:nth-child(4n+3){transition-delay:.14s}
+  .tiles .rv:nth-child(4),.grid .rv:nth-child(4n+4){transition-delay:.21s}
+}
+
+/* survols : seulement sur souris (rien ne reste « collé » au toucher) */
+@media (hover:hover){
+  .card .vis img{transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+  .card:hover .vis img{transform:scale(1.045)}
+  .card .meta h3{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s cubic-bezier(.16,1,.3,1)}
+  .card:hover .meta h3{background-size:100% 1px}
+  .tile .t-name b{transition:letter-spacing .6s cubic-bezier(.16,1,.3,1)}
+  .tile:hover .t-name b{letter-spacing:.04em}
+}
+@media (hover:none){.card:hover .vis img,.tile:hover img{transform:none}}
+
+/* page 404 */
+.phead.nf{min-height:80svh;display:grid;align-content:center}
+
+/* liste produits filtrée : les cartes masquées disparaissent vraiment */
+.grid [hidden]{display:none!important}
+.phead.nf .ctas{margin-top:clamp(56px,7vw,96px)!important}
