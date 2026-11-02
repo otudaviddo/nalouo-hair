@@ -26,7 +26,7 @@ if(mnav&&mb){
   mb.onclick=()=>{mnav.hidden=false;document.documentElement.classList.add('menu-on');mb.setAttribute('aria-expanded','true');$('#menuClose').focus()};
   $('#menuClose').onclick=()=>{closeMenu();mb.focus()};
   const fig=$('#mnavImg');
-  $$('.mnav-list a').forEach(a=>{const show=()=>{if(fig&&a.dataset.img&&!fig.src.endsWith(a.dataset.img)){fig.classList.remove('sw');void fig.offsetWidth;fig.src=a.dataset.img;fig.classList.add('sw')}};a.addEventListener('mouseenter',show);a.addEventListener('focus',show)});
+  $$('.mnav-list a').forEach(a=>{const show=()=>{if(fig&&a.dataset.img&&!fig.src.endsWith(a.dataset.img)){fig.classList.remove('sw');void fig.offsetWidth;fig.src=a.dataset.img;fig.style.objectPosition=a.dataset.pos||'50% 30%';fig.classList.add('sw')}};a.addEventListener('mouseenter',show);a.addEventListener('focus',show)});
 }
 addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 

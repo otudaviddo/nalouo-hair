@@ -475,3 +475,10 @@ html.menu-on,html.menu-on body{overflow:hidden}
 .vb-img img{width:100%;height:auto;display:block}
 .visitband .vb-card{position:static;grid-column:1;grid-row:1;max-width:460px;background:none;padding:0}
 @media (max-width:860px){.visitband{grid-template-columns:1fr}.vb-img,.visitband .vb-card{grid-column:1;grid-row:auto}}
+
+/* menu : tout tient dans l'écran, et défile s'il manque de place */
+.mnav{overflow-y:auto;overscroll-behavior:contain}
+.mnav-body{min-height:0;padding-block:clamp(8px,2vh,24px)}
+.mnav-list a{font-size:clamp(38px,min(6.2vw,9.6vh),104px);line-height:1.04}
+.mnav-fig{width:auto;height:min(62vh,560px);aspect-ratio:3/4}
+@media (max-width:860px){.mnav-list a{font-size:clamp(34px,min(11vw,8.2vh),64px)}}
