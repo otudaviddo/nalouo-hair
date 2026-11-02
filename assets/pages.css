@@ -487,3 +487,37 @@ html.menu-on,html.menu-on body{overflow:hidden}
 .mnav-list a{font-size:clamp(46px,6.4vw,104px);line-height:1.06}
 .mnav-fig{height:min(62vh,560px);width:calc(min(62vh,560px)*.75);aspect-ratio:auto;align-self:center}
 @media (max-width:860px){.mnav-list a{font-size:clamp(40px,12vw,64px)}}
+
+/* ---------------- Inspiration affiche « Beauty beyond hair » ---------------- */
+:root{--sand:#E9DFD2;--sand-2:#DCCDBA;--stone:#E8E2D8}
+.hdr.solid{background:rgba(232,226,216,.92)}
+.vis:has(img.prod),.pp-media figure.prod{background:#EFE8DE}
+/* petites capitales espacées, comme sur l'affiche */
+.sc,.state-k,.ft-k,.carte-k,.tx-k{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.32em;font-size:12.5px;font-weight:400}
+.state-k{color:var(--ink-2)}
+@media (max-width:860px){.tx-k{font-size:12.5px;letter-spacing:.32em;color:rgba(242,238,231,.7)}}
+/* section campagne : sable, lumière de fenêtre, monogramme en transparence */
+.camp{position:relative;overflow:hidden;background:linear-gradient(160deg,#F1E8DC 0%,var(--sand) 45%,var(--sand-2) 100%);padding-block:clamp(90px,11vw,170px);isolation:isolate}
+.camp-light{position:absolute;inset:-20%;z-index:-1;pointer-events:none;background:
+  linear-gradient(118deg,transparent 30%,rgba(255,250,242,.55) 36%,transparent 44%),
+  linear-gradient(118deg,transparent 50%,rgba(255,250,242,.4) 55%,transparent 61%),
+  linear-gradient(118deg,transparent 66%,rgba(255,250,242,.3) 70%,transparent 75%);filter:blur(18px)}
+.camp-mono{position:absolute;z-index:-1;right:-4vw;top:50%;translate:0 -50%;font-family:var(--f-display);font-size:clamp(300px,46vw,760px);line-height:.8;letter-spacing:-.12em;color:rgba(255,252,246,.55);pointer-events:none;user-select:none;white-space:nowrap}
+.camp-mono span+span{position:relative;top:.18em;left:-.02em}
+.camp-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,7vw,120px);align-items:center}
+.camp-img{margin:0;box-shadow:0 40px 80px -40px rgba(60,40,20,.45)}
+.camp-img img{display:block;width:100%;height:auto;filter:none}
+.camp-copy{display:grid;justify-items:start;gap:22px;max-width:520px}
+.camp-copy .sc{color:#6E5F4E}
+.camp-h{font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.22em;font-size:clamp(30px,3.6vw,58px);line-height:1.15;color:var(--ink)}
+.camp-h em{font-style:italic;text-transform:lowercase;letter-spacing:.04em}
+.camp-rule{width:120px;height:1px;background:rgba(28,25,21,.45)}
+.camp blockquote{margin:6px 0 0;font-family:var(--f-display);font-size:clamp(22px,2vw,30px);line-height:1.35;color:var(--ink);max-width:none}
+.camp blockquote em{font-style:italic;color:#8A6E45}
+.camp-who{font-size:14.5px;color:#6E5F4E;margin:0}
+@media (max-width:860px){.camp-in{grid-template-columns:1fr}.camp-mono{top:auto;bottom:-6%;translate:none;font-size:80vw}}
+/* pied de page : le bloc logo de l'affiche */
+.lockup{display:grid;justify-items:center;gap:14px;padding-block:clamp(56px,8vw,110px) clamp(40px,5vw,70px);color:var(--paper);text-align:center}
+.lk-mark{font-size:clamp(64px,8vw,120px);width:auto;letter-spacing:-.12em}
+.lk-name{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.34em;font-size:clamp(22px,2.6vw,40px);margin-right:-.34em}
+.lk-tag{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.32em;font-size:11.5px;color:rgba(242,238,231,.65);margin-right:-.32em}
