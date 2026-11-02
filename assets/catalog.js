@@ -28,7 +28,7 @@ const P=[
  {id:"viet-couleurs",slug:"vietnamiennes-couleurs",cat:"bundles",catL:"Extensions raw hair",name:"Vietnamiennes, autres couleurs",sub:"Brun, auburn… · 100 g",img:"img/couleur-model.webp",img2:"img/brown-wavy.webp",pos:"50% 30%",zoom:"40% 60%",origin:"Vietnam",
   desc:"Nos lisses vietnamiennes dans une gamme de couleurs de base : brun, auburn et d'autres teintes riches.",
   prices:{_:tbl(L12,[140,145,155,165,175,185,195,200,210,230,240,250])}},
- {id:"lace",slug:"closures-frontales-hd",cat:"lace",catL:"Closures & frontales",name:"Closures & frontales HD",sub:"HD film lace",img:"img/lace-main.webp",img2:"img/closure-model.webp",pos:"40% 45%",zoom:"30% 38%",glyph:"L",tone:"#3a2a22",optLabel:"Format",
+ {id:"lace",slug:"closures-frontales-hd",cat:"lace",catL:"Closures & frontales",name:"Closures & frontales HD",sub:"HD film lace",img:"img/lace-main.webp",pos:"40% 45%",zoom:"30% 38%",glyph:"L",tone:"#3a2a22",optLabel:"Format",
   desc:"Dentelle HD ultra-fine et respirante, invisible sur tous les tons de peau, pour une ligne de cheveux impeccable.",
   specs:[["Dentelle","HD film lace"],["Closures","2×6 · 5×5 · 6×6"],["Frontales","13×4 · 13×6"],["Rendu","Invisible sur tous les tons de peau"]],
   prices:Object.fromEntries(Object.entries(LACE).map(([k,v])=>[k,tbl(L26,v)]))},
