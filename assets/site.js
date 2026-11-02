@@ -29,6 +29,17 @@ if(mnav&&mb){
   $$('.mnav-list a').forEach(a=>{const show=()=>{if(fig&&a.dataset.img&&!fig.src.endsWith(a.dataset.img)){fig.classList.remove('sw');void fig.offsetWidth;fig.src=a.dataset.img;fig.style.objectPosition=a.dataset.pos||'50% 30%';fig.classList.add('sw')}};a.addEventListener('mouseenter',show);a.addEventListener('focus',show)});
 }
 addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+/* menu trop haut pour l'écran : la liste défile doucement en suivant la souris */
+const msc=$('.mnav-scroll');
+if(msc){
+  const edge=()=>{const ov=msc.scrollHeight>msc.clientHeight+2;msc.classList.toggle('ov',ov);msc.classList.toggle('top',ov&&msc.scrollTop<4);msc.classList.toggle('end',ov&&msc.scrollTop>msc.scrollHeight-msc.clientHeight-4)};
+  msc.addEventListener('scroll',edge,{passive:true});addEventListener('resize',edge);
+  if(mb)mb.addEventListener('click',()=>requestAnimationFrame(()=>{msc.scrollTop=0;edge()}));
+  if(matchMedia('(hover:hover)').matches){let tgt=0,raf=0;
+    const loop=()=>{const d=tgt-msc.scrollTop;if(Math.abs(d)<.5){raf=0;return}msc.scrollTop+=d*.14;raf=requestAnimationFrame(loop)};
+    msc.closest('.mnav').addEventListener('mousemove',e=>{const max=msc.scrollHeight-msc.clientHeight;if(max<=0)return;const r=msc.getBoundingClientRect();
+      const p=Math.min(1,Math.max(0,(e.clientY-r.top-r.height*.2)/(r.height*.6)));tgt=p*max;if(!raf)raf=requestAnimationFrame(loop)});}
+}
 
 /* ---------- apparitions au défilement (une fois, rien de caché sans JS) ---------- */
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){
