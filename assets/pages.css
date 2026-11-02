@@ -468,3 +468,10 @@ html.menu-on,html.menu-on body{overflow:hidden}
 .vis.has-alt img.alt{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:0;transition:opacity .8s var(--ease),transform 1.1s var(--ease);filter:saturate(.88) contrast(1.06) sepia(.07) brightness(.98)}
 @media (hover:hover){.card:hover .vis.has-alt img.alt{opacity:1}}
 .vis img.prod.cover,.pp-media figure.big.prod img.cover{object-fit:cover;padding:0}
+
+/* bande showroom de l'accueil : la photo entière, sans recadrage */
+.visitband{height:auto;min-height:0;overflow:visible;background:var(--stone);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,110px);align-items:center;padding:clamp(80px,10vw,150px) var(--gutter);max-width:1440px;margin-inline:auto}
+.vb-img{margin:0;grid-column:2;grid-row:1}
+.vb-img img{width:100%;height:auto;display:block}
+.visitband .vb-card{position:static;grid-column:1;grid-row:1;max-width:460px;background:none;padding:0}
+@media (max-width:860px){.visitband{grid-template-columns:1fr}.vb-img,.visitband .vb-card{grid-column:1;grid-row:auto}}

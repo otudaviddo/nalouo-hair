@@ -16,7 +16,7 @@ const P=[
  {id:"ind-ondulee",slug:"indiennes-ondulees",cat:"bundles",catL:"Extensions raw hair",name:"Indiennes ondulées",sub:"Temples indiens · 100 g",img:"img/ondulee-bundle.webp",img2:"img/wavy-profile.webp",prod:true,pos:"50% 50%",zoom:"50% 45%",origin:"Inde",
   desc:"Sélectionnées directement dans les temples indiens, naturellement épaisses et pleines. Colorables jusqu'au blond 613.",
   prices:{_:tbl(L30,BUNDLE["Ondulée"])}},
- {id:"ind-bouclee",slug:"indiennes-bouclees",cat:"bundles",catL:"Extensions raw hair",name:"Indiennes bouclées",sub:"Temples indiens · 100 g",img:"img/bouclee-bundles.webp",img2:"img/hero-curly.webp",prod:true,pos:"50% 50%",zoom:"50% 50%",origin:"Inde",
+ {id:"ind-bouclee",slug:"indiennes-bouclees",cat:"bundles",catL:"Extensions raw hair",name:"Indiennes bouclées",sub:"Temples indiens · 100 g",img:"img/bouclee-bundles.webp",img2:"img/bouclee-model.webp",prod:true,pos:"50% 50%",zoom:"50% 50%",origin:"Inde",
   desc:"Boucles brutes, épaisses et pleines, qui restent douces et sans nœuds. Pour un volume luxueux et durable.",
   prices:{_:tbl(L30,BUNDLE["Bouclée"])}},
  {id:"viet-blond",slug:"vietnamiennes-blondes",cat:"bundles",catL:"Extensions raw hair",name:"Vietnamiennes blondes",sub:"Lisses · blond · 100 g",img:"img/blonde.webp",pos:"38% 30%",origin:"Vietnam",
@@ -44,7 +44,7 @@ const P=[
   desc:"Montée avec 2 bundles (3 dès 18″) et une closure ou une frontale. Couleur naturelle, ou jet black sans supplément."},
  {id:"wig-ondulee",slug:"perruque-indienne-ondulee",cat:"wigs",catL:"Perruques",name:"Perruque indienne ondulée",sub:"Sur mesure · 15–25 jours",img:"img/wavy-front.webp",pos:"50% 30%",zoom:"45% 70%",range:[370,810],quote:true,
   desc:"Montée avec 2 bundles (3 dès 18″) et une closure ou une frontale. Couleur naturelle, ou jet black sans supplément."},
- {id:"wig-bouclee",slug:"perruque-indienne-bouclee",cat:"wigs",catL:"Perruques",name:"Perruque indienne bouclée",sub:"Sur mesure · 15–25 jours",img:"img/hero-curly.webp",pos:"52% 30%",zoom:"60% 70%",range:[390,840],quote:true,
+ {id:"wig-bouclee",slug:"perruque-indienne-bouclee",cat:"wigs",catL:"Perruques",name:"Perruque indienne bouclée",sub:"Sur mesure · 15–25 jours",img:"img/bouclee-model.webp",pos:"50% 22%",zoom:"72% 55%",range:[390,840],quote:true,
   desc:"Montée avec 2 bundles (3 dès 18″) et une closure ou une frontale. Couleur naturelle, ou jet black sans supplément."}
 ];
 g.NH={P,L12,L12_28,L26,BUNDLE_SPECS,TARIFS};
