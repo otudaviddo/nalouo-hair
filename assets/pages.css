@@ -384,3 +384,87 @@ html.menu-on,html.menu-on body{overflow:hidden}
 /* les vieilles étiquettes « machine à écrire » ne sont plus utilisées */
 .vis .tag{display:none}
 .mnav>.wrap{width:100%;box-sizing:border-box}
+
+/* ---------------- Tarifs : la carte ---------------- */
+.tf-head{position:relative;background:#8f8f91;color:var(--ink);min-height:min(78svh,820px);display:grid;align-items:end;overflow:hidden}
+.tf-ph{position:absolute;inset:0;margin:0}
+.tf-ph img{width:100%;height:100%;object-fit:cover;object-position:70% 30%}
+.tf-in{position:relative;z-index:1;width:100%;padding-top:140px;padding-bottom:clamp(40px,6vw,88px)}
+.tf-in .crumbs{color:rgba(28,25,21,.7)}
+.tf-in .crumbs a{color:inherit}
+.tf-head h1{font-size:clamp(76px,11vw,184px);line-height:.9;letter-spacing:-.035em;margin:18px 0 22px}
+.tf-head h1 em{font-style:italic}
+.tf-head .lede{max-width:38ch;color:rgba(28,25,21,.82);font-size:17px}
+.carte{background:var(--night);color:var(--paper);padding-block:clamp(90px,11vw,170px)}
+.carte-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,6vw,110px);align-items:start}
+.carte-grid+.carte-grid{margin-top:clamp(100px,12vw,190px)}
+.carte-side{position:sticky;top:110px;display:grid;gap:18px;align-content:start}
+.carte-side h2{font-size:clamp(44px,5vw,80px);line-height:.98;letter-spacing:-.03em}
+.carte-side h2 em{font-style:italic}
+.carte-side p{max-width:36ch;color:rgba(242,238,231,.7);font-size:16px;margin:0}
+.carte-k{display:flex;align-items:baseline;gap:14px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--champagne)!important}
+.carte-k span{font-family:var(--f-display);font-size:22px;letter-spacing:0;text-transform:none}
+.carte-fine{font-size:14px!important;color:rgba(242,238,231,.55)!important}
+.carte .lnk{color:var(--paper)}
+.ct{width:100%;border-collapse:collapse;font-variant-numeric:lining-nums tabular-nums}
+.ct th,.ct td{padding:0;text-align:right;font-weight:400}
+.ct thead th{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,238,231,.6);padding-bottom:22px;vertical-align:bottom;line-height:1.3}
+.ct thead th:first-child{text-align:left}
+.ct thead th small{display:block;font-size:11px;letter-spacing:.08em;color:rgba(242,238,231,.4);margin-top:2px}
+.ct thead a{color:var(--paper);text-decoration:none;font-family:var(--f-display);font-size:clamp(24px,2.2vw,34px);letter-spacing:-.01em;text-transform:none;border-bottom:1px solid transparent;transition:border-color .3s}
+.ct thead a:hover{border-color:var(--champagne)}
+.ct.lace thead th,.carte-tbl.wide thead th{font-family:var(--f-display);font-size:clamp(22px,2vw,30px);letter-spacing:-.01em;text-transform:none;color:var(--paper)}
+.carte-tbl.wide thead th:first-child{font-family:var(--f-body);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,238,231,.6)}
+.carte-tbl.wide thead th small{font-family:var(--f-body);text-transform:uppercase}
+.ct tbody tr{border-top:1px solid rgba(242,238,231,.12);transition:background .35s var(--ease)}
+.ct tbody tr:last-child{border-bottom:1px solid rgba(242,238,231,.12)}
+.ct tbody th{text-align:left;font-family:var(--f-display);font-size:clamp(22px,2vw,28px);padding:16px 0;white-space:nowrap}
+.ct tbody th small{font-family:var(--f-body);font-size:12px;color:rgba(242,238,231,.45);margin-left:12px;letter-spacing:.04em}
+.ct td{font-family:var(--f-display);font-size:clamp(22px,2vw,28px);color:rgba(242,238,231,.88);transition:color .3s}
+.ct tbody tr:hover{background:rgba(242,238,231,.04)}
+.ct td.hl,.ct th.hl{color:var(--champagne)}
+.ct thead th.hl a{border-color:var(--champagne)}
+.carte-x{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,6vw,110px);padding-block:clamp(90px,11vw,170px)}
+.carte-x .carte-side p{color:var(--ink-2)}
+.carte-x .carte-k{color:#8a7350!important}
+.xlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.xlist li{border-bottom:1px solid var(--line)}
+.xlist a{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:24px 0;text-decoration:none;color:var(--ink);transition:padding .5s var(--ease)}
+.xlist a:hover{padding-left:12px}
+.xn{font-family:var(--f-display);font-size:clamp(24px,2.4vw,36px);line-height:1.1}
+.xn small{display:block;font-family:var(--f-body);font-size:13px;color:var(--ink-3);margin-top:4px;letter-spacing:.04em}
+.xp{font-family:var(--f-display);font-size:clamp(20px,1.8vw,26px);white-space:nowrap;font-variant-numeric:lining-nums}
+.carte-end{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;padding-bottom:clamp(90px,10vw,150px);border-top:1px solid var(--line);padding-top:40px}
+.carte-end p{color:var(--ink-3);font-size:15px;max-width:60ch;margin:0}
+.tarif-lnk{margin-top:10px;font-size:14px;align-self:flex-start}
+@media (max-width:900px){
+  .carte-grid,.carte-x{grid-template-columns:1fr;gap:40px}
+  .carte-side{position:static}
+  .tf-head{min-height:0;display:block;background:var(--stone)}
+  .tf-ph{position:relative;aspect-ratio:4/3}
+  .tf-ph img{object-position:78% 30%}
+  .tf-in{padding-top:28px}
+}
+@media (max-width:520px){
+  .ct thead th{font-size:11px;letter-spacing:.08em;padding-bottom:16px}
+  .ct thead a{font-size:21px}
+  .carte-tbl.wide thead th{font-size:17px}
+  .carte-tbl.wide thead th:first-child{font-size:11px}
+  .carte-tbl.wide thead th small{font-size:9px;letter-spacing:.04em}
+  .ct tbody th{font-size:20px;padding:13px 0}
+  .ct tbody th small{display:block;margin:0;font-size:11px}
+  .ct td{font-size:19px}
+  .carte-tbl.wide td{font-size:17px}
+  .xlist a{padding:20px 0}
+}
+
+/* photos produit sur fond blanc : le blanc se fond dans le papier */
+.vis img.prod{object-fit:contain;padding:4%;mix-blend-mode:multiply;filter:none}
+.vis:has(img.prod){background:#ECE8E1}
+.pp-media figure.prod{background:#ECE8E1}
+.pp-media figure.prod img{mix-blend-mode:multiply}
+.pp-media figure.big.prod img{object-fit:contain;padding:6%}
+/* survol : la texture portée apparaît */
+.vis.has-alt img.alt{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:0;transition:opacity .8s var(--ease),transform 1.1s var(--ease);filter:saturate(.88) contrast(1.06) sepia(.07) brightness(.98)}
+@media (hover:hover){.card:hover .vis.has-alt img.alt{opacity:1}}
+.vis img.prod.cover,.pp-media figure.big.prod img.cover{object-fit:cover;padding:0}
