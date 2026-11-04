@@ -11,7 +11,7 @@ const TX={
  fr:{loc:'fr-BE',home:'Accueil',crumbs:"Fil d'Ariane",copied:'Numéro copié',selected:'Numéro sélectionné',prod:n=>`${n} produit${n>1?'s':''}`,
    notFoundT:'Produit introuvable',notFoundP:'Ce lien ne correspond à aucun produit de la collection.',seeColl:'Voir la collection',
    lace:'Lace',len:'Longueur',cap:'Taille de bonnet',byConfig:'Prix selon configuration',carte:'La carte des tarifs',
-   quoteBtn:'Demander mon devis sur WhatsApp',wigNote:'Confection en 15 à 25 jours ouvrés. Acompte et règlement au showroom.',
+   quoteBtn:'Prendre rendez-vous',contact:'Nous contacter',yourWig:'Votre perruque',onsiteK:'Prix et stock',onsiteH:'Disponibles sur place',onsiteP:'Prenez rendez-vous au showroom ou contactez-nous : nous vous confirmons le prix exact, le stock et le délai.',wigNote:'Confection en 15 à 25 jours ouvrés. Acompte et règlement au showroom.',
    per:c=>`Prix indicatif par ${c==='bundles'?'bundle de 100 g':'pièce'}`,avail:'Demander la disponibilité',
    bundlesNote:'Pour une pose complète, comptez en général 3 bundles. ',payNote:'Règlement sur place, au showroom.',
    origin:'Origine',wigSpecs:[["Confection","15 à 25 jours ouvrés"],["Montage","2 bundles, 3 dès 18″"],["Lace","Closure ou frontale HD"],["Couleur","Naturelle ou jet black"]],
@@ -19,14 +19,14 @@ const TX={
    worn:'Portées',wornAlt:n=>`${n}, portées`,detail:'Détail de la mèche',more:'Vous aimerez aussi',
    cats:{bundles:'Extensions raw hair',lace:'Closures & frontales',clips:'Clips & ponytails',wigs:'Perruques'},
    opt:{},
-   waWig:(n,l,len,cap)=>`Bonjour Nalouo Hair, je souhaite un devis pour une ${n.toLowerCase()} : ${l}, ${len}", bonnet ${cap}.`,
+   waWig:(n,l,len,cap)=>`Bonjour Nalouo Hair, je souhaite prendre rendez-vous pour une ${n.toLowerCase()} : ${l}, ${len}", bonnet ${cap}. Pouvez-vous me confirmer le prix et le stock ?`,
    waStock:(n,len)=>`Bonjour Nalouo Hair, avez-vous en stock : ${n}, ${len}" ? Je souhaiterais passer au showroom.`,
    cfgOut:d=>`Perruque ${d.tex.toLowerCase()}, ${d.lace.toLowerCase()}, ${d.len}″ (${Math.round(d.len*2.54)} cm), bonnet ${d.cap}, ${d.col.toLowerCase()}.`,
-   waCfg:d=>`Bonjour Nalouo Hair, je souhaite un devis pour une perruque ${d.tex.toLowerCase()} : ${d.lace}, ${d.len}", bonnet ${d.cap}, ${d.col.toLowerCase()}.`},
+   waCfg:d=>`Bonjour Nalouo Hair, je souhaite prendre rendez-vous pour une perruque ${d.tex.toLowerCase()} : ${d.lace}, ${d.len}", bonnet ${d.cap}, ${d.col.toLowerCase()}. Pouvez-vous me confirmer le prix et le stock ?`},
  en:{loc:'en-IE',home:'Home',crumbs:'Breadcrumb',copied:'Number copied',selected:'Number selected',prod:n=>`${n} product${n>1?'s':''}`,
    notFoundT:'Product not found',notFoundP:'This link does not match any product in the collection.',seeColl:'View the collection',
    lace:'Lace',len:'Length',cap:'Cap size',byConfig:'Price depends on your choices',carte:'See the price list',
-   quoteBtn:'Request a quote on WhatsApp',wigNote:'Made in 15 to 25 working days. Deposit and payment at the showroom.',
+   quoteBtn:'Book an appointment',contact:'Contact us',yourWig:'Your wig',onsiteK:'Price and stock',onsiteH:'Available in store',onsiteP:'Book an appointment at the showroom or contact us: we confirm the exact price, stock and making time.',wigNote:'Made in 15 to 25 working days. Deposit and payment at the showroom.',
    per:c=>`Guide price per ${c==='bundles'?'100 g bundle':'piece'}`,avail:'Check availability',
    bundlesNote:'A full install usually takes 3 bundles. ',payNote:'Payment in person, at the showroom.',
    origin:'Origin',wigSpecs:[["Making","15 to 25 working days"],["Construction","2 bundles, 3 from 18″"],["Lace","HD closure or frontal"],["Colour","Natural or jet black"]],
@@ -34,14 +34,14 @@ const TX={
    worn:'Worn',wornAlt:n=>`${n}, worn`,detail:'Hair detail',more:'You may also like',
    cats:{bundles:'Raw hair extensions',lace:'Closures & frontals',clips:'Clips & ponytails',wigs:'Wigs'},
    opt:{'Lisse':'Straight','Ondulée':'Wavy','Bouclée':'Curly','Closure 2×6':'Closure 2×6','Closure 5×5':'Closure 5×5','Closure 6×6':'Closure 6×6','Frontale 13×4':'Frontal 13×4','Frontale 13×6':'Frontal 13×6'},
-   waWig:(n,l,len,cap)=>`Hello Nalouo Hair, I would like a quote for a ${n} : ${l}, ${len}", cap ${cap}.`,
+   waWig:(n,l,len,cap)=>`Hello Nalouo Hair, I would like to book an appointment for a ${n}: ${l}, ${len}", cap ${cap}. Could you confirm the price and stock?`,
    waStock:(n,len)=>`Hello Nalouo Hair, do you have in stock: ${n}, ${len}"? I would like to visit the showroom.`,
    cfgOut:d=>`${d.tex} wig, ${d.lace.toLowerCase()}, ${d.len}″ (${Math.round(d.len*2.54)} cm), cap ${d.cap}, ${d.col.toLowerCase()}.`,
-   waCfg:d=>`Hello Nalouo Hair, I would like a quote for a ${d.tex} wig: ${d.lace}, ${d.len}", cap ${d.cap}, ${d.col.toLowerCase()}.`},
+   waCfg:d=>`Hello Nalouo Hair, I would like to book an appointment for a ${d.tex} wig: ${d.lace}, ${d.len}", cap ${d.cap}, ${d.col.toLowerCase()}. Could you confirm the price and stock?`},
  nl:{loc:'nl-BE',home:'Home',crumbs:'Kruimelpad',copied:'Nummer gekopieerd',selected:'Nummer geselecteerd',prod:n=>`${n} product${n>1?'en':''}`,
    notFoundT:'Product niet gevonden',notFoundP:'Deze link hoort bij geen enkel product uit de collectie.',seeColl:'Bekijk de collectie',
    lace:'Lace',len:'Lengte',cap:'Capmaat',byConfig:'Prijs volgens uw keuzes',carte:'Bekijk de prijslijst',
-   quoteBtn:'Offerte aanvragen via WhatsApp',wigNote:'Gemaakt in 15 tot 25 werkdagen. Voorschot en betaling in de showroom.',
+   quoteBtn:'Afspraak maken',contact:'Contacteer ons',yourWig:'Uw pruik',onsiteK:'Prijs en voorraad',onsiteH:'Ter plaatse beschikbaar',onsiteP:'Maak een afspraak in de showroom of neem contact met ons op: we bevestigen de precieze prijs, de voorraad en de levertermijn.',wigNote:'Gemaakt in 15 tot 25 werkdagen. Voorschot en betaling in de showroom.',
    per:c=>`Richtprijs per ${c==='bundles'?'bundel van 100 g':'stuk'}`,avail:'Beschikbaarheid vragen',
    bundlesNote:'Voor een volledige plaatsing rekent u meestal 3 bundels. ',payNote:'Betaling ter plaatse, in de showroom.',
    origin:'Herkomst',wigSpecs:[["Vervaardiging","15 tot 25 werkdagen"],["Opbouw","2 bundels, 3 vanaf 18″"],["Lace","HD-closure of frontal"],["Kleur","Natuurlijk of jet black"]],
@@ -49,10 +49,10 @@ const TX={
    worn:'Gedragen',wornAlt:n=>`${n}, gedragen`,detail:'Detail van het haar',more:'Misschien ook iets voor u',
    cats:{bundles:'Raw hair extensions',lace:'Closures & frontals',clips:'Clips & ponytails',wigs:'Pruiken'},
    opt:{'Lisse':'Steil','Ondulée':'Golvend','Bouclée':'Krullend','Frontale 13×4':'Frontal 13×4','Frontale 13×6':'Frontal 13×6'},
-   waWig:(n,l,len,cap)=>`Hallo Nalouo Hair, ik wil graag een offerte voor een ${n.toLowerCase()}: ${l}, ${len}", capmaat ${cap}.`,
+   waWig:(n,l,len,cap)=>`Hallo Nalouo Hair, ik wil graag een afspraak maken voor een ${n.toLowerCase()}: ${l}, ${len}", capmaat ${cap}. Kunt u de prijs en voorraad bevestigen?`,
    waStock:(n,len)=>`Hallo Nalouo Hair, hebben jullie in voorraad: ${n}, ${len}"? Ik kom graag langs in de showroom.`,
    cfgOut:d=>`Pruik ${d.tex.toLowerCase()}, ${d.lace.toLowerCase()}, ${d.len}″ (${Math.round(d.len*2.54)} cm), capmaat ${d.cap}, ${d.col.toLowerCase()}.`,
-   waCfg:d=>`Hallo Nalouo Hair, ik wil graag een offerte voor een pruik ${d.tex.toLowerCase()}: ${d.lace}, ${d.len}", capmaat ${d.cap}, ${d.col.toLowerCase()}.`}
+   waCfg:d=>`Hallo Nalouo Hair, ik wil graag een afspraak maken voor een pruik ${d.tex.toLowerCase()}: ${d.lace}, ${d.len}", capmaat ${d.cap}, ${d.col.toLowerCase()}. Kunt u de prijs en voorraad bevestigen?`}
 }[LG]||null;
 const T=TX||{};
 const optL=v=>T.opt&&T.opt[v]||v;
@@ -152,8 +152,8 @@ if(page==='produit'){
     let opts='',price='',cta='',note='';
     if(p.quote){
       opts=pills(T.lace,'lace',['Closure 2×6','Closure 5×5','Closure 6×6','Frontale 13×4','Frontale 13×6'],st.lace,optL)+pills(T.len,'wlen',L12_28.map(String),st.wlen,v=>v+'″')+pills(T.cap,'cap',['S','M','L'],st.cap);
-      price=`<div class="total"><span class="fine">${T.byConfig}</span><strong>${eur(p.range[0])} – ${eur(p.range[1])}</strong><a class="lnk tarif-lnk" href="tarifs.html">${T.carte}</a></div>`;
-      cta=`<a class="btn dark" target="_blank" rel="noopener" href="${wa(T.waWig(p.name,optL(st.lace),st.wlen,st.cap))}">${T.quoteBtn}</a>`;
+      price=`<div class="onsite pp-onsite"><p class="onsite-k">${T.onsiteK}</p><p class="onsite-h">${T.onsiteH}</p><p>${T.onsiteP}</p></div>`;
+      cta=`<div class="ctas onsite-cta"><a class="btn dark" target="_blank" rel="noopener" href="${wa(T.waWig(p.name,optL(st.lace),st.wlen,st.cap))}">${T.quoteBtn}</a><a class="btn line" href="tel:+32493377682">${T.contact}</a></div>`;
       note=T.wigNote;
     }else{
       const keys=Object.keys(p.prices);
@@ -196,9 +196,8 @@ if(page==='produit'){
 /* ---------- Perruques : configurateur ---------- */
 if(page==='perruques'){
   const f=$('#wigForm'),out=$('#wigOut'),go=$('#wigGo');
-  const R=[[350,780],[370,810],[390,840]];
   const upd=()=>{const d=Object.fromEntries(new FormData(f));const i=[...f.querySelectorAll('[name=tex]')].findIndex(x=>x.checked);
-    out.innerHTML=`<p>${T.cfgOut(d)}</p><strong>${eur(R[i][0])} – ${eur(R[i][1])}</strong>`;
+    out.innerHTML=`<p class="sum-k">${T.yourWig}</p><p>${T.cfgOut(d)}</p>`;
     go.href=wa(T.waCfg(d))};
   f.addEventListener('change',upd);upd();
 }

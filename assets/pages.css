@@ -612,3 +612,36 @@ main:focus{outline:none}
 .camp-who{color:#5A4C3D}
 .ph-show::after{background:linear-gradient(180deg,rgba(12,11,10,.62),rgba(12,11,10,.1) 22%,rgba(12,11,10,.18) 40%,rgba(12,11,10,.6) 62%,rgba(12,11,10,.84))}
 .coll-bar .chip{min-width:32px}
+
+/* Lisibilité des petites capitales espacées (nov. 2026) : le Bodoni est trop fin à cette taille, on passe au Jost medium */
+.sc,.state-k,.ft-k,.carte-k,.tx-k,.lk-tag,.onsite-k,.sum-k{font-family:var(--f-body);font-weight:500;font-size:13px;letter-spacing:.26em;text-transform:uppercase}
+.state-k{color:var(--ink)}
+.camp-copy .sc{color:#3E3329}
+.carte-k span{font-weight:400}
+.lk-tag{font-size:12px;color:rgba(242,238,231,.82)}
+.tx-k{color:rgba(242,238,231,.88)!important}
+.ft-k{opacity:1}
+
+/* Perruques : prix et stock sur place */
+.onsite{display:grid;gap:6px;padding:22px 24px;border:1px solid rgba(242,238,231,.22);background:rgba(242,238,231,.05)}
+.onsite-k{color:var(--champagne);margin:0}
+.config .summary .onsite-h,.onsite-h{font-family:var(--f-display);font-size:clamp(26px,2.4vw,34px);line-height:1.1;margin:0;color:var(--paper)}
+.config .summary .onsite p:not(.onsite-k):not(.onsite-h){color:rgba(242,238,231,.85);font-size:15.5px;margin:4px 0 0}
+.onsite-cta{justify-content:flex-start;gap:12px;flex-wrap:wrap;margin:0}
+.sum-k{color:rgba(242,238,231,.7);margin:0 0 6px}
+.config .summary #wigOut p:not(.sum-k){color:var(--paper);font-size:16px}
+.pp-onsite{border-color:var(--line);background:rgba(255,255,255,.35);margin-top:6px}
+.pp-onsite .onsite-k{color:#6B5433}
+.pp-onsite .onsite-h{color:var(--ink)}
+.pp-onsite p:not(.onsite-k):not(.onsite-h){color:var(--ink-2);font-size:15.5px;margin:2px 0 0}
+.pp-info .onsite-cta{margin-top:16px}
+
+/* À propos : chiffres clés */
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:clamp(70px,9vw,130px)}
+.figs div{padding:clamp(26px,3vw,44px) clamp(14px,2vw,28px);display:grid;gap:10px;align-content:start}
+.figs div+div{border-left:1px solid var(--line)}
+.figs b{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,4.6vw,72px);line-height:1;letter-spacing:-.02em}
+.figs span{color:var(--ink-2);font-size:15px;line-height:1.4}
+.ab-intro{padding-bottom:clamp(60px,7vw,100px)}
+@media (max-width:760px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.figs div:nth-child(3){border-left:0}.figs div:nth-child(n+3){border-top:1px solid var(--line)}}
+.h-acc{padding-top:.18em}
