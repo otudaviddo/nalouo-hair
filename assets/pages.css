@@ -645,3 +645,6 @@ main:focus{outline:none}
 .ab-intro{padding-bottom:clamp(60px,7vw,100px)}
 @media (max-width:760px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.figs div:nth-child(3){border-left:0}.figs div:nth-child(n+3){border-top:1px solid var(--line)}}
 .h-acc{padding-top:.18em}
+
+/* Menu sans photo (4 nov.) */
+.mnav-body{grid-template-columns:1fr}
