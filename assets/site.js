@@ -201,4 +201,18 @@ if(page==='perruques'){
     go.href=wa(T.waCfg(d))};
   f.addEventListener('change',upd);upd();
 }
+/* ---------- Galerie : filtres et visionneuse ---------- */
+if(page==='galerie'){
+  const items=$$('.g-it'),cnt=$('#gcount'),lb=$('#lb'),li=$('#lbImg'),lc=$('#lbCap');let cur=0,opener=null;
+  const N={fr:n=>`${n} photo${n>1?'s':''}`,en:n=>`${n} photo${n>1?'s':''}`,nl:n=>`${n} foto${n>1?"'s":''}`}[LG]||(n=>n);
+  const vis=()=>items.filter(x=>!x.hidden);
+  const set=f=>{$$('#gchips .chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.f===f)));items.forEach(x=>x.hidden=!(f==='all'||x.dataset.cat===f));cnt.textContent=N(vis().length)};
+  $$('#gchips .chip').forEach(c=>c.onclick=()=>set(c.dataset.f));set('all');
+  const show=i=>{const v=vis();cur=(i+v.length)%v.length;const b=v[cur].querySelector('.g-btn');li.src=b.dataset.full;li.alt=b.querySelector('img').alt;lc.textContent=b.dataset.cap};
+  items.forEach(x=>x.querySelector('.g-btn').onclick=e=>{opener=e.currentTarget;show(vis().indexOf(x));if(lb.showModal)lb.showModal();else lb.setAttribute('open','')});
+  $('#lbX').onclick=()=>lb.close();$('#lbP').onclick=()=>show(cur-1);$('#lbN').onclick=()=>show(cur+1);
+  lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+  lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+  lb.addEventListener('close',()=>{if(opener)opener.focus()});
+}
 })();
