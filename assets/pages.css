@@ -521,3 +521,94 @@ html.menu-on,html.menu-on body{overflow:hidden}
 .lk-mark{font-size:clamp(64px,8vw,120px);width:auto;letter-spacing:-.12em}
 .lk-name{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.34em;font-size:clamp(22px,2.6vw,40px);margin-right:-.34em}
 .lk-tag{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.32em;font-size:11.5px;color:rgba(242,238,231,.65);margin-right:-.32em}
+
+/* ===== Revue accessibilité et langues (nov. 2026) ===== */
+/* lien d'évitement */
+.skip{position:fixed;left:12px;top:-80px;z-index:200;background:var(--ink);color:var(--paper);padding:12px 18px;font-size:15px;text-decoration:none;border-radius:2px;transition:top .2s}
+.skip:focus{top:12px}
+main:focus{outline:none}
+/* anneau de focus : brun sur fonds clairs, doré sur fonds sombres, ivoire sur photos */
+:focus-visible{outline-color:#6B5433}
+.pill input:focus-visible+span{outline-color:#6B5433}
+.foot :focus-visible,.carte :focus-visible,.tx :focus-visible,.mnav :focus-visible,.config :focus-visible,.pcard :focus-visible,.camp-dark :focus-visible{outline-color:var(--champagne)}
+.photohead :focus-visible,.maison :focus-visible,.hdr:not(.solid):not(.on-light) :focus-visible{outline-color:var(--paper)}
+/* sélecteur de langue */
+.hdr-act{display:flex;align-items:center;gap:clamp(10px,1.6vw,22px)}
+.lang{display:flex;gap:2px;font-size:12.5px;letter-spacing:.14em}
+.lang a{color:inherit;text-decoration:none;opacity:.72;min-width:28px;min-height:32px;display:inline-grid;place-items:center;padding:0 3px;transition:opacity .25s}
+.lang a:hover{opacity:1}
+.lang a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.mnav-top .lang{justify-self:end;font-size:13px}
+.hdr .lang{display:flex}
+@media (max-width:520px){.hdr .hdr-act .lang{display:none}}
+/* texte sur photos : voiles plus nets */
+.maison::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(180deg,rgba(10,9,8,0),rgba(10,9,8,.5) 55%,rgba(10,9,8,.62));pointer-events:none;z-index:1}
+.maison .mh-word{z-index:2}
+.mh-meta,.maison .mh-meta{color:var(--paper);text-shadow:0 1px 14px rgba(0,0,0,.45);z-index:3}
+.photohead::after{background:linear-gradient(180deg,rgba(12,11,10,.5),rgba(12,11,10,0) 24%,rgba(12,11,10,0) 40%,rgba(12,11,10,.55) 66%,rgba(12,11,10,.8))}
+.photohead .crumbs{color:rgba(242,238,231,.92);text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.photohead .sub{color:rgba(242,238,231,.94);text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.camp-copy .sc{color:#57493A}
+/* fil d'Ariane plus facile à toucher */
+.crumbs{align-items:center}
+.crumbs a{display:inline-flex;align-items:center;min-height:32px;padding-inline:2px}
+/* Tarifs : en-tête en deux colonnes, texte sur fond uni */
+.tf-head{background:var(--stone);min-height:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:stretch;color:var(--ink)}
+.tf-in{padding-top:clamp(120px,14vw,190px);align-self:end;width:auto;margin:0;padding-left:var(--gutter)}
+.tf-in .crumbs{color:var(--ink-3)}
+.tf-in .crumbs a{color:var(--ink-2)}
+.tf-head .lede{color:var(--ink-2)}
+.tf-ph{position:relative;inset:auto;min-height:min(84svh,860px)}
+.tf-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+@media (max-width:860px){
+  .tf-head{grid-template-columns:1fr;display:flex;flex-direction:column-reverse}
+  .tf-ph{min-height:0;aspect-ratio:4/5}
+  .tf-ph img{object-position:50% 25%}
+  .tf-in{padding-top:28px;padding-right:var(--gutter)}
+}
+/* Tarifs : petits libellés lisibles */
+.ct thead th{color:rgba(242,238,231,.78)}
+.ct thead th small{font-size:12px;color:rgba(242,238,231,.72)}
+.ct tbody th small{font-size:12px;color:rgba(242,238,231,.72)}
+@media (max-width:860px){
+  .ct thead th{font-size:12px}
+  .carte-tbl.wide thead th small{font-size:12px;letter-spacing:.02em}
+  .ct tbody th small{font-size:12px}
+}
+/* textes minuscules agrandis */
+.lk-tag{font-size:12.5px;color:rgba(242,238,231,.75)}
+.dot{font-size:clamp(11.5px,1vw,12.5px)}
+.pcard .top b{font-size:13.5px}
+.pcard .mono{font-size:12px}
+/* schémas Perruques : version téléphone plus lisible */
+.laces.ln,.lens.ln{display:none}
+.lens .cm{fill:var(--ink-3)}
+@media (max-width:640px){
+  .laces.lw,.lens.lw{display:none}
+  .laces.ln,.lens.ln{display:block;max-width:440px}
+  .laces.ln text{font-size:14px}
+  .laces.ln .big{font-size:19px}
+  .lens.ln text{font-size:13px}
+}
+/* section des textures plus courte */
+.tx-pics{gap:7vh;padding-block:12vh}
+.tx-pic{width:min(100%,460px)}
+.tx-stick{height:86svh;top:7svh}
+/* Showroom : le logo de l'en-tête ne tombe plus sur l'enseigne */
+.ph-show::after{background:linear-gradient(180deg,rgba(12,11,10,.62),rgba(12,11,10,.1) 22%,rgba(12,11,10,0) 38%,rgba(12,11,10,.55) 66%,rgba(12,11,10,.82))}
+@media (max-width:860px){.photohead::after{background:linear-gradient(180deg,rgba(12,11,10,.6),rgba(12,11,10,0) 22%,rgba(12,11,10,0) 40%,rgba(12,11,10,.6) 64%,rgba(12,11,10,.85))}}
+.crumbs{display:flex;gap:8px;flex-wrap:wrap}
+.tf-head h1{font-size:clamp(64px,8.6vw,156px);line-height:.92;margin:18px 0 clamp(26px,3vw,44px)}
+.carte-x .carte-k{color:#6B5433!important}
+.ct thead th:first-child,.ct thead th:first-child span{font-size:12px}
+.dot{font-size:clamp(12px,1vw,13px)}
+@media (max-width:760px){
+  .grid.ed{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.ed .meta h3{overflow-wrap:break-word;hyphens:auto}
+  .carte-k{flex-wrap:wrap;letter-spacing:.2em;row-gap:4px}
+}
+@media (max-width:760px){.carte-grid{grid-template-columns:minmax(0,1fr)}.carte-tbl.wide{overflow-x:auto}}
+@media (max-width:360px){.ct td{font-size:17px}.ct tbody th{font-size:18px}.carte-tbl.wide thead th{font-size:19px}}
+.camp-who{color:#5A4C3D}
+.ph-show::after{background:linear-gradient(180deg,rgba(12,11,10,.62),rgba(12,11,10,.1) 22%,rgba(12,11,10,.18) 40%,rgba(12,11,10,.6) 62%,rgba(12,11,10,.84))}
+.coll-bar .chip{min-width:32px}
