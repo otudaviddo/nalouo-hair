@@ -201,25 +201,23 @@ if(page==='perruques'){
     go.href=wa(T.waCfg(d))};
   f.addEventListener('change',upd);upd();
 }
-/* ---------- Galerie « Le jour J » : photos dévoilées au défilement ---------- */
+/* ---------- Galerie : défilement horizontal (ordinateur), apparition des photos (téléphone) ---------- */
 if(page==='galerie'){
-  const jj=$('#jj');
-  if(jj&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    jj.classList.add('live');
-    const ph=$$('.jj-ph',jj),im=ph.map(f=>f.querySelector('img')),tx=$$('.jj-t',jj),bar=$('#jjBar'),n=ph.length;
-    const cl=(v,a,b)=>Math.min(b,Math.max(a,v));let last=-1,tick=false;
-    const draw=()=>{tick=false;const r=jj.getBoundingClientRect(),tot=jj.offsetHeight-innerHeight;const p=cl(-r.top/tot,0,1),s=p*(n-.4);
-      let act=0;
-      ph.forEach((f,i)=>{const t=i===0?1:cl((s-i+.7)/.7,0,1);const e=1-Math.pow(1-t,3);
-        if(i>0)f.style.clipPath=`inset(${(1-e)*100}% 0 0 0)`;
-        const nx=i<n-1?cl((s-i-.3)/.7,0,1):0;
-        im[i].style.transform=`scale(${(1.18-.18*e)-.06*nx}) translateY(${(1-e)*6}%)`;
-        im[i].style.filter=`brightness(${1-.45*nx})`;
-        if(t>.5)act=i});
-      bar.style.transform=`scaleX(${p})`;
-      if(act!==last){last=act;tx.forEach((t,i)=>t.classList.toggle('on',i===act))}};
-    const req=()=>{if(!tick){tick=true;requestAnimationFrame(draw)}};
-    addEventListener('scroll',req,{passive:true});addEventListener('resize',req);draw();
+  const hz=$('#hz'),tr=$('#hzTrack');
+  if(hz&&tr){
+    const mq=matchMedia('(min-width:861px)'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const figs=$$('.hz-ph'),ims=figs.map(f=>f.querySelector('img')),chs=$$('.hz-ch'),lab=$('#hzLab'),bar=$('#hzBar'),R=['I','II','III','IV','V'];
+    let max=0,tick=false,on=false,cur=-1;
+    const draw=()=>{tick=false;if(!on)return;const r=hz.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/max)),vw=innerWidth;
+      tr.style.transform=`translate3d(${-p*max}px,0,0)`;bar.style.transform=`scaleX(${p})`;
+      figs.forEach((f,i)=>{const b=f.getBoundingClientRect();if(b.right>-200&&b.left<vw+200){const c=(b.left+b.width/2-vw/2)/vw;ims[i].style.transform=`translate3d(${-c*7}%,0,0)`}});
+      let c=0;chs.forEach((h,i)=>{if(h.getBoundingClientRect().left<vw*.55)c=i});if(c!==cur){cur=c;lab.textContent=R[c]}};
+    const size=()=>{on=mq.matches&&!rm;hz.classList.toggle('live',on);
+      if(on){max=Math.max(0,tr.scrollWidth-innerWidth);hz.style.height=(max+innerHeight)+'px'}else{hz.style.height='';tr.style.transform='';ims.forEach(m=>m.style.transform='')}
+      draw()};
+    addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(draw)}},{passive:true});
+    addEventListener('resize',size);if(mq.addEventListener)mq.addEventListener('change',size);addEventListener('load',size);size();
+    if(!rm&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});figs.forEach(f=>{f.classList.add('rvp');io.observe(f)})}
   }
 }
 })();
