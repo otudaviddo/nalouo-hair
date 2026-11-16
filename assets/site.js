@@ -216,3 +216,18 @@ if(page==='galerie'){
     lb.addEventListener('close',()=>{if(opener)opener.focus()})}
 }
 })();
+
+/* ---------- Téléphone : barre d'actions fixe en bas (tarifs, rendez-vous, itinéraire) ---------- */
+(function(){
+  if(document.querySelector('.mbar'))return;
+  var lg=(document.documentElement.lang||'fr').slice(0,2);
+  var T={fr:['Tarifs','Rendez-vous','Itinéraire','Actions rapides'],en:['Prices','Book','Directions','Quick actions'],nl:['Prijzen','Afspraak','Route','Snelle acties']}[lg]||['Tarifs','Rendez-vous','Itinéraire','Actions rapides'];
+  var wa=document.querySelector('.foot .news a.btn.fill');
+  var maps='https://www.google.com/maps/search/?api=1&query=Avenue+van+Beesen+23+1090+Jette';
+  var I={t:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',w:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1.2-3.6A7.5 7.5 0 1 1 9 18.4z"/></svg>',m:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.6-6-10.5a6 6 0 0 1 12 0C18 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/></svg>'};
+  var n=document.createElement('nav');n.className='mbar';n.setAttribute('aria-label',T[3]);
+  n.innerHTML='<a href="tarifs.html">'+I.t+'<span>'+T[0]+'</span></a>'+
+    '<a class="mbar-main" href="'+(wa?wa.href:'showroom.html')+'" target="_blank" rel="noopener">'+I.w+'<span>'+T[1]+'</span></a>'+
+    '<a href="'+maps+'" target="_blank" rel="noopener">'+I.m+'<span>'+T[2]+'</span></a>';
+  document.body.appendChild(n);document.body.classList.add('has-mbar');
+})();
