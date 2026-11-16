@@ -729,3 +729,20 @@ body[data-page="galerie"] .hdr.solid{background:rgba(21,17,14,.78);color:var(--p
 .lb-prev{left:18px}.lb-next{right:18px}
 .lb :focus-visible{outline:2px solid var(--champagne);outline-offset:3px}
 @media (max-width:640px){.lb figure{padding:70px 8px 90px}.lb-n{top:auto;bottom:20px;translate:none}.lb img{max-height:calc(100dvh - 180px)}}
+
+/* Tarifs : sommaire typographique à la place de la photo (16 nov.) */
+.tf-idx{position:relative;overflow:hidden;background:var(--espresso);color:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(18px,2vw,28px);min-height:min(76svh,780px);padding:clamp(120px,14vw,190px) clamp(28px,4vw,64px) clamp(40px,6vw,88px)}
+.tf-eur{position:absolute;top:-.12em;right:-.06em;font-family:var(--f-display);font-size:clamp(260px,30vw,520px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(180,154,110,.32);pointer-events:none}
+.tf-k{position:relative;margin:0;font-weight:500;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--champagne)}
+.tf-idx ol{position:relative;list-style:none;margin:0;padding:0;border-bottom:1px solid rgba(242,238,231,.16)}
+.tf-idx li a{display:grid;grid-template-columns:3.2em 1fr;grid-template-areas:"n t" "n r";column-gap:8px;row-gap:4px;padding:clamp(16px,1.8vw,24px) 0;border-top:1px solid rgba(242,238,231,.16);color:inherit;text-decoration:none}
+.tf-n{grid-area:n;font-family:var(--f-display);font-size:clamp(18px,1.5vw,22px);color:var(--champagne);padding-top:.35em}
+.tf-t{grid-area:t;font-family:var(--f-display);font-size:clamp(30px,2.8vw,46px);line-height:1.05;letter-spacing:-.02em;transition:transform .5s var(--ease)}
+.tf-r{grid-area:r;font-size:15px;color:rgba(242,238,231,.78)}
+.tf-idx li a:hover .tf-t,.tf-idx li a:focus-visible .tf-t{font-style:italic;transform:translateX(.18em)}
+.tf-idx :focus-visible{outline-color:var(--champagne)}
+.tf-foot{position:relative;margin:0;font-size:14px;color:rgba(242,238,231,.72)}
+@media (max-width:860px){.tf-head{flex-direction:column}.tf-idx{min-height:0;padding-top:48px}.tf-eur{font-size:240px}}
+#bT,#lT,#xT{scroll-margin-top:110px}
+@media (min-width:861px){.tf-idx{margin:96px var(--gutter,40px) clamp(28px,3vw,48px) 0;min-height:0;padding-top:clamp(56px,6vw,90px)}.tf-eur{top:-.08em}}
+@media (max-width:860px){.tf-in{padding-top:110px!important}}
