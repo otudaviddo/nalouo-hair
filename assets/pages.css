@@ -919,3 +919,15 @@ img{border-radius:0!important}
 .card .vis,.pp-media figure,.tf-idx,.qnav a{border-radius:0!important}
 .btn{border-radius:0}
 }
+/* mobile : « Depuis plus de trente ans » sur bande sombre, séparée de la liste (16 nov. 2026) */
+@media (max-width:860px){
+.qnav{padding-bottom:56px}
+.state{background:var(--espresso);color:var(--paper);padding-block:72px 64px;max-width:none;padding-inline:20px;border-bottom:1px solid var(--line-d)}
+.state-h{color:var(--paper)}
+.state-h em{color:var(--champagne)}
+.state-k{color:var(--champagne)}
+.state-row{border-color:var(--line-d)!important}
+.state-row p{color:rgba(242,238,231,.8)!important}
+.state .lnk{color:var(--paper)}
+}
+@media (max-width:860px){.tx-grid.wrap{padding-inline:0!important}.tx-pics{scroll-padding-inline:20px}}
