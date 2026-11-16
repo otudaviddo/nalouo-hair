@@ -919,15 +919,3 @@ img{border-radius:0!important}
 .card .vis,.pp-media figure,.tf-idx,.qnav a{border-radius:0!important}
 .btn{border-radius:0}
 }
-/* mobile : moins de texte, plus d'air (16 nov. 2026) */
-@media (max-width:860px){
-.qnav{padding:52px 20px 48px}
-.qnav a{display:block;padding:7px 0}
-.qnav b{font-size:clamp(30px,9.4vw,40px)}
-.qnav a{white-space:nowrap}
-.qnav a::after{display:inline-block;vertical-align:top;margin:4px 0 0 8px}
-.state{padding-block:64px 60px}
-.state-h{font-size:clamp(26px,7.2vw,32px)!important;line-height:1.14}
-.state-row{border:0!important;margin-top:22px;padding-top:0}
-.state-row p,.tx-note,.camp .sc,.camp-who,.camp-rule{display:none!important}
-}
