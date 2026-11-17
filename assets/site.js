@@ -286,27 +286,33 @@ if(page==='galerie'){
   });
 })();
 
-/* ---------- vidéo de l'atelier, sous la photo du showroom (téléphone) ---------- */
+/* ---------- showroom (téléphone) : la photo d'abord ; si l'on reste dessus, la vidéo de l'atelier prend sa place ---------- */
 (function(){
   var box=document.querySelector('.vb-reel');if(!box)return;
   var mh=document.querySelector('.maison');
   if(!matchMedia('(max-width:860px)').matches){box.remove();return}
   if(mh){mh.dataset.tone='dark';dispatchEvent(new Event('scroll'))}
   var v=box.querySelector('video'),snd=box.querySelector('.vr-snd'),pl=box.querySelector('.vr-play');
-  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,user=false,loaded=false;
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,user=false,loaded=false,shown=false,timer=0,DWELL=2200;
   v.muted=true;
   var load=function(){if(!loaded){v.src=v.dataset.src;v.preload='auto';loaded=true}};
-  var go=function(){load();var q=v.play();if(q&&q.catch)q.catch(function(){box.classList.add('is-paused')})};
+  var go=function(){load();var q=v.play();if(q&&q.catch)q.catch(function(){})};
+  var reveal=function(){if(shown)return;shown=true;box.classList.add('on');go()};
+  v.addEventListener('playing',function(){box.classList.add('ready')});
   var ui=function(){box.classList.toggle('is-paused',v.paused);box.classList.toggle('is-sound',!v.muted);
     pl.setAttribute('aria-label',v.paused?pl.dataset.play:pl.dataset.pause);
     snd.setAttribute('aria-label',v.muted?snd.dataset.on:snd.dataset.off);snd.setAttribute('aria-pressed',String(!v.muted))};
   ['play','pause','volumechange'].forEach(function(e){v.addEventListener(e,ui)});
-  pl.onclick=function(){if(v.paused){user=false;go()}else{user=true;v.pause()}};
-  snd.onclick=function(){v.muted=!v.muted;if(v.paused){user=false;go()}};
+  pl.onclick=function(){if(!shown){reveal();return}if(v.paused){user=false;go()}else{user=true;v.pause()}};
+  snd.onclick=function(){v.muted=!v.muted;if(!shown)reveal();else if(v.paused){user=false;go()}};
   if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)load()})},{rootMargin:'0px 0px 600px 0px'}).observe(box);
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)load()})},{rootMargin:'0px 0px 700px 0px'}).observe(box);
     new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){if(!user&&!calm)go()}else if(!v.paused){v.pause()}})},{threshold:.4}).observe(v);
-  }else go();
+      if(e.isIntersecting){
+        if(!shown){if(!calm&&!timer)timer=setTimeout(reveal,DWELL)}
+        else if(!user&&!calm)go();
+      }else{clearTimeout(timer);timer=0;if(!v.paused)v.pause()}
+    })},{threshold:.6}).observe(box);
+  }
   ui();
 })();

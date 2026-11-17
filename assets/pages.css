@@ -1134,3 +1134,27 @@ body.mbar-off .mbar{opacity:0;transform:translate(-50%,140%);pointer-events:none
   .vb-reel.is-sound .i-on{display:block}.vb-reel.is-sound .i-off{display:none}
 }
 @media (max-width:860px){.vr-k{top:24px;bottom:auto}.vb-reel::after{inset:0 0 auto 0;height:18%;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0))}}
+
+/* ======================================================================
+   SHOWROOM (téléphone) : photo et vidéo dans le même cadre 4:5.
+   La photo (4:3) s'affiche d'abord ; après un court instant à l'écran,
+   la vidéo (9:16) apparaît en fondu à la même place.
+   ====================================================================== */
+@media (max-width:860px){
+  .visitband .vb-img,.visitband .vb-reel{grid-column:1!important;grid-row:1!important}
+  .visitband .vb-card{grid-row:2!important}
+  .visitband .vb-img img{aspect-ratio:4/5!important;width:100%;height:auto;object-fit:cover;object-position:52% 40%!important}
+  .vb-reel{margin-top:0!important;align-self:stretch;background:transparent;opacity:0;pointer-events:none;transition:opacity 1s cubic-bezier(.16,1,.3,1)}
+  .vb-reel video{aspect-ratio:auto!important;height:100%!important;max-height:none!important;object-fit:cover;object-position:50% 50%}
+  .vb-reel.on.ready{opacity:1;pointer-events:auto}
+  /* les commandes restent visibles sur la photo pour lancer la vidéo tout de suite */
+  .vb-reel .vr-ctl{pointer-events:auto}
+  .vb-reel:not(.on) .vr-k{opacity:0}
+  .visitband .vb-img{position:relative;z-index:0}
+  .visitband .vb-reel{position:relative;z-index:1;opacity:1;background:transparent}
+  .visitband .vb-reel video{opacity:0;transition:opacity 1s cubic-bezier(.16,1,.3,1)}
+  .visitband .vb-reel.on.ready video{opacity:1}
+  .visitband .vb-reel::after{opacity:0;transition:opacity 1s}
+  .visitband .vb-reel.on.ready::after{opacity:1}
+}
+@media (max-width:860px){.visitband .vb-reel video{position:absolute!important;inset:0;width:100%!important;height:100%!important}}
