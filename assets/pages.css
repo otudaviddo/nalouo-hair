@@ -1100,3 +1100,13 @@ body.mbar-off .mbar{opacity:0;transform:translate(-50%,140%);pointer-events:none
   .reel-snd{bottom:auto;top:45%;right:72px}
   .reel-play{bottom:auto;top:45%}
 }
+@media (max-width:860px){
+  /* accueil : les deux mannequins, cadrées pour garder les deux visages et les cheveux */
+  .maison .mh-ph{object-position:46% 30%!important}
+  /* la vidéo de l'atelier remplace la photo du showroom sur téléphone */
+  .reel+.visitband .vb-img{display:none}
+  .reel+.visitband{padding-top:8px!important}
+}
+@media (max-width:860px){
+  .maison::before{content:"";position:absolute;inset:0 0 auto 0;height:30%;background:linear-gradient(180deg,rgba(10,9,8,.55),rgba(10,9,8,0));z-index:1;pointer-events:none}
+}
