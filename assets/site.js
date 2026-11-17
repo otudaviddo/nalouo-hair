@@ -78,7 +78,7 @@ if(hdr){
   const lum=c=>{const m=c.match(/[\d.]+/g);if(!m||(m[3]!==undefined&&+m[3]<.5))return null;return (.2126*m[0]+.7152*m[1]+.0722*m[2])/255};
   const tone=()=>{const y=Math.min(hdr.offsetHeight+4,innerHeight-1);let light=null;
     for(const x of [innerWidth*.5,24]){const els=document.elementsFromPoint(x,y);
-      for(let el of els){if(hdr.contains(el)||el.closest('.mbar,.tbar,.mnav,.ann'))continue;
+      for(let el of els){if(hdr.contains(el)||el.closest('.mbar,.mnav'))continue;
         for(let e=el;e&&e!==document.documentElement;e=e.parentElement){
           if(e.dataset&&e.dataset.tone){light=e.dataset.tone==='light';break}
           if(/^(IMG|PICTURE|VIDEO)$/.test(e.tagName)){continue}
@@ -235,21 +235,17 @@ if(page==='galerie'){
 
 /* ---------- Téléphone : barre d'actions fixe en bas (tarifs, rendez-vous, itinéraire) ---------- */
 (function(){
-  /* barre d'onglets en bas de l'écran (téléphone), façon boutique : Accueil · Créations · Tarifs · Rendez-vous */
-  if(document.querySelector('.tbar'))return;
+  if(document.querySelector('.mbar'))return;
   var lg=(document.documentElement.lang||'fr').slice(0,2);
-  var T={fr:['Accueil','Créations','Tarifs','Rendez-vous','Navigation rapide'],en:['Home','Creations','Prices','Book','Quick navigation'],nl:['Home','Creaties','Prijzen','Afspraak','Snelle navigatie']}[lg]||['Accueil','Créations','Tarifs','Rendez-vous','Navigation rapide'];
+  var T={fr:['Tarifs','Rendez-vous','Itinéraire','Actions rapides'],en:['Prices','Book','Directions','Quick actions'],nl:['Prijzen','Afspraak','Route','Snelle acties']}[lg]||['Tarifs','Rendez-vous','Itinéraire','Actions rapides'];
   var wa=document.querySelector('a[href*="wa.me/"][href*="text="]');
-  var I={h:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6.5 8 6.5V20h-5.5v-5.5h-5V20H4z"/></svg>',
-         c:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>',
-         t:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.5V4h8.5l8.5 8.5-8.5 8.5z"/><circle cx="8" cy="8.5" r="1.4"/></svg>',
-         w:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1.2-3.6A7.5 7.5 0 1 1 9 18.4z"/></svg>'};
-  var here=(location.pathname.split('/').pop()||'index.html');
-  var L=[['index.html',I.h,T[0]],['collection.html',I.c,T[1]],['tarifs.html',I.t,T[2]]];
-  var n=document.createElement('nav');n.className='tbar';n.setAttribute('aria-label',T[4]);
-  n.innerHTML=L.map(function(x){return '<a href="'+x[0]+'"'+(here===x[0]?' aria-current="page"':'')+'>'+x[1]+'<span>'+x[2]+'</span></a>'}).join('')+
-    '<a class="tbar-main" href="'+(wa?wa.href:'showroom.html')+'" target="_blank" rel="noopener">'+I.w+'<span>'+T[3]+'</span></a>';
-  document.body.appendChild(n);document.body.classList.add('has-tbar');
+  var maps='https://www.google.com/maps/search/?api=1&query=Avenue+van+Beesen+23+1090+Jette';
+  var I={t:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',w:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1.2-3.6A7.5 7.5 0 1 1 9 18.4z"/></svg>',m:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.6-6-10.5a6 6 0 0 1 12 0C18 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/></svg>'};
+  var n=document.createElement('nav');n.className='mbar';n.setAttribute('aria-label',T[3]);
+  n.innerHTML='<a href="tarifs.html">'+I.t+'<span>'+T[0]+'</span></a>'+
+    '<a class="mbar-main" href="'+(wa?wa.href:'showroom.html')+'" target="_blank" rel="noopener">'+I.w+'<span>'+T[1]+'</span></a>'+
+    '<a href="'+maps+'" target="_blank" rel="noopener">'+I.m+'<span>'+T[2]+'</span></a>';
+  document.body.appendChild(n);document.body.classList.add('has-mbar');
 })();
 
 /* ---------- audit du 17 nov. 2026 ---------- */
@@ -290,36 +286,20 @@ if(page==='galerie'){
   });
 })();
 
-
-/* ---------- accueil vidéo + bandeau d'annonce (17 nov. 2026) ---------- */
+/* ---------- vidéo de l'atelier, sous la photo d'accueil (téléphone) ---------- */
 (function(){
-  var lg=(document.documentElement.lang||'fr').slice(0,2);
-  /* bandeau défilant en haut, sur toutes les pages */
-  var hdr=document.getElementById('hdr');
-  if(hdr&&!document.querySelector('.ann')){
-    var M={fr:['Showroom à Jette · Sur rendez-vous','Consultation offerte','100 % cheveux bruts, non traités'],
-           en:['Showroom in Jette · By appointment','Free consultation','100% raw, unprocessed hair'],
-           nl:['Showroom in Jette · Op afspraak','Gratis consultatie','100 % ruw, onbehandeld haar']}[lg];
-    var a=document.createElement('aside');a.className='ann';a.setAttribute('aria-label',{fr:'Informations',en:'Information',nl:'Informatie'}[lg]||'Informations');
-    var line=M.map(function(x){return '<span>'+x+'</span>'}).join('');
-    a.innerHTML='<div class="ann-track"><div class="ann-run">'+line+'</div><div class="ann-run" aria-hidden="true">'+line+'</div></div>';
-    document.body.insertBefore(a,document.body.firstChild);document.body.classList.add('has-ann');
-    var place=function(){var h=a.offsetHeight;hdr.style.top=Math.max(0,h-scrollY)+'px'};
-    addEventListener('scroll',place,{passive:true});addEventListener('resize',place);place();
-  }
-  /* vidéo d'accueil : version verticale sur téléphone, horizontale sur ordinateur ; lecture seulement si visible */
-  var v=document.querySelector('.mh-vid');if(!v)return;
-  var mob=matchMedia('(max-width:860px)').matches, calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var btn=document.querySelector('.mh-play');
-  /* pas de vidéo sur ordinateur : la photo d'accueil reste */
-  if(!mob){var mh=v.closest('.maison');if(mh)mh.dataset.tone='light';v.remove();if(btn)btn.remove();addEventListener('load',function(){dispatchEvent(new Event('scroll'))});return}
-  v.poster=v.dataset.mp;
-  if(calm)return;
-  v.src=v.dataset.m;v.preload='auto';
-  var setBtn=function(){if(!btn)return;var paused=v.paused;btn.classList.toggle('is-paused',paused);btn.setAttribute('aria-label',paused?btn.dataset.play:btn.dataset.pause)};
-  var user=false;
-  v.addEventListener('playing',function(){v.classList.add('on');setBtn()});v.addEventListener('pause',setBtn);
-  if(btn){btn.hidden=false;btn.onclick=function(){user=!v.paused;v.paused?v.play():v.pause()}}
-  var p=v.play();if(p&&p.catch)p.catch(function(){});
-  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!user){var q=v.play();if(q&&q.catch)q.catch(function(){})}}else v.pause()})},{threshold:.15}).observe(v);
+  var s=document.querySelector('.reel');if(!s)return;
+  var v=s.querySelector('video'),snd=s.querySelector('.reel-snd'),pl=s.querySelector('.reel-play');
+  if(!matchMedia('(max-width:860px)').matches){s.remove();return}
+  var mh=document.querySelector('.maison');if(mh){mh.dataset.tone='dark';dispatchEvent(new Event('scroll'))}
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,user=false,loaded=false;
+  var load=function(){if(!loaded){v.src=v.dataset.src;v.preload='auto';loaded=true}};
+  var ui=function(){s.classList.toggle('is-paused',v.paused);pl.setAttribute('aria-label',v.paused?pl.dataset.play:pl.dataset.pause);
+    snd.textContent=v.muted?snd.dataset.on:snd.dataset.off;snd.setAttribute('aria-pressed',String(!v.muted))};
+  v.addEventListener('play',ui);v.addEventListener('pause',ui);v.addEventListener('volumechange',ui);
+  pl.onclick=function(){load();if(v.paused){user=false;v.play().catch(function(){})}else{user=true;v.pause()}};
+  snd.onclick=function(){load();v.muted=!v.muted;if(v.paused){user=false;v.play().catch(function(){})}};
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){load();if(!user&&!calm)v.play().catch(function(){})}else if(!v.paused){v.pause()}})},{threshold:.35,rootMargin:'200px 0px 0px 0px'}).observe(v);
+  ui();
 })();
