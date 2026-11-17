@@ -995,7 +995,6 @@ img{border-radius:0!important}
   .foot .cols>div:last-child{grid-column:1/-1}
 }
 /* en-tête noir au défilement, citation sur fond noir, sous-titre du héros visible */
-.hdr.solid,.hdr.on-light.solid{background:rgba(10,10,10,.94)!important;color:var(--paper)!important;border-bottom-color:rgba(255,255,255,.1)!important}
 .camp{background:var(--espresso)!important;color:var(--paper)}
 .camp-light{display:none}
 .camp .camp-h,.camp blockquote,.camp .camp-who,.camp .sc,.camp .lnk,.camp blockquote em{color:var(--paper)!important}
@@ -1004,3 +1003,18 @@ img{border-radius:0!important}
 .camp .camp-mono{color:rgba(255,255,255,.06)!important}
 .maison .mh-meta .mh-sub{display:block!important}
 @media (max-width:860px){.f-name{font-size:10.4vw;white-space:nowrap}}
+
+/* touches de couleur d'origine + logo qui s'adapte au fond (17 nov. 2026) */
+:root{--cream:#F2EEE7;--warm:#15110E}
+.hdr.solid{background:rgba(236,230,220,.94)!important;color:var(--warm)!important;border-bottom:1px solid rgba(21,17,14,.1)!important}
+body[data-page="galerie"] .hdr.solid{background:rgba(21,17,14,.88)!important;color:var(--cream)!important;border-bottom-color:rgba(255,255,255,.1)!important}
+.hdr.tone-light:not(.solid){color:var(--warm)!important}
+.hdr.tone-dark:not(.solid){color:var(--cream)!important}
+.mnav{background:var(--warm)}
+.mnav,.mnav-list a,.mnav-top .brand{color:var(--cream)}
+.mnav-foot{border-top-color:rgba(180,154,110,.3)}
+.mnav-list a[aria-current="page"],.mnav-foot a:hover{color:var(--champagne)}
+.of-k,.camp .camp-k,.offre h2 em{color:var(--champagne)!important}
+.state{background:var(--cream)!important}
+.foot .fh{color:var(--champagne)!important}
+.foot .f-tag{color:rgba(180,154,110,.95)}
