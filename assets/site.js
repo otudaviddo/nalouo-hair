@@ -311,9 +311,11 @@ if(page==='galerie'){
   var v=document.querySelector('.mh-vid');if(!v)return;
   var mob=matchMedia('(max-width:860px)').matches, calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var btn=document.querySelector('.mh-play');
-  if(mob)v.poster=v.dataset.mp;
+  /* pas de vidéo sur ordinateur : la photo d'accueil reste */
+  if(!mob){var mh=v.closest('.maison');if(mh)mh.dataset.tone='light';v.remove();if(btn)btn.remove();addEventListener('load',function(){dispatchEvent(new Event('scroll'))});return}
+  v.poster=v.dataset.mp;
   if(calm)return;
-  v.src=mob?v.dataset.m:v.dataset.d;v.preload='auto';
+  v.src=v.dataset.m;v.preload='auto';
   var setBtn=function(){if(!btn)return;var paused=v.paused;btn.classList.toggle('is-paused',paused);btn.setAttribute('aria-label',paused?btn.dataset.play:btn.dataset.pause)};
   var user=false;
   v.addEventListener('playing',function(){v.classList.add('on');setBtn()});v.addEventListener('pause',setBtn);

@@ -1205,3 +1205,5 @@ body.mbar-off .mbar{opacity:0;transform:translate(-50%,140%);pointer-events:none
 @media (max-width:860px){.mh-play{top:76px!important;bottom:auto!important;right:16px}}
 .usp .u-n{color:#76603D}
 .ann{font-size:12px}
+@media (min-width:861px){.maison .mh-vid,.maison .mh-play{display:none!important}}
+@media (min-width:861px){.maison::before{display:none}}
