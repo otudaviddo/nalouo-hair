@@ -1018,3 +1018,9 @@ body[data-page="galerie"] .hdr.solid{background:rgba(21,17,14,.88)!important;col
 .state{background:var(--cream)!important}
 .foot .fh{color:var(--champagne)!important}
 .foot .f-tag{color:rgba(180,154,110,.95)}
+/* audit : compteur de la collection sous les filtres sur téléphone ; héros allégé */
+@media (max-width:860px){
+  .coll-bar{display:flex!important;flex-direction:column;align-items:stretch;gap:6px}
+  .coll-bar .count{position:static!important;align-self:flex-end;font-size:12px}
+  .maison .mh-meta{gap:0}
+}

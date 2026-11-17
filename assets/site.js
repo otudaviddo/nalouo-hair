@@ -88,7 +88,7 @@ if(hdr){
       if(light!==null)break}
     if(light===null)light=true;
     hdr.classList.toggle('tone-light',light);hdr.classList.toggle('tone-dark',!light)};
-  let tk=0;const onScroll=()=>{hdr.classList.toggle('solid',scrollY>Math.min(innerHeight*.5,420));if(!tk){tk=1;requestAnimationFrame(()=>{tk=0;tone()})}};
+  let tk=0;const onScroll=()=>{hdr.classList.toggle('solid',scrollY>(hdr.classList.contains('on-light')?8:Math.min(innerHeight*.5,420)));if(!tk){tk=1;requestAnimationFrame(()=>{tk=0;tone()})}};
   addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);addEventListener('load',onScroll);onScroll();}
 const mnav=$('#mnav'),mb=$('#menuBtn');
 const closeMenu=()=>{if(mnav&&!mnav.hidden){mnav.hidden=true;document.documentElement.classList.remove('menu-on');if(mb){mb.setAttribute('aria-expanded','false');mb.focus()}}};
@@ -193,7 +193,7 @@ if(page==='produit'){
     const more=P.filter(x=>x.cat===p.cat&&x.id!==p.id).concat(P.filter(x=>x.cat!==p.cat)).slice(0,4);
     root.innerHTML=`<nav class="crumbs" aria-label="${T.crumbs}"><a href="index.html">${T.home}</a><span aria-hidden="true">/</span><a href="collection.html#${p.cat}">${p.catL}</a><span aria-hidden="true">/</span><span>${p.name}</span></nav>
       <div class="pp-grid">
-        <div class="pp-media">${media}</div>
+        <div class="pp-media" tabindex="0" role="region" aria-label="Photos">${media}</div>
         <div class="pp-info">
           <span class="cat">${p.catL}</span>
           <h1>${p.name}</h1>
