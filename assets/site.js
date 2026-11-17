@@ -286,20 +286,27 @@ if(page==='galerie'){
   });
 })();
 
-/* ---------- vidéo de l'atelier, sous la photo d'accueil (téléphone) ---------- */
+/* ---------- vidéo de l'atelier, sous la photo du showroom (téléphone) ---------- */
 (function(){
-  var s=document.querySelector('.reel');if(!s)return;
-  var v=s.querySelector('video'),snd=s.querySelector('.reel-snd'),pl=s.querySelector('.reel-play');
-  if(!matchMedia('(max-width:860px)').matches){s.remove();return}
-  var mh=document.querySelector('.maison');if(mh){mh.dataset.tone='dark';dispatchEvent(new Event('scroll'))}
+  var box=document.querySelector('.vb-reel');if(!box)return;
+  var mh=document.querySelector('.maison');
+  if(!matchMedia('(max-width:860px)').matches){box.remove();return}
+  if(mh){mh.dataset.tone='dark';dispatchEvent(new Event('scroll'))}
+  var v=box.querySelector('video'),snd=box.querySelector('.vr-snd'),pl=box.querySelector('.vr-play');
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,user=false,loaded=false;
+  v.muted=true;
   var load=function(){if(!loaded){v.src=v.dataset.src;v.preload='auto';loaded=true}};
-  var ui=function(){s.classList.toggle('is-paused',v.paused);pl.setAttribute('aria-label',v.paused?pl.dataset.play:pl.dataset.pause);
-    snd.textContent=v.muted?snd.dataset.on:snd.dataset.off;snd.setAttribute('aria-pressed',String(!v.muted))};
-  v.addEventListener('play',ui);v.addEventListener('pause',ui);v.addEventListener('volumechange',ui);
-  pl.onclick=function(){load();if(v.paused){user=false;v.play().catch(function(){})}else{user=true;v.pause()}};
-  snd.onclick=function(){load();v.muted=!v.muted;if(v.paused){user=false;v.play().catch(function(){})}};
-  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting){load();if(!user&&!calm)v.play().catch(function(){})}else if(!v.paused){v.pause()}})},{threshold:.35,rootMargin:'200px 0px 0px 0px'}).observe(v);
+  var go=function(){load();var q=v.play();if(q&&q.catch)q.catch(function(){box.classList.add('is-paused')})};
+  var ui=function(){box.classList.toggle('is-paused',v.paused);box.classList.toggle('is-sound',!v.muted);
+    pl.setAttribute('aria-label',v.paused?pl.dataset.play:pl.dataset.pause);
+    snd.setAttribute('aria-label',v.muted?snd.dataset.on:snd.dataset.off);snd.setAttribute('aria-pressed',String(!v.muted))};
+  ['play','pause','volumechange'].forEach(function(e){v.addEventListener(e,ui)});
+  pl.onclick=function(){if(v.paused){user=false;go()}else{user=true;v.pause()}};
+  snd.onclick=function(){v.muted=!v.muted;if(v.paused){user=false;go()}};
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)load()})},{rootMargin:'0px 0px 600px 0px'}).observe(box);
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){if(!user&&!calm)go()}else if(!v.paused){v.pause()}})},{threshold:.4}).observe(v);
+  }else go();
   ui();
 })();
