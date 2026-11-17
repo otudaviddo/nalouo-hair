@@ -1160,3 +1160,7 @@ body.mbar-off .mbar{opacity:0;transform:translate(-50%,140%);pointer-events:none
 @media (max-width:860px){.visitband .vb-reel video{position:absolute!important;inset:0;width:100%!important;height:100%!important}}
 .lang a{opacity:.9}
 @media (max-width:860px){.maison .mh-ph{object-position:50% 30%!important}}
+/* ordinateur : voile sombre en haut de la photo d'accueil, pour que le logo et le menu (en blanc) se lisent même sur les cheveux */
+@media (min-width:861px){
+  .maison::before{content:"";display:block!important;position:absolute;inset:0 0 auto 0;height:26%;background:linear-gradient(180deg,rgba(10,9,8,.5),rgba(10,9,8,.18) 55%,rgba(10,9,8,0));z-index:1;pointer-events:none}
+}
