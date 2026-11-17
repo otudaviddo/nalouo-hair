@@ -1024,3 +1024,46 @@ body[data-page="galerie"] .hdr.solid{background:rgba(21,17,14,.88)!important;col
   .coll-bar .count{position:static!important;align-self:flex-end;font-size:12px}
   .maison .mh-meta{gap:0}
 }
+
+/* ======================================================================
+   AUDIT (17 nov. 2026)
+   ====================================================================== */
+/* 9. un seul style de bouton : carré */
+.btn,.hdr-rdv,.foot .f-rdv,.pill span,.chip,.ct-tabs button{border-radius:0!important}
+/* 6. liens confortables au doigt */
+.lnk{display:inline-flex;align-items:flex-end;min-height:44px}
+/* 2. fin de page : un filet entre le dernier bloc sombre et le bas de page */
+.foot{border-top:1px solid rgba(255,255,255,.08)}
+/* 7. bouton flottant masqué près du bas de page */
+.mbar{transition:opacity .35s var(--ease),transform .45s var(--ease)}
+body.mbar-off .mbar{opacity:0;transform:translate(-50%,140%);pointer-events:none}
+@media (max-width:860px){
+  /* 5. petits textes : 12 px minimum */
+  .menu-open span:last-child,.hdr .lang,.hdr .lang a,.mbar a,.of-k,.vb-k,.state-k,.tx-k,.ft-k,.camp-k,.tf-k,.carte-k,.crumbs,.mh-meta,.of-more a,.foot .fh,.foot .legal,.tx-cap span,.card .sub,.card .price{font-size:12px!important}
+  .of-more a,.mbar a{letter-spacing:.16em!important}
+  /* 4. étapes en volets */
+  .step.acc{display:block;padding-block:0!important}
+  .step.acc h2{margin:0;font-size:inherit}
+  .step-tg{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:44px 1fr 24px;align-items:center;min-height:76px;cursor:pointer}
+  .step-tg:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+  .step-n{font-family:var(--f-display);font-size:30px;color:var(--champagne);line-height:1}
+  .step-t{font-family:var(--f-display);font-size:28px;line-height:1.1}
+  .step-tg i{width:14px;height:14px;position:relative;justify-self:end}
+  .step-tg i::before,.step-tg i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:1.5px;background:currentColor;transition:transform .35s var(--ease)}
+  .step-tg i::after{transform:rotate(90deg)}
+  .step.open .step-tg i::after{transform:rotate(0)}
+  .step-body{display:none;padding:0 0 32px 44px}
+  .step.open .step-body{display:block}
+  .step-body>*+*{margin-top:18px}
+  /* 8. tarifs en onglets */
+  .ct-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 14px;padding-bottom:2px}
+  .ct-tabs::-webkit-scrollbar{display:none}
+  .ct-tabs button{flex:0 0 auto;min-height:44px;padding:0 16px;border:1px solid rgba(255,255,255,.28);background:none;color:inherit;font:inherit;font-size:13px;letter-spacing:.06em;cursor:pointer}
+  .ct-tabs button[aria-pressed="true"]{background:var(--paper);color:var(--espresso);border-color:var(--paper)}
+  table.ct-one .ct-off{display:none}
+  table.ct-one{width:100%}
+  table.ct-one th[scope="row"],table.ct-one td{padding-block:14px}
+  table.ct-one td{text-align:right;font-size:20px;font-family:var(--f-display)}
+  table.ct-one td::after{content:" €";font-size:.7em}
+}
+@media (max-width:860px){table.ct-one thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}

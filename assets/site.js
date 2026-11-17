@@ -16,7 +16,7 @@ const TX={
    bundlesNote:'Pour une pose complète, comptez en général 3 bundles. ',payNote:'Règlement sur place, au showroom.',
    origin:'Origine',wigSpecs:[["Confection","15 à 25 jours ouvrés"],["Montage","2 bundles, 3 dès 18″"],["Lace","Closure ou frontale HD"],["Couleur","Naturelle ou jet black"]],
    bspecs:[["Poids","100 g par bundle"],["Traitement","Brut, non traité"],["Coloration","Jusqu'au blond 613"]],
-   worn:'Portées',wornAlt:n=>`${n}, portées`,detail:'Détail de la mèche',more:'Vous aimerez aussi',
+   worn:'Portées',raw:'Les mèches',wornAlt:n=>`${n}, portées`,detail:'Détail de la mèche',more:'Vous aimerez aussi',
    cats:{bundles:'Extensions raw hair',lace:'Closures & frontales',clips:'Clips & ponytails',wigs:'Perruques'},
    opt:{},
    waWig:(n,l,len,cap)=>`Bonjour Nalouo Hair, je souhaite prendre rendez-vous pour une ${n.toLowerCase()} : ${l}, ${len}", bonnet ${cap}. Pouvez-vous me confirmer le prix et le stock ?`,
@@ -31,7 +31,7 @@ const TX={
    bundlesNote:'A full install usually takes 3 bundles. ',payNote:'Payment in person, at the showroom.',
    origin:'Origin',wigSpecs:[["Making","15 to 25 working days"],["Construction","2 bundles, 3 from 18″"],["Lace","HD closure or frontal"],["Colour","Natural or jet black"]],
    bspecs:[["Weight","100 g per bundle"],["Processing","Raw, unprocessed"],["Colouring","Up to 613 blonde"]],
-   worn:'Worn',wornAlt:n=>`${n}, worn`,detail:'Hair detail',more:'You may also like',
+   worn:'Worn',raw:'The bundles',wornAlt:n=>`${n}, worn`,detail:'Hair detail',more:'You may also like',
    cats:{bundles:'Raw hair extensions',lace:'Closures & frontals',clips:'Clips & ponytails',wigs:'Wigs'},
    opt:{'Lisse':'Straight','Ondulée':'Wavy','Bouclée':'Curly','Closure 2×6':'Closure 2×6','Closure 5×5':'Closure 5×5','Closure 6×6':'Closure 6×6','Frontale 13×4':'Frontal 13×4','Frontale 13×6':'Frontal 13×6'},
    waWig:(n,l,len,cap)=>`Hello Nalouo Hair, I would like to book an appointment for a ${n}: ${l}, ${len}", cap ${cap}. Could you confirm the price and stock?`,
@@ -46,7 +46,7 @@ const TX={
    bundlesNote:'Voor een volledige plaatsing rekent u meestal 3 bundels. ',payNote:'Betaling ter plaatse, in de showroom.',
    origin:'Herkomst',wigSpecs:[["Vervaardiging","15 tot 25 werkdagen"],["Opbouw","2 bundels, 3 vanaf 18″"],["Lace","HD-closure of frontal"],["Kleur","Natuurlijk of jet black"]],
    bspecs:[["Gewicht","100 g per bundel"],["Behandeling","Ruw, onbehandeld"],["Kleuren","Tot blond 613"]],
-   worn:'Gedragen',wornAlt:n=>`${n}, gedragen`,detail:'Detail van het haar',more:'Misschien ook iets voor u',
+   worn:'Gedragen',raw:'De bundels',wornAlt:n=>`${n}, gedragen`,detail:'Detail van het haar',more:'Misschien ook iets voor u',
    cats:{bundles:'Raw hair extensions',lace:'Closures & frontals',clips:'Clips & ponytails',wigs:'Pruiken'},
    opt:{'Lisse':'Steil','Ondulée':'Golvend','Bouclée':'Krullend','Frontale 13×4':'Frontal 13×4','Frontale 13×6':'Frontal 13×6'},
    waWig:(n,l,len,cap)=>`Hallo Nalouo Hair, ik wil graag een afspraak maken voor een ${n.toLowerCase()}: ${l}, ${len}", capmaat ${cap}. Kunt u de prijs en voorraad bevestigen?`,
@@ -184,7 +184,7 @@ if(page==='produit'){
     }
     const specs=p.specs||(p.cat==='bundles'?[[T.origin,p.origin||"—"],...T.bspecs]:T.wigSpecs);
     const SZ='(max-width:900px) 100vw, 56vw',SZ2='(max-width:900px) 50vw, 28vw';
-    const second=p.img2?`<figure><img src="${ROOT}${p.img2}" ${srcset(p.img2)} sizes="${SZ2}" alt="${T.wornAlt(p.name)}" loading="lazy" style="object-position:50% 30%"><figcaption>${T.worn}</figcaption></figure>`
+    const second=p.img2?`<figure><img src="${ROOT}${p.img2}" ${srcset(p.img2)} sizes="${SZ2}" alt="${/bundle/.test(p.img2)?p.name:T.wornAlt(p.name)}" loading="lazy" style="object-position:50% 30%"><figcaption>${/bundle/.test(p.img2)?T.raw:T.worn}</figcaption></figure>`
        :`<figure><img src="${ROOT}${p.img}" ${srcset(p.img)} sizes="${SZ2}" alt="" loading="lazy" style="object-position:${p.pos||'50% 50%'};filter:grayscale(1) contrast(1.05)"><figcaption>${p.sub}</figcaption></figure>`;
     const media=p.img?`<figure class="big${p.prod?' prod':''}">${visual(p,'fetchpriority="high"',SZ)}</figure>
        <figure class="zoom${p.prod?' prod':''}"><img src="${ROOT}${p.img}" ${srcset(p.img)} sizes="${SZ2}" alt="" loading="lazy" style="object-position:${p.zoom||'50% 70%'};transform-origin:${p.zoom||'50% 70%'}"><figcaption>${T.detail}</figcaption></figure>
@@ -246,4 +246,42 @@ if(page==='galerie'){
     '<a class="mbar-main" href="'+(wa?wa.href:'showroom.html')+'" target="_blank" rel="noopener">'+I.w+'<span>'+T[1]+'</span></a>'+
     '<a href="'+maps+'" target="_blank" rel="noopener">'+I.m+'<span>'+T[2]+'</span></a>';
   document.body.appendChild(n);document.body.classList.add('has-mbar');
+})();
+
+/* ---------- audit du 17 nov. 2026 ---------- */
+(function(){
+  var mq=matchMedia('(max-width:860px)');
+  /* 7. le bouton flottant s'efface quand le bas de page ou un autre bouton de rendez-vous est visible */
+  var bar=document.querySelector('.mbar');
+  if(bar&&'IntersectionObserver' in window){
+    var seen=new Set();
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?seen.add(e.target):seen.delete(e.target)});document.body.classList.toggle('mbar-off',seen.size>0)},{rootMargin:'0px 0px -12% 0px'});
+    var foot=document.querySelector('.foot .cols');if(foot)io.observe(foot);
+    document.querySelectorAll('main a[href*="wa.me/"]').forEach(function(a){if(!a.closest('.mbar,.hdr,.mnav'))io.observe(a)});
+  }
+  /* 4. page Perruques : les quatre étapes en volets sur téléphone */
+  var steps=document.querySelectorAll('.steps .step');
+  if(steps.length&&mq.matches){
+    steps.forEach(function(s,i){
+      var h=s.querySelector('h2'),num=s.querySelector('.num');if(!h)return;
+      var id='stp'+i,body=document.createElement('div');body.className='step-body';body.id=id;
+      [].slice.call(s.children).forEach(function(c){if(c!==num&&!c.contains(h))body.appendChild(c)});
+      var p=h.parentElement;[].slice.call(p.children).forEach(function(c){if(c!==h)body.insertBefore(c,body.firstChild)});
+      s.appendChild(body);
+      var b=document.createElement('button');b.type='button';b.className='step-tg';b.setAttribute('aria-expanded',i===0?'true':'false');b.setAttribute('aria-controls',id);
+      b.innerHTML='<span class="step-n">'+(num?num.textContent.trim():i+1)+'</span><span class="step-t">'+h.innerHTML+'</span><i aria-hidden="true"></i>';
+      h.innerHTML='';h.appendChild(b);if(num)num.remove();
+      s.classList.add('acc');if(i===0)s.classList.add('open');
+      b.onclick=function(){var o=s.classList.toggle('open');b.setAttribute('aria-expanded',o)};
+    });
+  }
+  /* 8. tarifs : sur téléphone, un onglet par texture ou par format au lieu d'un tableau à plusieurs colonnes */
+  if(mq.matches)document.querySelectorAll('table.ct').forEach(function(t,k){
+    var heads=[].slice.call(t.tHead.rows[0].cells).slice(1);if(heads.length<2)return;
+    var tabs=document.createElement('div');tabs.className='ct-tabs';tabs.setAttribute('role','group');tabs.setAttribute('aria-label',t.caption?t.caption.textContent:'');
+    var show=function(n){[].slice.call(t.rows).forEach(function(r){[].slice.call(r.cells).forEach(function(c,j){if(j>0)c.classList.toggle('ct-off',j!==n)})});
+      [].slice.call(tabs.children).forEach(function(b,j){b.setAttribute('aria-pressed',j+1===n)})};
+    heads.forEach(function(h,j){var b=document.createElement('button');b.type='button';b.textContent=h.textContent.trim();b.onclick=function(){show(j+1)};tabs.appendChild(b)});
+    t.parentElement.insertBefore(tabs,t);t.classList.add('ct-one');show(1);
+  });
 })();
