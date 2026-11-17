@@ -1067,3 +1067,8 @@ body.mbar-off .mbar{opacity:0;transform:translate(-50%,140%);pointer-events:none
   table.ct-one td::after{content:" €";font-size:.7em}
 }
 @media (max-width:860px){table.ct-one thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+/* correctif : sur téléphone, le titre « Venez toucher la différence » ne passe plus sous la photo du showroom, et l'enseigne reste visible */
+@media (max-width:860px){
+  .visitband .vb-card{margin:0!important;position:static!important;padding:28px 20px 8px!important}
+  .vb-img img{aspect-ratio:4/3!important;object-position:68% 22%;border-radius:0!important}
+}
