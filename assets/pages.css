@@ -1158,3 +1158,5 @@ body.mbar-off .mbar{opacity:0;transform:translate(-50%,140%);pointer-events:none
   .visitband .vb-reel.on.ready::after{opacity:1}
 }
 @media (max-width:860px){.visitband .vb-reel video{position:absolute!important;inset:0;width:100%!important;height:100%!important}}
+.lang a{opacity:.9}
+@media (max-width:860px){.maison .mh-ph{object-position:50% 30%!important}}
